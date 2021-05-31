@@ -1,0 +1,74 @@
+<div class="addVideo"
+    *ngIf="statusFormEdit == 'tags' || statusFormEdit == 'actor' || statusFormEdit == 'vice_name_image'">
+    {{data.name}}
+    <i class="fas fa-plus" (click)="addTag()"></i>
+    <form class="flexbox-start-start">
+        <div class="marb-20" *ngFor="let tag of data.data; let i = index" style="width:30%">
+            <input #tagItem type="text" value={{tag}} class="tagItem" />
+            <i class="fas fa-trash-alt marl-5" (click)="removeTag(i)"></i>
+        </div>
+
+        <div class="save" (click)="dataReturn()">Save</div>
+    </form>
+</div>
+
+
+<div class="addVideo" *ngIf="statusFormEdit == 'content'">
+    {{data.name}}
+    <i class="fas fa-plus" (click)="addContent()"></i>
+    <form class="flexbox-start-start">
+        <div class="marb-20" *ngFor="let content of data.data; let i=index" style="width:30%">
+            <textarea rows="10" cols="70" type="textarea" value={{content}} class="tagItem"></textarea>
+            <i class="fas fa-trash-alt marl-5" (click)="removeTag(i)"></i>
+        </div>
+
+        <div class="save" (click)="dataReturn()">Save</div>
+    </form>
+</div>
+
+<div class="addVideo" *ngIf="statusFormEdit == 'movie'">
+    {{data.name}}
+    <i class="fas fa-plus" (click)="addMovie()"></i>
+    <div class="movie-contain flexbox-center-start">
+        <div class="marb-20 eachMovie" *ngFor="let movie of data.data; let i=index" style="width:33%">
+
+            <div class="item-data">
+                <label for="inputName">Video</label>
+                <input *ngIf="movie" class="video-edit-form" type="text" value="{{movie.video}}" />
+                <input *ngIf="!movie" class="video-edit-form" type="text" value="" />
+            </div>
+
+            <div class="item-data">
+                <label for="inputStatus">Episode</label>
+                <input *ngIf="movie" class="episode-edit-form" type="text" value={{movie.episode}} />
+                <input *ngIf="!movie" class="episode-edit-form" type="text" value="" />
+            </div>
+
+            <div class="item-data" *ngIf="movie.subtitle == ''">
+                <label for="inputStatus">Subtitle</label>
+                <select name="subtitle" class="subtitle">
+                    <option value="VIETSUB" selected>VIETSUB</option>
+                </select>
+            </div>
+
+            <div class="item-data" *ngIf="movie.subtitle == 'VIETSUB'">
+                <label for="inputStatus">Subtitle</label>
+                <select name="subtitle" class="subtitle">
+                    <option value="VIETSUB" selected>VIETSUB</option>
+                    <option value="Thuyết Minh">Thuyết Minh</option>
+                </select>
+            </div>
+
+            <div class="item-data" *ngIf="movie.subtitle == 'Thuyết Minh'">
+                <label for="inputStatus">Subtitle</label>
+                <select name="subtitle" class="subtitle">
+                    <option value="Thuyết Minh" selected>Thuyết Minh</option>
+                    <option value="VIETSUB">VIETSUB</option>
+                </select>
+            </div>
+            <i class="fas fa-trash-alt float-r" (click)="removeTag(i)"></i>
+
+        </div>
+    </div>
+    <span class="save" (click)="dataMovieReturn()">Save</span>
+</div>

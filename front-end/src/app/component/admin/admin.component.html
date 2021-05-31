@@ -1,0 +1,33 @@
+<div class="" *ngIf="!statusAccess; else nomovie">
+    <app-cover></app-cover>
+</div>
+<ng-template #nomovie>
+    <div class="contain">
+        <div class="title whitecolor flexbox-start-start">
+            <div class="movie" [class.active]="status == 'movie'" (click)="clickItem($event)">MOVIE</div>
+            <div class="user" [class.active]="status == 'user'" (click)="clickItem($event)">USER</div>
+            <div class="genre" [class.active]="status == 'genre'" (click)="clickItem($event)">GENRE</div>
+            <div class="country" [class.active]="status == 'country'" (click)="clickItem($event)">COUNTRY</div>
+        </div>
+        <div *ngIf="status == 'movie' && movie">
+            <app-admin-movie [dataMovie]="movie"></app-admin-movie>
+            <!-- <app-admin-movie *ngIf="pagedItems != null" [dataMovie]="pagedItems"></app-admin-movie> -->
+            <!-- <app-pagination [data]="movie" (keyPagination)="handleData($event)"></app-pagination> -->
+        </div>
+    
+        <div *ngIf="status == 'user'">
+            <app-pagination [data]="allUser" (keyPagination)="handleData($event)"></app-pagination>
+            <app-admin-user [dataUser]="pagedItems"></app-admin-user>
+        </div>
+    
+        <div *ngIf="status == 'genre'">
+            <app-pagination [data]="genre" (keyPagination)="handleData($event)"></app-pagination>
+            <app-admin-genre [dataGenre]="pagedItems"></app-admin-genre>
+        </div>
+    
+        <div *ngIf="status == 'country'">
+            <app-pagination [data]="country" (keyPagination)="handleData($event)"></app-pagination>
+            <app-admin-country [dataCountry]="pagedItems"></app-admin-country>
+        </div>
+    </div>
+</ng-template>

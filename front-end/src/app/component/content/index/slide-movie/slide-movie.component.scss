@@ -1,0 +1,325 @@
+@import './../../../../../scss/movie.scss';
+
+.background-cover {
+    width: 100%;
+    height: 100%;
+    background: url('./../../../../../assets/image/default-cover.webp');
+    
+    .slide {
+        background: center center / cover no-repeat;
+        height: 570px;
+        width: 100%;
+
+        .slide-container {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.497);
+            border-bottom: 2px solid #ff55a5;
+            padding: 4% 5% 6%;
+            overflow: hidden;
+
+            .slide-header {
+                padding: 0 25px;
+
+                h1 {
+                    font-weight: 700;
+                }
+
+                .button {
+                    .fas {
+                        margin-left:20px;
+                        font-size: 35px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .slide-content {
+                width: 100%;
+                height: 400px;
+                overflow: hidden;
+
+                .khoi-slide {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+
+                    .cac-slide {
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+
+                        .slide-item {
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            visibility: hidden;
+
+                            &.slide-active {
+                                opacity: 1;
+                                visibility: visible;
+                            }
+
+                            .movie-item {
+                                width: 20%;
+                                height: 100%;
+                                background-color: transparent;
+                                cursor: pointer;
+                                padding: 20px 25px;
+
+                                .play-center {
+                                    display: none;
+                                }
+
+                                &:hover {
+                                    .image {
+                                        box-shadow: 0px 0px 20px rgb(255, 255, 255);
+                                    }
+
+                                    .play-center {
+                                        display: block;
+                                    }
+                                }
+
+                                .image {
+                                    height: 85%;
+                                    width: auto;
+                                    position: relative;
+                                    // background-image: url('./../../../../assets/image/default-cover.webp'); 
+
+                                    img {
+                                        border-radius: 5px;
+                                    }
+
+                                    .current-status {
+                                        @include current-status;
+                                    }
+
+                                    .episode {
+                                        @include episode;
+                                    }
+
+                                    .fa-play {
+                                        @include fa-play;
+                                    }
+                                }
+
+                                .content {
+                                    width: 100%;
+                                    height: 15%;
+                                    margin-top: 10px;
+                                    overflow: hidden;
+
+                                    .name {
+                                        font-weight: 700;
+                                        color: #d1d1d1;
+                                        font-size: 26px;
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                        overflow: hidden;
+                                    }
+
+                                    .eng-name {
+                                        font-size: 20px;
+                                        color: rgb(211, 197, 0);
+                                        font-weight: 400;
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                        overflow: hidden;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .bienmatbentrai {
+                    animation: bienmatbentrai 1s forwards;
+                }
+
+                @-webkit-keyframes bienmatbentrai {
+                    from {
+                        transform: translateX(0%);
+                    }
+
+                    to {
+                        transform: translateX(-100%);
+                    }
+                }
+
+                .divaobenphai {
+                    animation: divaobenphai 1s forwards;
+                }
+
+                @-webkit-keyframes divaobenphai {
+                    from {
+                        transform: translateX(100%);
+                    }
+
+                    to {
+                        transform: translateX(0%);
+                    }
+                }
+
+
+                .bienmatbenphai {
+                    animation: bienmatbenphai 1s forwards;
+                }
+
+                @-webkit-keyframes bienmatbenphai {
+                    from {
+                        transform: translateX(0%);
+                    }
+
+                    to {
+                        transform: translateX(100%);
+                    }
+                }
+
+                .divaobentrai {
+                    animation: divaobentrai 1s forwards;
+                }
+
+                @-webkit-keyframes divaobentrai {
+                    from {
+                        transform: translateX(-100%);
+                    }
+
+                    to {
+                        transform: translateX(0%);
+                    }
+                }
+
+            }
+
+            .slide-footer {
+                width: 25%;
+                padding: 0 25px;
+                margin-top: 10px;
+
+                .round {
+                    cursor: pointer;
+                    background-color: #d1d1d1;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    color:transparent;
+                }
+
+                .active_nut {
+                    background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    h1{
+        font-size:30px !important;
+    }
+
+    .slide {
+        height: 470px !important;
+    }
+
+    .image {
+        height: 80% !important;
+    }
+
+    .content{
+        height: 20% !important;
+    }
+
+    .slide-content {
+        height: 350px !important;
+    }
+
+    .movie-item{
+        width: 50% !important;
+        padding: 20px 10px !important;
+    }
+
+    .slide-header{
+        padding: 0px 10px !important;
+        .button {
+            .fas {
+                font-size: 25px !important;
+            }
+        }
+    }
+
+    .slide-footer {
+        width: 85% !important;
+    }
+
+    .slide-container{
+        padding: 4% 5px 6% !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    h1{
+        font-size:35px !important;
+    }
+
+    .slide {
+        height: 470px !important;
+    }
+
+    .image {
+        height: 80% !important;
+    }
+
+    .content{
+        height: 20% !important;
+    }
+
+    .slide-content {
+        height: 330px !important;
+    }
+
+    .movie-item{
+        width: 25% !important;
+        padding: 20px 10px !important;
+    }
+
+    .slide-header{
+        padding: 0px 10px !important;
+        .button {
+            .fas {
+                font-size: 30px !important;
+            }
+        }
+    }
+
+    .slide-footer {
+        width: 45% !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .movie-item{
+        width: 25% !important;
+        padding: 20px 15px !important;
+    }
+
+    .slide-footer {
+        width: 35% !important;
+    }
+
+    .slide-header{
+        padding: 0px 15px !important;
+    }
+
+    .slide-container{
+        padding: 4% 30px 6% !important;
+    }
+}

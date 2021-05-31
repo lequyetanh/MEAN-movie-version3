@@ -1,0 +1,78 @@
+<div class="content">
+    <div class="mart-20">
+        <div class="">
+            <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="">
+                <div class="category">
+                    <label for="inputCategory">Category</label>
+                    <br />
+                    <select class="custom-select form-control" (change)="updateCategory($event.target.value)"
+                        formControlName="genre">
+                        <option *ngFor="let eachCategory of genre" value="{{eachCategory}}">
+                            {{eachCategory }}
+                        </option>
+                    </select>
+                </div>
+                <div class="country">
+                    <label for="inputCountry">Country</label>
+                    <br />
+                    <select class="custom-select form-control" (change)="updateCountry($event.target.value)"
+                        formControlName="country">
+                        <option *ngFor="let eachCountry of country" value="{{eachCountry}}">
+                            {{eachCountry }}
+                        </option>
+                    </select>
+                </div>
+                <div class="time">
+                    <label for="inputTime">Time</label>
+                    <br />
+                    <select class="custom-select form-control" (change)="updateTime($event.target.value)"
+                        formControlName="run_time">
+                        <option *ngFor="let eachTime of run_time" value="{{eachTime}}">
+                            {{eachTime }}
+                        </option>
+                    </select>
+                </div>
+                <div class="year">
+                    <label for="inputYear">Year</label>
+                    <br />
+                    <select class="custom-select form-control" (change)="updateYear($event.target.value)"
+                        formControlName="release_year">
+                        <option *ngFor="let eachYear of release_year" value="{{eachYear}}">
+                            {{eachYear }}
+                        </option>
+                    </select>
+                </div>
+                <button class="filter" type="submit">Lọc danh sách</button>
+                <button class="reset" (click)="reset()">Reset</button>
+            </form>
+        </div>
+    </div>
+
+    <div *ngIf="loading">
+        <app-cover></app-cover>
+    </div>
+
+    <div class="movie" *ngIf="result">
+        <div class="phim-bo flexbox-start-start" *ngIf="pagedItems">
+            <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of pagedItems">
+                <div class="image">
+                    <img alt="" src="{{movie.name_image}}">
+                    <div class="play-center">
+                        <i class="fa fa-play" matTooltip="Play"></i>
+                    </div>
+                    <label class="current-status">{{movie.status}}</label>
+                    <span class="episode">{{movie.run_time}} Phút</span>
+                </div>
+                <div class="title">
+                    <h3 class="name">{{movie.name}}</h3>
+                    <p class="eng-name">{{movie.real_name}}</p>
+                </div>
+            </a>
+        </div>
+        <app-pagination [data]="movies" (keyPagination)="handleData($event)"></app-pagination>
+    </div>
+
+    <div *ngIf="!result" class="flexbox-center-center">
+        <h1>Không có phim nào được tìm thấy</h1>
+    </div>
+</div>

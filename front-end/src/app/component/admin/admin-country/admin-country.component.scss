@@ -1,0 +1,111 @@
+.containe {
+    width: 1500px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(71, 70, 70);
+}
+
+div {
+    font-size: 14px !important;
+}
+
+.picture {
+    width: 100px !important;
+    height: 120px !important;
+}
+
+.filter {
+    width: 150px;
+    height: 30px;
+    font-size: 20px;
+    background: rgb(4, 44, 224);
+    padding: 15px;
+    color: rgb(238, 238, 238);
+}
+
+.number1 {
+    border: 1px solid #FFF;
+}
+
+.number {
+    border: 1px solid #FFF;
+}
+
+.number div {
+    color: rgb(0, 132, 255);
+    border-right: 1px solid rgb(212, 212, 212);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+// .number1{
+//     height:auto !important;
+// }
+
+.number1 div {
+    color: rgb(0, 132, 255);
+    border-right: 1px solid rgb(212, 212, 212);
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.button {
+    background: transparent;
+}
+
+.page-link {
+    background: #111010 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    outline: none !important;
+    cursor: pointer !important;
+    width:40px;
+    height:40px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid #dfdfdf !important;
+}
+
+.page-item.active .page-link {
+    color: rgb(0, 0, 0) !important;
+    background-color: #dfdfdf !important;
+    width:40px;
+    height:40px;
+    border:1px solid #dfdfdf !important;
+}
+
+.page-item{
+
+}
+
+.border.disabled {
+    border: 1px solid transparent !important;
+}
+
+.border {
+    border: none !important;
+}
+
+
+.frame {
+    width: 850px !important;
+    height: auto;
+}
+
+.page-item {
+    margin: 4px !important;
+}
+
+.genre {
+    width: 500px;
+    margin: 0 auto;
+}

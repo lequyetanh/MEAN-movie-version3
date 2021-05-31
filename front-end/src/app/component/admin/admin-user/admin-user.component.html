@@ -1,0 +1,24 @@
+<div class="contain">
+    <div class="number flexbox-center-start">
+        <div style="width:50px">Id</div>
+        <div style="width:100px">Avatar</div>
+        <div style="width:150px">Name</div>
+        <div style="width:200px">Email</div>
+        <div style="width:100px">Password</div>
+        <div class="" style="width:170px">
+            Delete
+        </div>
+    </div>
+    <div class="number1 flexbox-center-start" *ngFor="let user of dataUser">
+        <div style="width:50px" class="whitecolor">{{user.id}}</div>
+        <div style="width:100px">
+            <img src="{{user.avatar}}" />
+        </div>
+        <div style="width:150px" class="whitecolor">{{user.name}}</div>
+        <div style="width:200px" class="whitecolor">{{user.email}}</div>
+        <div style="width:100px" class="whitecolor">{{user.password}}</div>
+        <div style="width:170px" class="">
+            <button type="button" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+        </div>
+    </div>
+</div>

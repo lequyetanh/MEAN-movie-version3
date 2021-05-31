@@ -1,0 +1,128 @@
+<header class="header fixed">
+    <div class="fixed">
+        <div class="header-container">
+            <div class="header-content flexbox-center-between">
+                <div class="left-content flexbox-center-start">
+                    <a routerLink="/movie" class="header__logo">
+                        <img src="../../assets/logo.webp" alt="XemPhimPlus">
+                    </a>
+                    <ul class="header__nav flexbox-center-start">
+                        <li class="header__nav-item">
+                            Thể Loại
+                            <ul class="header__nav-item-list">
+                                <li *ngFor="let category of Category">
+                                    <a routerLink="/movietype/{{category.name}}">{{category.name}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header__nav-item">
+                            Quốc Gia
+                            <ul class="header__nav-item-list">
+                                <li *ngFor="let country of Country">
+                                    <a routerLink="/movietype/{{country.name}}">{{country.name}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="header__nav-item">
+                            <a routerLink="/movietype/phim mới">PHIM MỚI</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a routerLink="/movietype/phim bộ">PHIM BỘ</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a routerLink="/movietype/phim lẻ">PHIM LẺ</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a routerLink="/movietype/phim chiếu rạp">PHIM CHIẾU RẠP</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a routerLink="/movietype/Hoạt Hình">PHIM HOẠT HÌNH</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flexbox-center-end relative">
+                    <div class="header__auth-search">
+                        <input class="form-search" [(ngModel)]="movieName" (keyup)="onKey(movieName)"
+                            (keyup.enter)="onKeypressEvent(movieName)" (click)="clickMe()" (blur)="blured()"
+                            placeholder="Search movie..." />
+                        <a routerLink="/search/{{movieName}}" (click)="close()" title="search"><i
+                                class="fa fa-search"></i></a>
+                    </div>
+                    <!-- <div class="form-movie" *ngIf="toggle" (click)="close()">
+                        <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of phimle">
+                            <div class="flexbox-start-start item-list-movie" title="Nhất Dạ Tân Nương">
+                                <div class="left">
+                                    <img src="{{movie.name_image}}">
+                                </div>
+                                <div class="right">
+                                    <p class="name">{{movie.name}}</p>
+                                    <p class="real-name">{{movie.real_name}}</p>
+                                    <p class="country">Hàn Quốc</p>
+                                    <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
+                                        views
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div> -->
+                    <div class="form-movie" *ngIf='toggleForm' (click)="close()">
+                        <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of phimle">
+                            <div class="flexbox-start-start item-list-movie" title="Nhất Dạ Tân Nương">
+                                <div class="left">
+                                    <img src="{{movie.name_image}}">
+                                </div>
+                                <div class="right">
+                                    <p class="name">{{movie.name}}</p>
+                                    <p class="real-name">{{movie.real_name}}</p>
+                                    <p class="country">Hàn Quốc</p>
+                                    <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
+                                        views
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="header__auth-noti"><i class="fas fa-bell"></i></div>
+                    <div class="header__auth-user" *ngIf="!userName" (click)="FormLogin()">
+                        <div class="loggin flexbox-center-center">Loggin</div>
+                    </div>
+
+                    <div class="header__auth-user relative" *ngIf="userName">
+                        <div mat-raised-button class="loggin" (click)="formUser()">
+                            <img class="avatar" src="{{avatar}}">
+                            {{userName}}
+                        </div>
+                        <div class="account" *ngIf="statusFormUser">
+                            <div class="flexbox-center-center">
+                                <a class="profile" *ngIf="userName == 'Lê Quyết Anh'" (click)="formUser()"
+                                    routerLink="/admin">
+                                    <i class="fas fa-user-shield"></i>Admin
+                                </a>
+                                <a class="profile" (click)="formUser()" routerLink="/user/profile">
+                                    <i class="fas fa-user-circle"></i>Proflie
+                                </a>
+                                <a class="collection" (click)="formUser()" routerLink="user/collection">
+                                    <i class="fas fa-bars"></i>Collection
+                                </a>
+                                <a class="donate" (click)="formUser()" routerLink="user/donate">
+                                    <i class="fas fa-donate"></i>Donate
+                                </a>
+                                <a class="logout" (click)="formUser()" (click)="doLogout()">
+                                    <i class="fas fa-sign-out-alt"></i>Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-icon" (click)="openSideNav()">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<app-login *ngIf="statusFormLogin" (keyLogin)="handleData($event)" (keyUserLogin)="userLogin($event)"></app-login>
+<div [class.sidenav-desktop]="!statusSideNav" [class.sidenav-mobile]="statusSideNav">
+    <app-sidenav (keySideNav)="handleSideNav($event)"></app-sidenav>
+</div>

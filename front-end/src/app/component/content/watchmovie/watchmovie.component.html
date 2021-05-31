@@ -1,0 +1,390 @@
+<div class="" *ngIf="!movie; else nomovie">
+    <app-cover></app-cover>
+</div>
+<div [class.light_off]="light_off">
+
+</div>
+<ng-template #nomovie>
+    <div class="head-content" *ngFor="let movie of movie" [ngStyle]="{'background-image':'url(' + background+ ')'}">
+        <div class="background">
+            <div class="movie flexbox-start-between">
+                <div class="left-content">
+                    <div class="frame" [class.z-11]="light_off">
+                        <div #videoPlayer class="videoPlayer showControls" [class.height]="statusScreen == 'full'" (mousemove)="showFormControl()" (mouseleave)="hideFormControl()">
+                            <div #videoFrame class="videoFrame" [class.center-video]="statusScreen == 'full'"
+                                (mouseup)="mouseUp()">
+                                <div *ngIf="statusMovie" class="">
+                                    <div *ngIf="movie.movie[0].video == 'link error'">
+                                        <div class="cover flexbox-center-center">Link Phim Bị Lỗi, Vui Lòng Chọn Server
+                                            Khác
+                                        </div>
+                                    </div>
+                                    <div *ngIf="movie.movie[0].video == '';else exist">
+                                        <div class="cover flexbox-center-center">Hiện Tại Chưa Có Phim, Bạn Vui Lòng
+                                            Quay
+                                            Lại
+                                            Khi Khác</div>
+                                    </div>
+                                    <ng-template #exist>
+                                        <video (click)="changeStatusVideo()" #myvideo class="video"
+                                            (timeupdate)="updateBuffered_amount()">
+                                            <source src="https://phimlearning.s3-ap-southeast-1.amazonaws.com/movie/s3/adventure/9502x.kung.fu.panda.2008.mp4">
+                                            <!-- <source src="./../../../assets/play.mp4"> -->
+                                            <!-- <iframe src="//ok.ru/videoembed/2310282283758" frameborder="0" width="100%" height="100%" allowfullscreen="" style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe> -->
+                                            <track *ngIf="statusSubtitle == 'English'" #track
+                                                src="./../../../assets/subtitle/avatarEn.vtt" label="Tiếng Anh" default>
+                                            <track *ngIf="statusSubtitle == 'VietNam'" #track
+                                                src="./../../../assets/subtitle/avatarVn.vtt" label="Tiếng Việt"
+                                                default>
+                                        </video>
+                                        <!-- <iframe #myvideo src="//ok.ru/videoembed/2802617354993" frameborder="0" allow="autoplay" allowfullscreen></iframe> -->
+                                        <div class="bt-center" *ngIf="!endDuration || !endDuration.hours">
+                                            <div class="flexbox-center-center bt-frame">
+                                                <div class="loader">Loading...</div>
+                                            </div>
+                                        </div>
+                                        <div class="forward-10" *ngIf="forward_10">
+                                            <i class="fas fa-step-forward"></i>
+                                        </div>
+                                        <div class="backward-10" *ngIf="backward_10">
+                                            <i class="fas fa-step-backward"></i>
+                                        </div>
+                                        <div class="button-center"
+                                            *ngIf="endDuration && endDuration.hours &&showControl && statusBtCenter == 'play'">
+                                            <div #playPauseBtn class="bt playPauseBtn"
+                                                [class.play]="statusVideo == 'play'"
+                                                [class.pause]="statusVideo == 'pause'">
+                                                <div class="flexbox-center-center bt-frame">
+                                                    <i class="fa fa-play" matTooltip="Play" (click)="playVideo()"></i>
+                                                    <i class="fa fa-pause" matTooltip="Pause"
+                                                        (click)="pauseVideo()"></i>
+                                                </div>
+                                            </div>
+                                            <div class="bt-center" *ngIf="!endDuration || !endDuration.hours">
+                                                <div class="flexbox-center-center bt-frame">
+                                                    <div class="loader">Loading...</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="controls active"
+                                            *ngIf="endDuration && endDuration.hours && showControl">
+                                            <div class="list-speed" *ngIf="listSpeed == true">
+                                                <div class="icon-speed" style="border-bottom: 2px solid #dadada">
+                                                    <i class="fas fa-tachometer-alt"></i>
+                                                    <i class="fas fa-times" (click)="closeSpeed()"></i>
+                                                </div>
+                                                <h5 class="item-speed" (click)="changeSpeed($event)"
+                                                    [class.highlightSpeed]="currentSpeed == '2.0x'">2.0x</h5>
+                                                <h5 class="item-speed" (click)="changeSpeed($event)"
+                                                    [class.highlightSpeed]="currentSpeed == '1.5x'">1.5x</h5>
+                                                <h5 class="item-speed" (click)="changeSpeed($event)"
+                                                    [class.highlightSpeed]="currentSpeed == '1.0x'">1.0x</h5>
+                                                <h5 class="item-speed" (click)="changeSpeed($event)"
+                                                    [class.highlightSpeed]="currentSpeed == '0.5x'">0.5x</h5>
+                                                <h5 class="item-speed" (click)="changeSpeed($event)"
+                                                    [class.highlightSpeed]="currentSpeed == '0.25x'">0.25x</h5>
+                                            </div>
+                                            <div class="list-resolution" *ngIf="listResolution == true">
+                                                <div class="icon-speed" style="border-bottom: 2px solid #dadada">
+                                                    <i class="fab fa-asymmetrik"></i>
+                                                    <i class="fas fa-times" (click)="showSetting()"></i>
+                                                </div>
+                                                <div class="item-resolution">
+                                                    1080<span class="redcolor">HD</span>
+                                                </div>
+                                                <div class="item-resolution">
+                                                    720<span class="redcolor">HD</span>
+                                                </div>
+                                                <div class="item-resolution">480</div>
+                                                <div class="item-resolution">360</div>
+                                            </div>
+                                            <div class="list-subtitle" *ngIf="listSubtitle == true">
+                                                <div class="icon-speed" style="border-bottom: 2px solid #dadada">
+                                                    <i class="fas fa-closed-captioning"></i>
+                                                    <i class="fas fa-times" (click)="showSubtitle()"></i>
+                                                </div>
+                                                <h5 class="item-subtitle"
+                                                    [class.highlightSpeed]="statusSubtitle == 'English'"
+                                                    (click)="changeSubtitle($event)">English</h5>
+                                                <h5 class="item-subtitle"
+                                                    [class.highlightSpeed]="statusSubtitle == 'VietNam'"
+                                                    (click)="changeSubtitle($event)">VietNam</h5>
+                                                <h5 class="item-subtitle"
+                                                    [class.highlightSpeed]="statusSubtitle == 'None'"
+                                                    (click)="changeSubtitle($event)">None</h5>
+                                                <h5 class="item-subtitle"
+                                                    [class.highlightSpeed]="statusSubtitle == 'Bilingual'"
+                                                    (click)="changeSubtitle($event)">Bilingual</h5>
+                                            </div>
+                                            <div class="topControls">
+                                                <div #playerSeekBar class="seekbar" (click)="change($event)">
+                                                    <div #playerProgressBar class="progressBar"
+                                                        [style.width.%]="seekBarPercentage"></div>
+                                                    <div #loadedProgressBar class="loadedProgressBar"></div>
+                                                </div>
+                                            </div>
+                                            <div class="bottomControls flexbox-center-between">
+                                                <div class="left flexbox-center-start">
+                                                    <div #playPauseBtn class="bt playPauseBtn"
+                                                        [class.play]="statusVideo == 'play'"
+                                                        [class.pause]="statusVideo == 'pause'">
+                                                        <div class="flexbox-center-center bt-frame">
+                                                            <i class="fa fa-play" matTooltip="Play"
+                                                                (click)="playVideo()"></i>
+                                                            <i class="fa fa-pause" matTooltip="Pause"
+                                                                (click)="pauseVideo()"></i>
+                                                        </div>
+                                                    </div>
+
+                                                    <div #fastBackward class="backward pointer flexbox-center-center"
+                                                        (click)="backWard()">
+                                                        <i class="fas fa-undo"></i>
+                                                    </div>
+
+                                                    <div #volumeContainer (mousemove)="mouseMove($event)"
+                                                        class="volume pointer flexbox-center-start" matTooltip="Volume"
+                                                        [class.volume-up]="statusVolume == 'volume-up'"
+                                                        [class.volume-down]="statusVolume == 'volume-down'"
+                                                        [class.volume-mute]="statusVolume == 'volume-mute'">
+                                                        <i class="fa fa-volume-up" (click)="volumeMute()"></i>
+                                                        <i class="fas fa-volume-mute" (click)="volumeDown()"></i>
+                                                        <i class="fas fa-volume-down" (click)="volumeMute()"></i>
+                                                        <span class="seekbarSection flexbox-center-start">
+                                                            <span #volumeSeekBar class="seekbar"
+                                                                (click)="changeVolume($event)">
+                                                                <div #volumeProgreeBar (mousedown)="mouseDown()"
+                                                                    class="progressBar"
+                                                                    [style.width.%]="this.defaultVolume"></div>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="time" matTooltip="Time">
+                                                        <span *ngIf="!currentDuration" #startTime
+                                                            class="startTime fs-20">00:00</span>
+                                                        <span *ngIf="currentDuration && currentDuration.hours>=1"
+                                                            #startTime
+                                                            class="startTime fs-20">{{currentDuration.hours}}:{{currentDuration.minutes}}:{{currentDuration.seconds}}</span>
+                                                        <span *ngIf="currentDuration && currentDuration.hours<1"
+                                                            #startTime
+                                                            class="startTime fs-20">{{currentDuration.minutes}}:{{currentDuration.seconds}}</span>
+                                                        <span class="marl-5 marr-5 fs-20">/</span>
+                                                        <span *ngIf="!endDuration" #endTime
+                                                            class="endTime fs-20">00:00</span>
+                                                        <span *ngIf="endDuration && !endDuration.hours" #endTime
+                                                            class="endTime fs-20">00:00</span>
+                                                        <span *ngIf="endDuration && endDuration.hours>=1" #endTime
+                                                            class="endTime fs-20">{{endDuration.hours}}:{{endDuration.minutes}}:{{endDuration.seconds}}</span>
+                                                        <span *ngIf="endDuration && endDuration.hours<1" #endTime
+                                                            class="endTime fs-20">{{endDuration.minutes}}:{{endDuration.seconds}}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="right flexbox-center-end">
+
+                                                    <div class="speed fs-20 fw-700 pointer" matTooltip="Speed">
+                                                        <span #speedVideo (click)="showSpeed()">1.0x</span>
+                                                    </div>
+
+                                                    <div class="Subtitle pointer" matTooltip="Subtitle">
+                                                        <!-- <i class="fas fa-closed-captioning" </i> -->
+                                                        <i class="far fa-closed-captioning"
+                                                            (click)="showSubtitle()"></i>
+                                                    </div>
+
+                                                    <div class="setting pointer" matTooltip="Setting">
+                                                        <i class="fa fa-cog" (click)="showSetting()"><sup>HD</sup></i>
+                                                    </div>
+
+                                                    <div #fullscreen class="fullscreenCtrl" matTooltip="FullScreen"
+                                                        (click)="fullScreen()">
+                                                        <div class="fullscreen pointer">
+                                                            <i *ngIf="statusScreen == 'full'"
+                                                                class="fas fa-compress"></i>
+                                                            <i *ngIf="statusScreen == 'default'"
+                                                                class="fas fa-expand"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="name_movie" *ngIf="movie.category == 'phim bộ'">{{movie.name}} {{episode}}</h2>
+
+                    <div class="taskbar flexbox-center-between mart-10">
+                        <div class="left flexbox-center-start">
+                            <div class="error">
+                                <i class="fas fa-exclamation-triangle marr-5"></i>
+                                <span>Báo Lỗi</span>
+                            </div>
+                            <div class="fullscreen" (click)="fullScreen()">
+                                <i class="fas fa-expand marr-5"></i>
+                                <span>FullScreen</span>
+                            </div>
+                            <div class="light" [class.z-11]="light_off">
+                                <i class="fas fa-lightbulb marr-5" [class.icon_light_off]="!light_off"></i>
+                                <span (click)="lightOffOn($event)">Tắt Đèn</span>
+                            </div>
+                            <div class="ads" (click)="adOffOn($event)">
+                                <i class="fab fa-buysellads marr-5"></i>
+                                <span>Tắt Quảng Cáo</span>
+                            </div>
+                            <div class="embed">
+                                <i class="fas fa-retweet marr-5"></i>
+                                <span>Embed</span>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="view">
+                                <i class="fas fa-eye marr-5"></i>
+                                <span>{{movie.views}} Lượt Xem</span>
+                            </div>
+                            <div class="like">
+                                <!-- <i class="fas fa-heart marr-5"></i> -->
+                                <i *ngIf="user" class="fas fa-heart marr-5"
+                                    [class.active]="user.love.indexOf(movie.name) >= 0"></i>
+                                <i *ngIf="!user" class="fas fa-heart marr-5"></i>
+                                <span>Yêu Thích</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="server flexbox-center-between mart-10">
+                        <div class="left flexbox-center-start">
+                            <div class="server">
+                                <i class="fas fa-server marr-5"></i>
+                                <span>Server Dự Phòng: </span>
+                            </div>
+                            <div class="server-item">
+                                <span>HDD</span>
+                            </div>
+                            <div class="server-item">
+                                <span>SSD</span>
+                            </div>
+                        </div>
+                        <div class="right flexbox-center-end">
+                            <div class="evalute">
+                                <span>Đánh Giá Phim: </span>
+                            </div>
+                            <div class="star">
+                                <i *ngFor="let eachStar of list_star; let i = index" [class]="eachStar.type"
+                                    [matTooltip]="eachStar.title">
+                                </i>
+                                <span>( {{movie.rate}} <i class="fas fa-star" style="color: rgb(240, 233, 37);"></i> /
+                                    {{movie.rate_vote}} Lượt
+                                    Đánh
+                                    Giá )</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subtitle mart-40">
+                        <div class="vietsub marb-20" *ngIf="vietsub[0]">
+                            <div class="head flexbox-start-start">
+                                <span class="title">
+                                    <i class="fas fa-server marr-10"></i>
+                                    <span>VietSub </span>
+                                </span>
+                                <span class="frame">
+                                    <div class="triangel"></div>
+                                </span>
+                            </div>
+                            <div class="content flexbox-start-start">
+                                <div class="wrap" *ngFor="let episode of vietsub">
+                                    <div (click)="changeVideo(episode.video, episode.episode, episode.subtitle)"
+                                        class="episode"
+                                        [class.active-episode]="statusEpisode.episode == episode.episode && statusEpisode.subtitle == episode.subtitle">
+                                        {{episode.episode}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vietsub marb-20" *ngIf="thuyetminh[0]">
+                            <div class="head flexbox-start-start">
+                                <span class="title">
+                                    <i class="fas fa-server marr-10"></i>
+                                    <span>Thuyết Minh </span>
+                                </span>
+                                <span class="frame">
+                                    <div class="triangel"></div>
+                                </span>
+                            </div>
+                            <div class="content flexbox-start-start">
+                                <div class="wrap" *ngFor="let episode of thuyetminh">
+                                    <div (click)="changeVideo(episode.video, episode.episode, episode.subtitle)"
+                                        class="episode"
+                                        [class.active-episode]="statusEpisode == episode.episode && statusEpisode.subtitle == episode.subtitle">
+                                        {{episode.episode}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-movie">
+                        <div class="navigation">
+                            <a routerLink="/">Trang Chủ</a>
+                            <i class="fas fa-arrow-right"></i>
+                            <a routerLink="#">{{movie.category}}</a>
+                            <i class="fas fa-arrow-right"></i>
+                            <a routerLink="#">{{movie.name}}</a>
+                        </div>
+                        <div class="name-movie">
+                            <h2>Xem Phim: {{movie.name}}</h2>
+                        </div>
+                        <div class="content-movie">
+                            <p>{{movie.content}}</p>
+                        </div>
+                        <div class="return flexbox-center-between">
+                            <a routerLink="/detailmovie/{{movie.id}}" class="flexbox-center-center">
+                                <span>Xem Thêm <i class="fas fa-arrow-right"></i></span>
+                                <div class="liquid"></div>
+                            </a>
+                            <a routerLink="/detailmovie/{{movie.id}}">
+                                <span><i class="fas fa-arrow-left marr-5"></i>Return Detail</span>
+                                <div class="liquid"></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="same-movie">
+                        <div class="liquid"></div>
+                        <h2 class="flexbox-start-center">Phim Cùng Thể Loại...</h2>
+                        <div class="phim-bo flexbox-center-end">
+                            <a routerLink="/detailmovie/{{samemovie.id}}" class="movie-item"
+                                *ngFor="let samemovie of samemovie">
+                                <div class="image">
+
+                                    <img alt="" src="{{samemovie.name_image}}">
+
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{samemovie.status}}</label>
+                                    <span class="episode">{{samemovie.run_time}} Phút</span>
+                                </div>
+                                <div class="title">
+                                    <h3 class="name">{{samemovie.name}}</h3>
+                                    <p class="eng-name">{{samemovie.real_name}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <app-content [data]="ad"></app-content>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="comment" *ngIf="statusSameMovie">
+        <app-comment [data]="movie[0]"></app-comment>
+    </div>
+</ng-template>

@@ -1,0 +1,14 @@
+<div class="number genre flexbox-center-start">
+    <div style="width:280px">Country</div>
+    <div class="" style="width:170px;border:none">
+        <button type="button" class="btn btn-success" routerLink="/create">Create</button>
+    </div>
+</div>
+<div class="number1 genre flexbox-center-start" *ngFor="let country of dataCountry">
+    <div style="width:280px" class="whitecolor">{{country.name}}</div>
+    <div style="width:218px" class="">
+        <button type="button" class="btn btn-warning marr-5"
+            routerLink="/edit/{{country.id}}">Edit</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+    </div>
+</div>

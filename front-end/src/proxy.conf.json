@@ -1,0 +1,9 @@
+
+{
+    "/*": {
+        "target": "https://backendmovieangular.herokuapp.com",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

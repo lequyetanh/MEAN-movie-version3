@@ -1,0 +1,157 @@
+<div class="mart-50 marb-50">
+    <div class="card-body">
+        <h1>Create Movie</h1>
+        <form [formGroup]="movieForm" (ngSubmit)="onSubmit()" class="flexbox-start-between">
+            <div class="left-content">
+                <img src="{{name_image}}" alt="">
+            </div>
+
+            <div class="right-content flexbox-start-center">
+                <div class="left">
+                    <div class="item-data">
+                        <label for="inputName">Name</label>
+                        <input class="" type="text" formControlName="name" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputStatus">Status</label>
+                        <input class="" type="text" formControlName="status" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputRelease_year">Release_year</label>
+                        <input class="" type="number" formControlName="release_year" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputRate">Rate</label>
+                        <input class="" type="number" formControlName="rate" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputIMDb">IMDb</label>
+                        <input class="" type="number" formControlName="IMDb" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputName_image">Name_image</label>
+                        <input class="" type="text" formControlName="name_image" [(ngModel)]="name_image" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputTrailer">Trailer</label>
+                        <input class="" type="text" formControlName="trailer" />
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="item-data">
+                        <label for="inputReal_name">Real_name</label>
+                        <input class="" type="text" formControlName="real_name" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputViews">Views</label>
+                        <input class="" type="number" formControlName="views" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputRun_time">Run_time</label>
+                        <input class="" type="number" formControlName="run_time" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputRateVote">Rate Vote</label>
+                        <input class="" type="number" formControlName="rate_vote" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputIMDbVote">IMDb Vote</label>
+                        <input class="" type="number" formControlName="IMDb_vote" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputDirector">Director</label>
+                        <input class="" type="text" formControlName="director" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputcategory">category</label>
+                        <select class="" (change)="updateCategory($event.target.value)" formControlName="category">
+                            <!-- <option value="">Choose Month</option> -->
+                            <option *ngFor="let category of category" value="{{category}}">
+                                {{category}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-content">
+                <div class="flexbox-center-start">
+                    <div class="button" (click)="clickItem($event)">tags</div>
+                    <div class="button" (click)="clickItem($event)">actor</div>
+                    <div class="button" (click)="clickItem($event)">content</div>
+                    <div class="button" (click)="clickItem($event)">vice_name_image</div>
+                    <div class="button" (click)="clickItem($event)">movie</div>
+                </div>
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'tags'">
+                    <app-edit-form [data]="{ name: 'tags', data: movie.tags }" (keyEditForm)="handleTag($event)">
+                    </app-edit-form>
+                </div>
+
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'actor'">
+                    <app-edit-form [data]="{ name: 'actor', data: movie.actor }" (keyEditForm)="handleTag($event)">
+                    </app-edit-form>
+                </div>
+
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'content'">
+                    <app-edit-form [data]="{ name: 'content', data: movie.content }" (keyEditForm)="handleTag($event)">
+                    </app-edit-form>
+                </div>
+
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'vice_name_image'">
+                    <app-edit-form [data]="{ name: 'vice_name_image', data: movie.vice_name_image }"
+                        (keyEditForm)="handleTag($event)"></app-edit-form>
+                </div>
+
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'movie'">
+                    <app-edit-form [data]="{ name: 'movie', data: movie.movie }" (keyEditForm)="handleTag($event)">
+                    </app-edit-form>
+                </div>
+            </div>
+
+            <div class="multiple flexbox-start-between">
+                <div class="item-data countryForm">
+                    <h3>Country</h3>
+                    <div class="flexbox-center-between">
+                        <div class="eachCountry flexbox-center-between"
+                            *ngFor="let control of countryArray.controls; let i = index;">
+                            <label class="form-check-label" for="inlineCheckbox{{i}}">{{country[i]}}</label>
+                            <input [formControl]="control" type="checkbox" class="pointer"
+                                (change)="getSelectedCountry()" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-data genreForm">
+                    <h3>genre</h3>
+                    <div class="flexbox-center-between">
+                        <div class="eachgenre flexbox-center-between"
+                            *ngFor="let control of genreArray.controls; let i = index;">
+                            <label class="form-check-label" for="inlineCheckbox{{i}}">{{genre[i]}}</label>
+                            <input [formControl]="control" type="checkbox" class="pointer"
+                                (change)="getSelectedgenre()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-data mart-20">
+                <button class="btn btn-success btn-lg btn-block" type="submit">
+                    Edit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

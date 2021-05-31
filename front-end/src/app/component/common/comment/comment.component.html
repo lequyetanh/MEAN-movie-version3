@@ -1,0 +1,171 @@
+<app-alert [data]="{type: 'success', message: messenger}" *ngIf="statusFormMessenger"></app-alert>
+<app-alert [data]="{type: 'fail', message: messenger}" *ngIf="statusFormLogin"></app-alert>
+<div class="body-down" *ngIf="data && movie">
+    <div class="contain">
+        <div class="title">
+            <h1 class="head-title">Để Lại Đánh Giá Của Bạn</h1>
+            <div class="body-title flexbox-center-start">
+                <div class="head-comment" [class.active]="statusForm == true" (click)="changeForm()">Bình Luận</div>
+                <div class="head-review" [class.active]="statusForm == false" (click)="changeForm()">ReViews</div>
+            </div>
+        </div>
+
+        <div class="body flexbox-start-between">
+            <div class="left-content">
+                <!-- Form comment -->
+                <form *ngIf="statusForm == true" [formGroup]="commentForm" (ngSubmit)="submitComment()">
+                    <div class="icon" [class.active]="toggleFormIcon">
+                        <i class="far fa-smile" (click)="toggleIconForm()"></i>
+                        <div class="list-icon" *ngIf="toggleFormIcon">
+                            <app-list-icon (keyListIcon)="handleData($event)"></app-list-icon>
+                        </div>
+                    </div>
+                    <textarea formControlName="content" required="" class="form__textarea"
+                        placeholder="Để lại bình luận của bạn" spellcheck="false">
+                    </textarea>
+                    <div class="flexbox-center-between mart-20">
+                        <button type="submit" class="form__btn">Gửi</button>
+                        <div class="head-comment user flexbox-center-start" *ngIf="user">
+                            <div class="avatar marr-10">
+                                <img src="{{user.avatar}}" />
+                            </div>
+                            <div class="info">
+                                <div class="user-name">{{user.name}}</div>
+                                <div class="date">
+                                    {{today.getDate() + '-' + (this.today.getMonth() + 1) + '-' + this.today.getFullYear() + ' ' + this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds()}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="body-comment">
+                    <div class="contain-comment">
+                        <!-- Lặp tất cả những User comment -->
+                        <div class="each-comment flexbox-start-start" *ngFor="let comment of data.comment">
+                            <div class="head-comment flexbox-center-start">
+                                <div class="avatar marr-10">
+                                    <img src="{{comment.avatar}}" />
+                                </div>
+                                <div class="info">
+                                    <div class="user-name">{{comment.user}}</div>
+                                    <div class="date">{{comment.time}}</div>
+                                </div>
+                            </div>
+                            <div class="body-comment">
+                                <div class="comment-item" (mousemove)="mouseMove(comment.idUserComment)"
+                                    (mouseleave)="mouseLeave(comment.time)">
+                                    <div class="list-action hover">
+                                        <app-list-action [data]="data" *ngIf="toggleListAction == comment.idUserComment"
+                                            [inforUserComment]="{name:user.name,idUserComment: comment.idUserComment, status:'userComment'}"
+                                            (keyListAction)="handleDataUserComment($event)"></app-list-action>
+                                    </div>
+                                    <div class="head-body-comment flexbox-start-between">
+                                        <p>{{comment.content}}</p>
+                                        <div class="action flexbox-center-end">
+                                            <app-list-action-fixed [data]="comment"></app-list-action-fixed>
+                                        </div>
+                                    </div>
+                                    <div class="body-body-comment flexbox-center-between">
+                                        <div class="icon">
+                                            <i class="far fa-thumbs-up"
+                                                [class.active]="comment.like.indexOf(user.name) >= 0"
+                                                (click)="likeComment(comment.idUserComment, comment.like.indexOf(user.name), comment.dislike.indexOf(user.name))"></i><span>{{comment.like.length}}</span>
+                                            <i class="far fa-thumbs-down"
+                                                [class.active]="comment.dislike.indexOf(user.name) >= 0"
+                                                (click)="dislikeComment(comment.idUserComment, comment.dislike.indexOf(user.name), comment.like.indexOf(user.name))"></i><span>{{comment.dislike.length}}</span>
+                                        </div>
+                                        <div class="reply" (click)="replyUser(comment.idUserComment)">
+                                            <i class="fas fa-share"></i>
+                                            <span>Reply</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- form reply -->
+                                <div class="reply-item flexbox-start-between"
+                                    *ngIf="statusFormReply == comment.idUserComment">
+                                    <div class="head-comment flexbox-center-start">
+                                        <div class="avatar marr-10">
+                                            <img src="{{user.avatar}}" />
+                                        </div>
+                                        <div class="info">
+                                            <div class="user-name">{{user.name}}</div>
+                                            <div class="date">
+                                                {{today.getDate() + '-' + (this.today.getMonth() + 1) + '-' + this.today.getFullYear() + ' ' + this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds()}}
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="form__btn"
+                                            (click)="submitFormReply(comment.idUserComment)">Gửi</button>
+                                    </div>
+                                    <div class="head-body-comment">
+                                        <textarea autofocus required="" class="form__textarea"
+                                            [(ngModel)]="contentRepyly" placeholder="Để lại bình luận của bạn"
+                                            spellcheck="false"></textarea>
+                                    </div>
+                                </div>
+                                <!-- Lặp tất cả những reply user -->
+                                <div class="reply-item flexbox-start-between" *ngFor="let reply of comment.reply"
+                                    (mousemove)="mouseMoveUserReply(comment.idUserComment ,reply.idUserReply)"
+                                    (mouseleave)="mouseLeaveUserReply(reply.time)">
+                                    <div class="head-comment flexbox-center-start">
+                                        <div class="avatar marr-10">
+                                            <img src="{{reply.avatar}}" />
+                                        </div>
+                                        <div class="info">
+                                            <div class="user-name">{{reply.user}}</div>
+                                            <div class="date">{{reply.time}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="list-action hover">
+                                        <app-list-action [data]="data"
+                                            *ngIf="toggleListActionUserReply[0] == comment.idUserComment && toggleListActionUserReply[1] == reply.idUserReply"
+                                            [inforUserReply]="{name:user.name, status:'userReply', idUserComment:comment.idUserComment, idUserReply:reply.idUserReply }"
+                                            (keyListAction)="handleDataUserComment($event)"></app-list-action>
+                                    </div>
+                                    <div class="head-body-comment">
+                                        <p>{{reply.content}}</p>
+                                    </div>
+                                    <div class="body-body-comment flexbox-center-between">
+                                        <div class="icon">
+                                            <i class="far fa-thumbs-up"
+                                                [class.active]="reply.like.indexOf(user.name) >= 0"
+                                                (click)="likeCommentReply(comment.idUserComment, reply.idUserReply, reply.like.indexOf(user.name), reply.dislike.indexOf(user.name))"></i><span>{{reply.like.length}}</span>
+                                            <i class="far fa-thumbs-down"
+                                                [class.active]="reply.dislike.indexOf(user.name) >= 0"
+                                                (click)="dislikeCommentReply(comment.idUserComment, reply.idUserReply, reply.dislike.indexOf(user.name), reply.like.indexOf(user.name))"></i><span>{{reply.dislike.length}}</span>
+                                        </div>
+                                        <div class="action flexbox-center-end">
+                                            <app-list-action-fixed [data]="reply"></app-list-action-fixed>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-content">
+                <div class="wrap flexbox-start-center">
+                    <h1 class="title-movie">Có thể bạn thích...</h1>
+                    <div class="body-movie flexbox-start-center">
+                        <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of movie">
+                            <div class="image">
+                                <img alt="" src="{{movie.name_image}}">
+                                <div class="play-center">
+                                    <i class="fa fa-play" matTooltip="Play"></i>
+                                </div>
+                                <label class="current-status">{{movie.status}}</label>
+                                <span class="episode">{{movie.run_time}} Phút</span>
+                            </div>
+                            <div class="title-same-movie">
+                                <h3 class="name">{{movie.name}}</h3>
+                                <p class="eng-name">{{movie.real_name}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

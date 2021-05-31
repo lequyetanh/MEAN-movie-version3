@@ -1,0 +1,15 @@
+<div class="contain">
+    <div class="number genre flexbox-center-start">
+        <div style="width:280px">Category</div>
+        <div class="" style="width:218px">
+            <button type="button" class="btn btn-success" routerLink="/create">Create</button>
+        </div>
+    </div>
+    <div class="number1 genre flexbox-center-start" *ngFor="let genre of dataGenre">
+        <div style="width:280px" class="whitecolor">{{genre.name}}</div>
+        <div style="width:218px" class="">
+            <button type="button" class="btn btn-warning marr-5" routerLink="/edit/{{genre.id}}">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+</div>

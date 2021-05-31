@@ -1,0 +1,1352 @@
+@import url("https://fonts.googleapis.com/css?family=Questrial");
+$fontFamily: "Questrial",
+sans-serif;
+$black: rgb(0, 0, 0);
+$red: rgb(255, 0, 0);
+$white: rgb(255, 255, 255);
+
+@mixin transition {
+    transition: all ease 0.2s;
+}
+
+
+.light_off {
+    object-fit: contain;
+    position: fixed !important;
+    top: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    box-sizing: border-box !important;
+    min-width: 0px !important;
+    max-width: none !important;
+    min-height: 700px !important;
+    max-height: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    margin: 0px !important;
+    background-color: #000000e5;
+    z-index: 10;
+}
+
+.z-11 {
+    position: relative;
+    z-index: 11;
+}
+
+.head-content {
+    width: 100%;
+    background: center center / cover no-repeat;
+
+    .background {
+        height: 100%;
+        background-image: linear-gradient(to top, #2b2b31 0, #48484897 100%);
+        padding: 4% 7% 0;
+
+        .movie {
+            width: 100%;
+
+            .left-content {
+                width: 74%;
+                height: auto;
+
+                .frame {
+                    width: 100%;
+                    height: auto;
+
+                    .videoPlayer {
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
+                        z-index: 1;
+                        background-color: $black;
+
+                        .showControls {
+                            position: absolute;
+                            z-index: 1;
+                            left: 0;
+                            bottom: 0;
+                            color: $white;
+                        }
+
+                        .bt-center {
+                            display: block;
+                            position: absolute;
+                            width: 100px;
+                            height: 100px;
+                            -webkit-border-radius: 50%;
+                            border-radius: 50%;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            z-index: 2;
+                            font-size: 30px;
+                            color: rgb(255, 255, 255);
+                            cursor: pointer;
+
+
+                            .bt-frame {
+                                width: 100%;
+                                height: 100%;
+
+                                .fa {
+                                    font-size: 45px !important;
+                                }
+                            }
+
+                            .loader,
+                            .loader:before,
+                            .loader:after {
+                                background: #ff55a5;
+                                -webkit-animation: load1 1s infinite ease-in-out;
+                                animation: load1 1s infinite ease-in-out;
+                                width: 1em;
+                                height: 4em;
+                            }
+
+                            .loader {
+                                color: #ff55a5;
+                                text-indent: -9999em;
+                                position: relative;
+                                font-size: 11px;
+                                -webkit-transform: translateZ(0);
+                                -ms-transform: translateZ(0);
+                                transform: translateZ(0);
+                                -webkit-animation-delay: -0.16s;
+                                animation-delay: -0.16s;
+                            }
+
+                            .loader:before,
+                            .loader:after {
+                                position: absolute;
+                                top: 0;
+                                content: '';
+                            }
+
+                            .loader:before {
+                                left: -1.5em;
+                                -webkit-animation-delay: -0.32s;
+                                animation-delay: -0.32s;
+                            }
+
+                            .loader:after {
+                                left: 1.5em;
+                            }
+
+                            @-webkit-keyframes load1 {
+
+                                0%,
+                                80%,
+                                100% {
+                                    box-shadow: 0 0;
+                                    height: 4em;
+                                }
+
+                                40% {
+                                    box-shadow: 0 -2em;
+                                    height: 5em;
+                                }
+                            }
+
+                            @keyframes load1 {
+
+                                0%,
+                                80%,
+                                100% {
+                                    box-shadow: 0 0;
+                                    height: 4em;
+                                }
+
+                                40% {
+                                    box-shadow: 0 -2em;
+                                    height: 5em;
+                                }
+                            }
+                        }
+
+                        .videoFrame {
+                            height: 100%;
+
+                            &.center-video {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+
+
+                            .forward-10,
+                            .backward-10 {
+                                position: absolute;
+                                // width:80px;
+                                // height:80px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                top: 50%;
+                                z-index: 10;
+                                color: #dadada;
+                                background-color: #ff55a5;
+                                border-radius: 50%;
+                                animation: forward .2s ease-in;
+                                padding: 15px;
+
+                                @keyframes forward {
+                                    from {
+                                        width: 40px;
+                                        height: 40px;
+                                        padding: 15px;
+                                        opacity: 1;
+                                    }
+
+                                    to {
+                                        width: 80px;
+                                        height: 80px;
+                                        padding: 30px;
+                                        opacity: 0.3;
+                                    }
+                                }
+
+                                .fa-step-forward,
+                                .fa-step-backward {
+                                    font-size: 25px;
+                                    animation: iconforbackward .2s;
+
+                                    @keyframes iconforbackward {
+                                        from {
+                                            font-size: 25px;
+                                        }
+
+                                        to {
+                                            font-size: 35px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .forward-10 {
+                                right: 200px;
+                                transform: translate(50%, -50%);
+                            }
+
+                            .backward-10 {
+                                left: 200px;
+                                transform: translate(-50%, -50%);
+                            }
+
+                            .button-center {
+                                position: absolute;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 80px;
+                                height: 80px;
+                                background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                -webkit-border-radius: 50%;
+                                border-radius: 50%;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                z-index: 2;
+                                font-size: 30px;
+                                color: rgba(228, 228, 228, 0.667);
+                                cursor: pointer;
+                                animation: forward .2s ease-in;
+
+                                @keyframes forward {
+                                    from {
+                                        width: 40px;
+                                        height: 40px;
+                                    }
+
+                                    to {
+                                        width: 80px;
+                                        height: 80px;
+                                    }
+                                }
+
+                                .bt {
+                                    color: rgb(255, 255, 255) !important;
+                                    cursor: pointer;
+                                    @include transition();
+
+                                    &.play {
+                                        .fa-pause {
+                                            display: none;
+                                        }
+                                    }
+
+                                    &.pause {
+                                        transform: rotate(180deg);
+
+                                        .fa-play {
+                                            display: none;
+                                        }
+                                    }
+                                }
+
+
+
+                                .bt-frame {
+                                    width: 100%;
+                                    height: 100%;
+
+                                    .fa {
+                                        font-size: 40px;
+                                        animation: forward .2s ease-in;
+
+                                        @keyframes forward {
+                                            from {
+                                                font-size: 20px;
+                                            }
+
+                                            to {
+                                                font-size: 40px;
+                                            }
+                                        }
+                                    }
+
+                                    .loader,
+                                    .loader:before,
+                                    .loader:after {
+                                        background: #ff55a5;
+                                        -webkit-animation: load1 1s infinite ease-in-out;
+                                        animation: load1 1s infinite ease-in-out;
+                                        width: 1em;
+                                        height: 4em;
+                                    }
+
+                                    .loader {
+                                        color: #ff55a5;
+                                        text-indent: -9999em;
+                                        position: relative;
+                                        font-size: 11px;
+                                        -webkit-transform: translateZ(0);
+                                        -ms-transform: translateZ(0);
+                                        transform: translateZ(0);
+                                        -webkit-animation-delay: -0.16s;
+                                        animation-delay: -0.16s;
+                                    }
+
+                                    .loader:before,
+                                    .loader:after {
+                                        position: absolute;
+                                        top: 0;
+                                        content: '';
+                                    }
+
+                                    .loader:before {
+                                        left: -1.5em;
+                                        -webkit-animation-delay: -0.32s;
+                                        animation-delay: -0.32s;
+                                    }
+
+                                    .loader:after {
+                                        left: 1.5em;
+                                    }
+
+                                    @-webkit-keyframes load1 {
+
+                                        0%,
+                                        80%,
+                                        100% {
+                                            box-shadow: 0 0;
+                                            height: 4em;
+                                        }
+
+                                        40% {
+                                            box-shadow: 0 -2em;
+                                            height: 5em;
+                                        }
+                                    }
+
+                                    @keyframes load1 {
+
+                                        0%,
+                                        80%,
+                                        100% {
+                                            box-shadow: 0 0;
+                                            height: 4em;
+                                        }
+
+                                        40% {
+                                            box-shadow: 0 -2em;
+                                            height: 5em;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .cover {
+                                text-transform: uppercase;
+                                width: 100%;
+                                height: 550px;
+                                padding: 10%;
+                                text-align: center;
+                            }
+
+                            video {
+                                width: 100%;
+                                height: 100%;
+                                cursor: pointer;
+                            }
+
+                            .controls {
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                right: 0;
+                                height: 70px;
+                                color: rgb(255, 255, 255) !important;
+
+                                .list-speed,
+                                .list-resolution,
+                                .list-subtitle {
+                                    width: 230px;
+                                    position: absolute;
+                                    right: 5px;
+                                    bottom: 60px;
+                                    z-index: 10;
+                                    background-color: #131314;
+                                    cursor: pointer;
+
+                                    .icon-speed {
+                                        width: 100%;
+                                        padding: 10px;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                    }
+
+                                    .item-speed,
+                                    .item-resolution,
+                                    .item-subtitle {
+                                        padding: 10px;
+                                        font-size: 14px;
+                                        cursor: pointer;
+
+                                        &.highlightSpeed {
+                                            background: #dadada;
+                                            color: #ff55a5;
+                                        }
+
+                                        &:hover {
+                                            background-color: #222229;
+                                            color: #ff55a5;
+                                        }
+                                    }
+                                }
+
+                                .topControls {
+                                    height: 20%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    .seekbar {
+                                        width: 98%;
+                                        height: 5px;
+                                        background-color: rgba(224, 224, 224, 0.17);
+                                        position: relative;
+
+                                        .progressBar {
+                                            height: 100%;
+                                            width: 0%;
+                                            background-color: $red;
+                                            position: absolute;
+                                            z-index: 1;
+
+                                            &::after {
+                                                content: "";
+                                                position: absolute;
+                                                right: -5px;
+                                                border-radius: 500px;
+                                            }
+                                        }
+
+                                        .loadedProgressBar {
+                                            position: absolute;
+                                            z-index: 0;
+                                            height: 100%;
+                                            width: 0;
+                                            background-color: #d8d8d8b4;
+                                        }
+                                    }
+
+                                    &:hover {
+                                        .seekbar {
+                                            cursor: pointer;
+                                            height: 10px;
+
+                                            .progressBar {
+                                                height: 100%;
+
+                                                &::after {
+                                                    height: 15px;
+                                                    width: 15px;
+                                                    background-color: $red;
+                                                    margin-top: -2.5px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .bottomControls {
+                                    height: 80%;
+                                    margin-top: -3px;
+                                    font-size: 20px !important;
+
+                                    .left {
+                                        padding-left: 20px;
+                                        width: 60%;
+
+                                        .bt {
+                                            margin-right: 10px;
+                                            color: rgb(255, 255, 255) !important;
+                                            cursor: pointer;
+                                            @include transition();
+
+                                            &.play {
+                                                .fa-pause {
+                                                    display: none;
+                                                }
+                                            }
+
+                                            &.pause {
+                                                transform: rotate(180deg);
+
+                                                .fa-play {
+                                                    display: none;
+                                                }
+                                            }
+
+                                            .bt-frame {
+                                                width: 40px;
+                                                height: 40px;
+                                                background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                                -webkit-border-radius: 50%;
+                                                border-radius: 50%;
+
+                                                .fa {
+                                                    font-size: 20px;
+                                                }
+                                            }
+                                        }
+
+                                        .volume {
+                                            margin: 0 10px;
+                                            height: 50px;
+
+                                            &:hover .seekbarSection {
+                                                display: block;
+                                                flex-direction: row;
+                                            }
+
+                                            .seekbarSection {
+                                                // display: none;
+                                                width: 70px;
+
+                                                .seekbar {
+                                                    height: 10px !important;
+                                                    margin-left: 5px;
+                                                    width: 70px;
+                                                    background: #e7e7e795;
+
+                                                    .progressBar {
+                                                        height: 10px;
+                                                        width: 100%;
+                                                        background-color: $red;
+                                                        position: relative;
+
+                                                        &::after {
+                                                            content: "";
+                                                            position: absolute;
+                                                            right: -6px;
+                                                            margin-top: -2.5px;
+                                                            border-radius: 500px;
+                                                        }
+                                                    }
+                                                }
+
+                                                &:hover {
+                                                    cursor: pointer;
+
+                                                    .progressBar {
+                                                        position: relative;
+                                                        height: 10px;
+
+                                                        &::after {
+                                                            height: 15px;
+                                                            width: 15px;
+                                                            background-color: $red;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            @include transition();
+
+                                            &.volume-up {
+                                                .fa-volume-mute {
+                                                    display: none;
+                                                }
+
+                                                .fa-volume-down {
+                                                    display: none;
+                                                }
+                                            }
+
+                                            &.volume-mute {
+                                                .fa-volume-up {
+                                                    display: none;
+                                                }
+
+                                                .fa-volume-down {
+                                                    display: none;
+                                                }
+                                            }
+
+                                            &.volume-down {
+                                                .fa-volume-up {
+                                                    display: none;
+                                                }
+
+                                                .fa-volume-mute {
+                                                    display: none;
+                                                }
+                                            }
+                                        }
+
+                                        .backward {
+                                            width: 8%;
+                                        }
+
+                                        .time {
+                                            margin-left: 20px;
+                                        }
+                                    }
+
+                                    .right {
+                                        width: 40%;
+
+                                        .fa-closed-captioning {
+                                            font-size: 25px !important;
+                                            // margin-top: 4px;
+                                        }
+
+                                        .setting,
+                                        .speed,
+                                        .Subtitle,
+                                        .fullscreenCtrl {
+                                            // position: relative;
+                                            margin-right:27px;
+
+                                            i {
+                                                position: relative;
+
+                                                sup {
+                                                    position: absolute;
+                                                    left: 10px;
+                                                    top: 5px;
+                                                    color: #ff0000;
+                                                    background-color: #e7e7e7;
+                                                    font-size: 14px;
+                                                    border-radius: 1px;
+                                                    font-weight: 1000;
+                                                }
+                                            }
+
+                                        }
+
+                                        .setting,
+                                        .speed,
+                                        .Subtitle,
+                                        .fullscreenCtrl {
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: flex-end;
+                                            // width: 10% !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                .name_movie {
+                    margin-top: 10px;
+                    color: #dcd629;
+                    font-weight: 700;
+                }
+
+                .taskbar {
+                    .left {
+                        .error {
+                            padding: 7px;
+                            border-radius: 5px;
+                            color: #dcd629;
+                            background-color: #131314;
+                            font-weight: 700;
+                            margin-right: 5px;
+                            margin-top: 5px;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: #0a0a0a;
+                            }
+                        }
+
+                        .fullscreen,
+                        .light,
+                        .ads,
+                        .embed {
+                            padding: 7px;
+                            border-radius: 5px;
+                            color: #c2c2c1;
+                            background-color: #131314;
+                            font-weight: 700;
+                            margin-right: 5px;
+                            margin-top: 5px;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: #0a0a0a;
+                            }
+
+                            .icon_light_off {
+                                color: #e7d808e5;
+                            }
+                        }
+                    }
+
+                    .right {
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        justify-content: flex-end;
+
+                        .view,
+                        .like {
+                            padding: 7px;
+                            border-radius: 5px;
+                            color: #c2c2c1;
+                            background-color: #131314;
+                            font-weight: 700;
+                            margin-left: 5px;
+                            cursor: pointer;
+
+                            .active {
+                                color: rgb(231, 31, 64);
+                            }
+
+                            &:hover {
+                                background-color: #0a0a0a;
+                            }
+                        }
+                    }
+                }
+
+                .server {
+                    .left {
+
+                        .server,
+                        .server-item {
+                            padding: 7px;
+                            border-radius: 5px;
+                            color: #c2c2c1;
+                            background-color: #131314;
+                            font-weight: 700;
+                            margin-right: 5px;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: #0a0a0a;
+                            }
+                        }
+                    }
+
+                    .right {
+
+                        .evalute,
+                        .star {
+                            padding: 7px;
+                            border-radius: 5px;
+                            color: #c2c2c1;
+                            background-color: #131314;
+                            font-weight: 700;
+                            margin-left: 5px;
+                            cursor: pointer;
+
+                            .yellow {
+                                color: rgb(240, 233, 37);
+                            }
+                        }
+                    }
+                }
+
+                .subtitle {
+                    .vietsub {
+                        box-shadow: 0px 0px 20px rgba(32, 32, 28, 0.673);
+                        width: 100%;
+                        height: auto;
+
+                        .head {
+                            .title {
+                                padding: 15px 25px;
+                                color: #c2c2c1;
+                                background-color: #131314d2;
+                                font-weight: 700;
+                                cursor: pointer;
+                                border-radius: 10px 2px 0 0;
+
+                                .triangel {
+                                    padding: 20px;
+                                    background-color: #0a0a0a;
+                                }
+                            }
+
+                            .frame {
+                                width: 50px;
+                                height: 50px;
+                                overflow: hidden;
+
+                                .triangel {
+                                    border-top: 35.355339px solid #131314d2;
+                                    border-right: 35.355339px solid transparent;
+                                    border-left: 35.355339px solid transparent;
+
+                                    // border:35.355339px solid #131314d2;
+
+                                    // transform: translate(0px, 40px);
+                                    transform: rotate(45deg) translate(-2px, 31px);
+
+                                }
+                            }
+                        }
+
+                        .content {
+                            width: 100%;
+                            color: #c2c2c1;
+                            background-color: #131314d2;
+                            padding: 20px;
+                            border-radius: 0 10px 10px 10px;
+
+                            .wrap {
+                                padding: 5px;
+                                width: 12.5%;
+
+                                .active-episode {
+                                    background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                    color: #f0eeee;
+
+                                }
+
+                                .episode {
+                                    padding: 10px 30px;
+                                    cursor: pointer;
+                                    background-color: #f50e2d;
+                                    border-radius: 10px;
+                                }
+
+                                &:hover {
+                                    .episode {
+                                        background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                        opacity: 0.7;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .info-movie {
+                    width: 111.111111%;
+                    height: auto;
+                    background-color: #0a0a0a82;
+                    padding: 50px;
+                    margin-left: -108px;
+
+                    .navigation {
+                        font-size: 20px;
+                        margin-bottom: 30px;
+
+                        .fas {
+                            margin-left: 10px;
+                            margin-right: 10px;
+                        }
+
+                        a:hover {
+                            color: #ba376e !important;
+                        }
+                    }
+
+                    .name-movie {
+                        margin-bottom: 20px;
+                        color: #d5a41d;
+                    }
+
+                    .content-movie {
+                        width: 100%;
+                        height: 100px;
+                        font-size: 18px;
+                        line-height: 2;
+                        white-space: wrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+
+                    .return {
+                        margin-top: 30px;
+                        font-size: 18px;
+
+                        a {
+                            padding: 10px 20px;
+                            // border-radius: 10px;
+                            color: #ba376e !important;
+                            // border: 1px solid #c2c2c1;
+                            position: relative;
+                            display: block;
+                            min-width: 170px;
+                            overflow: hidden;
+
+                            &:hover {
+                                .liquid {
+                                    top: -120px;
+                                    background: #ff55a5;
+                                }
+                            }
+
+                            span {
+                                color: #0a0909;
+                                position: relative;
+                                z-index: 1;
+                            }
+
+                            .liquid {
+                                position: absolute;
+                                left: 0;
+                                top: -80px;
+                                width: 190px;
+                                height: 190px;
+                                background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                box-shadow: inset 0 0 50px rgba(11, 124, 181, 0.5);
+                                transition: 0.5s;
+                            }
+                        }
+                    }
+                }
+
+                .same-movie {
+                    width: 111.111111%;
+                    background-color: #0a0a0a82;
+                    padding: 0px 20px 30px 0;
+                    margin-left: -108px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    position: relative;
+                    min-width: 170px;
+                    overflow: hidden;
+
+                    // .liquid {
+                    //     position: absolute;
+                    //     left: 0;
+                    //     top: 0;
+                    //     width: 100%;
+                    //     height: 100%;
+                    //     background: transparent;
+                    //     transition: 0.5s;
+                    // }
+
+                    // .liquid:before,
+                    // .liquid:after {
+                    //     content: '';
+                    //     position: absolute;
+                    //     width: 190%;
+                    //     height: 418%;
+                    //     bottom: 0;
+                    //     left: 50%;
+                    //     transform: translate(-50%, 81%);
+                    //     margin-left: -10%;
+                    //     margin-bottom: -10%;
+                    // }
+
+                    // .liquid:before {
+                    //     border-radius: 45%;
+                    //     background: #191919;
+                    //     animation: animate 17s linear infinite;
+                    // }
+
+                    // .liquid:after {
+                    //     border-radius: 40%;
+                    //     background: #272726cb;
+                    //     animation: animate 20s linear infinite;
+
+                    // }
+
+                    // @keyframes animate {
+                    //     0% {
+                    //         transform: translate(-50%, 81%) rotate(0deg);
+                    //     }
+
+                    //     100% {
+                    //         transform: translate(-50%, 81%) rotate(360deg);
+                    //     }
+                    // }
+
+                    h2 {
+                        width: 15%;
+                        padding: 10px 0px 20px 50px;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    .phim-bo {
+                        width: 85%;
+                        position: relative;
+                        z-index: 1;
+
+                        .movie-item {
+                            width: 25%;
+                            background-color: transparent;
+                            padding: 20px 10px 0px;
+
+                            .play-center {
+                                display: none;
+                            }
+
+                            &:hover {
+                                .play-center {
+                                    display: block;
+                                }
+
+                                .image {
+                                    opacity: 0.8;
+                                    box-shadow: 0px 0px 20px rgba(242, 67, 255, 0.524);
+                                }
+                            }
+
+
+                            .image {
+                                height: 270px;
+                                width: 100%;
+                                position: relative;
+
+
+                                // .background {
+                                //     height: 100%;
+                                //     width: 100%;
+                                //     position: absolute;
+                                //     top: 0;
+                                //     left: 0;
+                                //     right: 0;
+                                //     bottom: 0;
+                                //     background-color: #f677ff36;
+                                //     border-radius: 5px !important;
+                                //     display: none;
+                                // }
+
+                                &:hover {
+                                    .background {
+                                        display: block;
+                                    }
+
+                                    span {
+                                        display: block;
+                                    }
+                                }
+
+                                img {
+                                    border-radius: 5px;
+                                }
+
+
+                                .current-status {
+                                    position: absolute;
+                                    color: aliceblue;
+                                    font-size: 13px;
+                                    left: 5px;
+                                    top: 8px;
+                                    background-color: #ea9b06;
+                                    border-radius: 3px;
+                                    padding: 0 5px;
+                                    font-weight: 700;
+                                }
+
+                                .episode {
+                                    position: absolute;
+                                    bottom: 5px;
+                                    right: 5px;
+                                    font-size: 13px;
+                                    color: aliceblue;
+                                    border-radius: 3px;
+                                    padding: 0 5px;
+                                    background: #ff55a5;
+                                    font-weight: 700;
+                                }
+
+                                .fa-play {
+                                    position: absolute;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 60px;
+                                    height: 60px;
+                                    // border: 4px solid rgba(211, 197, 0, 0.721);;
+                                    background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                    -webkit-border-radius: 50%;
+                                    border-radius: 50%;
+                                    top: 50%;
+                                    left: 50%;
+                                    margin: -30px 0 0 -30px;
+                                    z-index: 2;
+                                    font-size: 30px;
+                                    color: rgba(228, 228, 228, 0.667);
+                                }
+                            }
+
+                            .title {
+                                width: 100%;
+                                margin-top: 10px;
+                                overflow: hidden;
+
+                                .name {
+                                    font-weight: 700;
+                                    color: #d1d1d1;
+                                    font-size: 20px;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    overflow: hidden;
+                                }
+
+                                .eng-name {
+                                    font-size: 18px;
+                                    color: rgb(211, 197, 0);
+                                    font-weight: 400;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    overflow: hidden;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+            .right-content {
+                width: 24%;
+                height: auto;
+            }
+        }
+    }
+}
+
+
+.comment {
+    margin-top: 50px;
+}
+
+@media (max-width: 575.98px) {
+    .background {
+        padding: 4% 0% 0 !important;
+
+        .left {
+            padding-left: 5px !important;
+
+            .volume {
+                display: none !important;
+            }
+
+            .time {
+                margin-left: 10px !important;
+            }
+        }
+
+        .Subtitle {
+            display: none !important;
+        }
+
+        .backward {
+            display: none !important;
+        }
+
+        .taskbar {
+            .right {
+                margin-top: 5px;
+                margin-right: 5px !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+            }
+        }
+
+        .server {
+            .right {
+                margin-right: 5px;
+
+                .star {
+                    margin-top: 5px !important;
+                }
+            }
+        }
+    }
+
+    .left-content {
+        width: 100% !important;
+
+        .info-movie {
+            width: 100% !important;
+            margin-left: 0px !important;
+        }
+
+        .same-movie {
+            padding: 0px 0px 30px 0 !important;
+            width: 100% !important;
+            margin-left: 0px !important;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+
+            h2 {
+                width: 100% !important;
+                padding: 10px 0px 10px !important;
+            }
+
+            .phim-bo {
+                width: 100% !important;
+
+                .movie-item {
+                    width: 50% !important;
+                }
+            }
+        }
+    }
+
+    .right-content {
+        display: none !important;
+    }
+
+    .info-movie {
+        display: none;
+    }
+
+    .wrap {
+        width: 25% !important;
+    }
+
+    .episode {
+        padding: 10px 10px !important;
+    }
+
+    .cover {
+        height: 300px !important;
+    }
+
+    .list-speed,
+    .list-resolution,
+    .list-subtitle {
+        width: 130px !important;
+        bottom: 50px !important;
+
+        .icon-speed {
+            padding: 5px !important;
+        }
+
+        .item-speed,
+        .item-resolution,
+        .item-subtitle {
+            padding: 5px !important;
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .left-content {
+        width: 100% !important;
+
+        .taskbar {
+            .right {
+                margin-top: 5px;
+                margin-right: 5px !important;
+                display: flex !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+
+                .view,
+                .like {
+                    margin-right: 5px !important;
+                    margin-left: 0 !important;
+                }
+            }
+        }
+
+        .info-movie {
+            width: 100% !important;
+            margin-left: 0px !important;
+        }
+
+        .same-movie {
+            width: 100% !important;
+            margin-left: 0px !important;
+
+            h2 {
+                width: 25% !important
+            }
+
+            .phim-bo {
+                width: 70% !important;
+
+                .movie-item {
+                    width: 50% !important;
+                }
+            }
+        }
+    }
+
+    .right-content {
+        display: none !important;
+    }
+
+    .episode {
+        padding: 10px 10px !important;
+    }
+
+    .list-speed,
+    .list-resolution,
+    .list-subtitle {
+        width: 190px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .left-content {
+        width: 100% !important;
+
+        .info-movie {
+            width: 100% !important;
+            margin-left: 0px !important;
+        }
+
+        .same-movie {
+            width: 100% !important;
+            margin-left: 0px !important;
+        }
+    }
+
+    .right-content {
+        display: none !important;
+    }
+
+    .episode {
+        padding: 10px 20px !important;
+    }
+}

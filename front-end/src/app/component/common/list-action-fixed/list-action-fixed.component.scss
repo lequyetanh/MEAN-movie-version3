@@ -1,0 +1,546 @@
+.wrapp {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.emoji--fixed__face,
+.emoji--fixed__eyebrows,
+.emoji--fixed__eyes,
+.emoji--fixed__mouth,
+.emoji--fixed__tongue,
+.emoji--fixed__heart,
+.emoji--fixed__hand,
+.emoji--fixed__thumb {
+    position: absolute;
+}
+
+.emoji--fixed__face:before,
+.emoji--fixed__face:after,
+.emoji--fixed__eyebrows:before,
+.emoji--fixed__eyebrows:after,
+.emoji--fixed__eyes:before,
+.emoji--fixed__eyes:after,
+.emoji--fixed__mouth:before,
+.emoji--fixed__mouth:after,
+.emoji--fixed__tongue:before,
+.emoji--fixed__tongue:after,
+.emoji--fixed__heart:before,
+.emoji--fixed__heart:after,
+.emoji--fixed__hand:before,
+.emoji--fixed__hand:after,
+.emoji--fixed__thumb:before,
+.emoji--fixed__thumb:after {
+    position: absolute;
+    content: "";
+}
+
+.emoji--fixed__face {
+    position: absolute;
+    width: 120em;
+    height: 120em;
+}
+
+/*common css start*/
+
+.emoji--fixed {
+    width: 120em;
+    height: 120em;
+    margin: 15em 15em 15em;
+    background: #ffda6a;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    font-size: 0.142857px;
+    cursor: pointer;
+
+    &:hover {
+        .list-user-action {
+            display: block;
+        }
+    }
+
+    .list-user-action {
+        display: none;
+        position: absolute;
+        left: 0;
+        top:0;
+        transform: translate(-50%, 0);
+        width: 100px;
+        height: auto;
+        margin: 25px 0 0 0;
+
+        .user {        
+            background-color: #2b2b31;
+            color: aliceblue;
+            font-size: 14px;
+            padding: 7px 10px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &:hover {
+                background-color: #161316;
+                color: aliceblue;
+            }
+        }
+    }
+}
+
+.index {
+    margin-right: 10px;
+}
+
+.index:last-child {
+    margin-right: 0px !important;
+}
+
+.emoji--fixed:after {
+    position: absolute;
+    bottom: -40em;
+    font-size: 18em;
+    width: 60em;
+    left: calc(50% - 30em);
+    color: #8a8a8a;
+}
+
+/*common css end*/
+
+/*emoji--fixed-like css start*/
+.emoji--fixed--like {
+    background: #548dff !important;
+}
+
+.emoji--fixed--like:after {
+    content: "";
+}
+
+.emoji--fixed--like .emoji--fixed__hand {
+    left: 25em;
+    bottom: 30em;
+    width: 20em;
+    height: 40em;
+    background: rgb(255, 255, 255);
+    border-radius: 5em;
+    z-index: 0;
+}
+
+.emoji--fixed--like .emoji--fixed__hand:before {
+    left: 25em;
+    bottom: 5em;
+    width: 40em;
+    background: inherit;
+    height: 10em;
+    border-radius: 2em 10em 10em 2em;
+    box-shadow: 1em -9em 0 1em #ffffff, 2em -19em 0 2em #ffffff,
+        3em -29em 0 3em #ffffff;
+}
+
+.emoji--fixed--like .emoji--fixed__thumb {
+    border-bottom: 20em solid #ffffff;
+    border-left: 20em solid transparent;
+    top: -25em;
+    right: -25em;
+    z-index: 2;
+    transform: rotate(5deg);
+    transform-origin: 0% 100%;
+}
+
+.emoji--fixed--like .emoji--fixed__thumb:before {
+    border-radius: 50% 50% 0 0;
+    background: #ffffff;
+    width: 10em;
+    height: 12em;
+    left: -10em;
+    top: -8em;
+    transform: rotate(-15deg);
+    transform-origin: 100% 100%;
+    box-shadow: -1em 4em 0 -1em #ffffff;
+}
+
+/*emoji--fixed-like css end*/
+
+/*emoji--fixed-love css start*/
+.emoji--fixed--love {
+    background: #f55064 !important;
+}
+
+.emoji--fixed--love:after {
+    content: "";
+}
+
+.emoji--fixed--love .emoji--fixed__heart {
+    left: calc(50% - 40em);
+    top: calc(50% - 40em);
+    width: 80em;
+    height: 80em;
+}
+
+.emoji--fixed--love .emoji--fixed__heart:before,
+.emoji--fixed--love .emoji--fixed__heart:after {
+    left: calc(50% - 20em);
+    top: calc(50% - 32em);
+    width: 40em;
+    height: 64em;
+    background: #ffffff;
+    border-radius: 20em 20em 0 0;
+}
+
+.emoji--fixed--love .emoji--fixed__heart:before {
+    transform: translate(20em) rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.emoji--fixed--love .emoji--fixed__heart:after {
+    transform: translate(-20em) rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/*emoji--fixed-love css end*/
+
+/*emoji--fixed-haha css start*/
+
+.emoji--fixed--haha:after {
+    content: "";
+}
+
+.emoji--fixed--haha .emoji--fixed__face {}
+
+.emoji--fixed--haha .emoji--fixed__eyes {
+    width: 26em;
+    height: 6em;
+    border-radius: 2em;
+    left: calc(50% - 13em);
+    top: 35em;
+    transform: rotate(20deg);
+    background: transparent;
+    box-shadow: -25em 5em 0 0 #000000, 25em -5em 0 0 #000000;
+}
+
+.emoji--fixed--haha .emoji--fixed__eyes:after {
+    left: 0;
+    top: 0;
+    width: 26em;
+    height: 6em;
+    border-radius: 2em;
+    transform: rotate(-40deg);
+    background: transparent;
+    box-shadow: -25em -5em 0 0 #000000, 25em 5em 0 0 #000000;
+}
+
+.emoji--fixed--haha .emoji--fixed__mouth {
+    width: 80em;
+    height: 40em;
+    left: calc(50% - 40em);
+    top: 50%;
+    background: #000000;
+    border-radius: 0 0 40em 40em;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.emoji--fixed--haha .emoji--fixed__tongue {
+    width: 70em;
+    height: 30em;
+    background: #f55064;
+    left: calc(50% - 35em);
+    bottom: -10em;
+    border-radius: 50%;
+}
+
+/*emoji--fixed-haha css end*/
+
+/*emoji--fixed-yay css start*/
+.emoji--fixed--yay:after {
+    content: "";
+}
+
+.emoji--fixed--yay .emoji--fixed__face {}
+
+.emoji--fixed--yay .emoji--fixed__eyebrows {
+    left: calc(50% - 3em);
+    top: 30em;
+    height: 6em;
+    width: 6em;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: -6em 0 0 0 #000000, -36em 0 0 0em #000000, 6em 0 0 0 #000000,
+        36em 0 0 0em #000000;
+}
+
+.emoji--fixed--yay .emoji--fixed__eyebrows:before,
+.emoji--fixed--yay .emoji--fixed__eyebrows:after {
+    width: 36em;
+    height: 18em;
+    border-radius: 60em 60em 0 0;
+    background: transparent;
+    border: 6em solid black;
+    box-sizing: border-box;
+    border-bottom: 0;
+    bottom: 3em;
+    left: calc(50% - 18em);
+}
+
+.emoji--fixed--yay .emoji--fixed__eyebrows:before {
+    margin-left: -21em;
+}
+
+.emoji--fixed--yay .emoji--fixed__eyebrows:after {
+    margin-left: 21em;
+}
+
+.emoji--fixed--yay .emoji--fixed__mouth {
+    top: 60em;
+    background: transparent;
+    left: 50%;
+}
+
+.emoji--fixed--yay .emoji--fixed__mouth:after {
+    width: 80em;
+    height: 80em;
+    left: calc(50% - 40em);
+    top: -75em;
+    border-radius: 50%;
+    background: transparent;
+    border: 6em solid #000000;
+    box-sizing: border-box;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    z-index: 1;
+}
+
+.emoji--fixed--yay .emoji--fixed__mouth:before {
+    width: 6em;
+    height: 6em;
+    background: transparent;
+    border-radius: 50%;
+    bottom: 5em;
+    left: calc(50% - 3em);
+    box-shadow: -25em 0 0 0 #000000, 25em 0 0 0 #000000,
+        -35em -2em 30em 10em #d5234c, 35em -2em 30em 10em #d5234c;
+}
+
+/*emoji--fixed-yay css end*/
+
+/*emoji--fixed-wow css start*/
+
+.emoji--fixed--wow:after {
+    content: "";
+}
+
+.emoji--fixed--wow .emoji--fixed__face {}
+
+.emoji--fixed--wow .emoji--fixed__eyebrows {
+    left: calc(50% - 3em);
+    height: 6em;
+    width: 6em;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: -18em 0 0 0 #000000, -33em 0 0 0 #000000, 18em 0 0 0 #000000,
+        33em 0 0 0 #000000;
+}
+
+.emoji--fixed--wow .emoji--fixed__eyebrows:before,
+.emoji--fixed--wow .emoji--fixed__eyebrows:after {
+    width: 24em;
+    height: 20em;
+    border: 6em solid #000000;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    top: -3em;
+    left: calc(50% - 12em);
+}
+
+.emoji--fixed--wow .emoji--fixed__eyebrows:before {
+    margin-left: -25em;
+}
+
+.emoji--fixed--wow .emoji--fixed__eyebrows:after {
+    margin-left: 25em;
+}
+
+.emoji--fixed--wow .emoji--fixed__eyes {
+    width: 16em;
+    height: 24em;
+    left: calc(50% - 8em);
+    top: 35em;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 25em 0 0 0 #000000, -25em 0 0 0 #000000;
+}
+
+.emoji--fixed--wow .emoji--fixed__mouth {
+    width: 30em;
+    height: 45em;
+    left: calc(50% - 15em);
+    top: 50%;
+    border-radius: 50%;
+    background: #000000;
+}
+
+/*emoji--fixed-wow css end*/
+
+
+/*emoji--fixed-sad css start*/
+
+.emoji--fixed--sad:after {
+    content: "";
+}
+
+.emoji--fixed--sad .emoji--fixed__face {}
+
+.emoji--fixed--sad .emoji--fixed__eyebrows {
+    left: calc(50% - 3em);
+    top: 35em;
+    height: 6em;
+    width: 6em;
+    border-radius: 50%;
+    background: transparent;
+    -webkit-box-shadow: -40em 9em 0 0 #000000, -25em 0 0 0 #000000,
+        25em 0 0 0 #000000, 40em 9em 0 0 #000000;
+    box-shadow: -40em 9em 0 0 #000000, -25em 0 0 0 #000000, 25em 0 0 0 #000000,
+        40em 9em 0 0 #000000;
+}
+
+.emoji--fixed--sad .emoji--fixed__eyebrows:before,
+.emoji--fixed--sad .emoji--fixed__eyebrows:after {
+    width: 30em;
+    height: 20em;
+    border: 6em solid #000000;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    top: 2em;
+    left: calc(50% - 15em);
+}
+
+.emoji--fixed--sad .emoji--fixed__eyebrows:before {
+    margin-left: -30em;
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+
+.emoji--fixed--sad .emoji--fixed__eyebrows:after {
+    margin-left: 30em;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.emoji--fixed--sad .emoji--fixed__eyes {
+    width: 14em;
+    height: 16em;
+    left: calc(50% - 7em);
+    top: 50em;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 25em 0 0 0 #000000, -25em 0 0 0 #000000;
+}
+
+
+.emoji--fixed--sad .emoji--fixed__mouth {
+    width: 60em;
+    height: 80em;
+    left: calc(50% - 30em);
+    top: 80em;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 6em solid #000000;
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    background: transparent;
+}
+
+.emoji--fixed--sad .emoji--fixed__mouth:after {
+    width: 6em;
+    height: 6em;
+    background: transparent;
+    border-radius: 50%;
+    top: 4em;
+    left: calc(50% - 3em);
+    box-shadow: -18em 0 0 0 #000000, 18em 0 0 0 #000000;
+}
+
+/*emoji--fixed-sad css end*/
+
+/*emoji--fixed-angry css start*/
+
+.emoji--fixed--angry {
+    background: -webkit-gradient(linear,
+            left top,
+            left bottom,
+            color-stop(-10%, #d5234c),
+            to(#ffda6a));
+    background: linear-gradient(#d5234c -10%, #ffda6a);
+    background-size: 100%;
+}
+
+.emoji--fixed--angry:after {
+    content: "";
+}
+
+.emoji--fixed--angry .emoji--fixed__face {}
+
+.emoji--fixed--angry .emoji--fixed__eyebrows {
+    left: calc(50% - 3em);
+    top: 55em;
+    height: 6em;
+    width: 6em;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: -44em 5em 0 0 #000000, -7em 16em 0 0 #000000, 7em 16em 0 0 #000000,
+        44em 5em 0 0 #000000;
+}
+
+.emoji--fixed--angry .emoji--fixed__eyebrows:before,
+.emoji--fixed--angry .emoji--fixed__eyebrows:after {
+    width: 50em;
+    height: 20em;
+    border: 6em solid #000000;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    top: 0;
+    left: calc(50% - 25em);
+}
+
+.emoji--fixed--angry .emoji--fixed__eyebrows:before {
+    margin-left: -25em;
+    transform: rotate(15deg);
+}
+
+.emoji--fixed--angry .emoji--fixed__eyebrows:after {
+    margin-left: 25em;
+    transform: rotate(-15deg);
+}
+
+.emoji--fixed--angry .emoji--fixed__eyes {
+    width: 12em;
+    height: 12em;
+    left: calc(50% - 6em);
+    top: 70em;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 25em 0 0 0 #000000, -25em 0 0 0 #000000;
+}
+
+.emoji--fixed--angry .emoji--fixed__mouth {
+    width: 36em;
+    height: 18em;
+    left: calc(50% - 18em);
+    bottom: 15em;
+    background: #000000;
+    border-radius: 50%;
+}

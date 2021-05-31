@@ -1,0 +1,19 @@
+<h4 class="caption flexbox-center-between">
+    <span>
+        <i class="fa fa-plus-square marr-5 fs-19"></i>
+        có thể bạn muốn xem
+    </span>
+</h4>
+<div class="flexbox-center-start">
+    <div class="movie-item marr-4" *ngFor="let eachmovie of movie">
+        <label class="current-status">{{eachmovie.status}}</label>
+        <a [routerLink]="['/detailmovie', eachmovie.id]" title="{{eachmovie.name}}">
+            <img alt="Nhat da tan nuong" src="./../../assets/image/{{eachmovie.name_image}}.jpg" class="movie">
+        </a>
+        <div class="title">
+            <p class="name">{{eachmovie.name}}</p>
+            <p class="real-name">{{eachmovie.real_name}}</p>
+            <p class="whitecolor">{{eachmovie.run_time}} phút</p>
+        </div>
+    </div>
+</div>

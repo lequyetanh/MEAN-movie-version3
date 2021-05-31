@@ -1,0 +1,39 @@
+
+<div class="fullscreen" (click)="closeSideNav()">
+    <div class="side-nav">
+        <div class="each-movie" (click)="change($event)" [class.active]="active == 'Trang Chủ'">
+            <a routerLink="/movie">Trang Chủ</a>
+        </div>
+        <div class="each-movie" (click)="change($event)" [class.active]="active == 'Phim Mới'">
+            <a class="phim-moi" routerLink="/movie">Phim Mới</a>
+        </div>
+        <div class="each-movie" (click)="change($event)" [class.active]="active == 'Phim Bộ'">
+            <a routerLink="/movietype/phim bộ">Phim Bộ</a>
+        </div>
+        <div class="each-movie" (click)="change($event)" [class.active]="active == 'Phim Lẻ'">
+            <a routerLink="/movietype/phim lẻ">Phim Lẻ</a>
+        </div>
+        <div class="each-movie" (click)="change($event)" [class.active]="active == 'Phim Chiếu Rạp'">
+            <a routerLink="/movietype/phim chiếu rạp">Phim Chiếu Rạp</a>
+        </div>
+        <div class="each-movie the-loai" (click)="toggleFormCategory()">
+           Thể Loại
+            <ul class="header__nav-item-list" *ngIf="statusFormCategory==true">
+                <li *ngFor="let category of Category">
+                    <a routerLink="/movietype/{{category.name}}">{{category.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="each-movie quoc-gia" (click)="toggleFormCountry()">
+            Quốc Gia
+            <ul class="header__nav-item-list" *ngIf="statusFormCountry==true">
+                <li *ngFor="let country of Country">
+                    <a routerLink="/movietype/{{country.name}}">{{country.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="each-movie" (click)="change($event)" [class.active]="active == 'Sắp Chiếu'">
+            <a routerLink="/movie">Sắp Chiếu</a>
+        </div>
+    </div>
+</div>

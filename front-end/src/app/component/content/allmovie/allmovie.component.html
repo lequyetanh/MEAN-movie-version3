@@ -1,0 +1,42 @@
+<div class="" *ngIf="!statusItemMovie">
+    <app-cover></app-cover>
+</div>
+
+<div class="body-content flexbox-start-between" *ngIf="statusMovie == true">
+    <div class="left-content">
+        <div class="">
+            <h4 class="caption">
+                <h3 class="flexbox-center-start">
+                    <span class="flexbox-center-center">
+                        <i class="fa fa-plus-square marr-5 fs-19"></i>{{type }}
+                    </span>
+                </h3>
+            </h4>
+
+            <div class="phim-bo flexbox-start-start" *ngIf="statusItemMovie == true">
+                <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of pagedItems">
+                    <div class="image">
+
+                        <img alt="" src="{{movie.name_image}}">
+
+
+                        <div class="play-center">
+                            <i class="fa fa-play" matTooltip="Play"></i>
+                        </div>
+                        <label class="current-status">{{movie.status}}</label>
+                        <span class="episode">{{movie.run_time}} Phút </span>
+                    </div>
+                    <div class="title">
+                        <h3 class="name">{{movie.name}}</h3>
+                        <p class="eng-name">{{movie.real_name}}</p>
+                    </div>
+                </a>
+            </div>
+            <app-pagination [data]="movies" (keyPagination)="handleData($event)"></app-pagination>
+        </div>
+
+    </div>
+    <div class="right-content">
+        <app-content [data]="true"></app-content>
+    </div>
+</div>

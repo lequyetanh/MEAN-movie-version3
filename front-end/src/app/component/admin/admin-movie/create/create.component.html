@@ -1,0 +1,204 @@
+<div class="mart-50 marb-50">
+    <div class="card-body">
+        <h1>Create Movie</h1>
+        <form [formGroup]="movieForm" (ngSubmit)="onSubmit()" class="flexbox-start-between">
+            <div class="left-content">
+                <img src="{{name_image}}" alt="">
+            </div>
+
+            <div class="right-content flexbox-start-center">
+                <div class="left">
+                    <div class="item-data">
+                        <label for="inputName">Name</label>
+                        <input class="" type="text" formControlName="name" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputStatus">Status</label>
+                        <input class="" type="text" formControlName="status" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputRelease_year">Release_year</label>
+                        <input class="" type="number" formControlName="release_year" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputRate">Rate</label>
+                        <input class="" type="number" formControlName="rate" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputIMDb">IMDb</label>
+                        <input class="" type="number" formControlName="IMDb" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputName_image">Name_image</label>
+                        <input class="" type="text" formControlName="name_image" [(ngModel)]="name_image" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputTrailer">Trailer</label>
+                        <input class="" type="text" formControlName="trailer" />
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="item-data">
+                        <label for="inputReal_name">Real_name</label>
+                        <input class="" type="text" formControlName="real_name" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputViews">Views</label>
+                        <input class="" type="number" formControlName="views" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputRun_time">Run_time</label>
+                        <input class="" type="number" formControlName="run_time" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputRateVote">Rate Vote</label>
+                        <input class="" type="number" formControlName="rate_vote" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputIMDbVote">IMDb Vote</label>
+                        <input class="" type="number" formControlName="IMDb_vote" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputDirector">Director</label>
+                        <input class="" type="text" formControlName="director" />
+                    </div>
+
+                    <div class="item-data">
+                        <label for="inputcategory">category</label>
+                        <select class="" (change)="updateCategory($event.target.value)" formControlName="category">
+                            <!-- <option value="">Choose Month</option> -->
+                            <option *ngFor="let category of category" value="{{category}}">
+                                {{category}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-content">
+                <div class="flexbox-center-start">
+                    <div class="button" (click)="clickItem($event)">tags</div>
+                    <div class="button" (click)="clickItem($event)">actor</div>
+                    <div class="button" (click)="clickItem($event)">content</div>
+                    <div class="button" (click)="clickItem($event)">vice_name_image</div>
+                    <div class="button" (click)="clickItem($event)">movie</div>
+                </div>
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'tags'">
+                    <div class="item-data tagForm" formArrayName="tags">
+                        <div class="wrap-tags">
+                            <label for="inputTags">Tags
+                                <i class="fas fa-plus" (click)="addTag()"></i>
+                            </label>
+                        </div>
+                        <div class="content-tag flexbox-start-start">
+                            <div class="mar-5 add" *ngFor="let group of tagArray.controls; let i = index;"
+                                [formGroupName]="i">
+                                <input class="" type="text" formControlName="tags" />
+                                <i class="fas fa-trash-alt marl-5" (click)="removeTag(i)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'actor'">
+                    <div class="item-data tagForm" formArrayName="actor">
+                        <div class="wrap-tags">
+                            <label for="inputTags">Actor
+                                <i class="fas fa-plus" (click)="addActor()"></i>
+                            </label>
+                        </div>
+                        <div class="content-tag flexbox-start-start">
+                            <div class="mar-5 add" *ngFor="let group of actorArray.controls; let i = index;"
+                                [formGroupName]="i">
+                                <input class="" type="text" formControlName="actor" />
+                                <i class="fas fa-trash-alt marl-5" (click)="removeActor(i)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'vice_name_image'">
+                    <div class="item-data tagForm" formArrayName="vice_name_image">
+                        <div class="wrap-tags">
+                            <label for="inputTags">vice_name_image
+                                <i class="fas fa-plus" (click)="addViceImage()"></i>
+                            </label>
+                        </div>
+                        <div class="content-tag flexbox-start-start">
+                            <div class="mar-5 add" *ngFor="let group of vice_name_imageArray.controls; let i = index;"
+                                [formGroupName]="i">
+                                <input class="" type="text" formControlName="vice_name_image" />
+                                <i class="fas fa-trash-alt marl-5" (click)="removeViceImage(i)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="" style="width:100%" *ngIf="statusFormTag == 'content'">
+                    <div class="item-data tagForm" formArrayName="content">
+                        <div class="wrap-tags">
+                            <label for="inputTags">Content
+                                <i class="fas fa-plus" (click)="addContent()"></i>
+                            </label>
+                        </div>
+                        <div class="content-tag flexbox-start-start">
+                            <div class="mar-5 add" *ngFor="let group of contentArray.controls; let i = index;"
+                                [formGroupName]="i">
+                                <textarea rows="10" cols="50" type="textarea" formControlName="content"></textarea>
+                                <i class="fas fa-trash-alt marl-5" (click)="removeContent(i)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="multiple flexbox-start-between">
+                <div class="item-data countryForm">
+                    <h3>Country</h3>
+                    <div class="flexbox-center-between">
+                        <div class="eachCountry flexbox-center-between"
+                            *ngFor="let control of countryArray.controls; let i = index;">
+                            <label class="form-check-label" for="inlineCheckbox{{i}}">{{country[i]}}</label>
+                            <input [formControl]="control" type="checkbox" class="pointer"
+                                (change)="getSelectedCountry()" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-data genreForm">
+                    <h3>Genre</h3>
+                    <div class="flexbox-center-between">
+                        <div class="eachgenre flexbox-center-between"
+                            *ngFor="let control of genreArray.controls; let i = index;">
+                            <label class="form-check-label" for="inlineCheckbox{{i}}">{{genre[i]}}</label>
+                            <input [formControl]="control" type="checkbox" class="pointer"
+                                (change)="getSelectedgenre()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="" style="width:100%">
+                <app-form-movie (keyFormMovie)="handleData($event)"></app-form-movie>
+            </div>
+
+            <div class="item-data mart-20">
+                <button class="btn btn-success btn-lg btn-block" type="submit">
+                    Create
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

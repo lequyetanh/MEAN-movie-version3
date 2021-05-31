@@ -1,0 +1,54 @@
+.addVideo{
+    color:#ff55a5;
+    cursor:pointer;
+    font-size:25px !important;
+    margin-bottom:30px;
+    .fas{
+        color:#0fd01f;
+    }
+}
+
+form{
+    width:100%;
+    .item-data {
+        width:100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 5px;
+
+        label {
+            text-transform: uppercase;
+            color: #ff55a5;
+            margin-right: 5px;
+            min-width: 100px;
+        }
+
+        input,
+        textarea {
+            color: #d8d7c6;
+            padding: 14px 20px;
+            border: none;
+            outline: none;
+            background-color: #1d1d1e;
+            width: 50%;
+        }
+
+        select {
+            background-color: #1d1d1e;
+            border: none;
+            outline: none;
+            padding: 14px 20px;
+            width: 50%;
+            color: #d8d7c6;
+
+            option {}
+        }
+    }
+
+    .save{
+        padding:10px;
+        background-color:#d00f39;
+        cursor:pointer;
+    }
+}

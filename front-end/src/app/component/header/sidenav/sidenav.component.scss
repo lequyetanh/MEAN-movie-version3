@@ -1,0 +1,119 @@
+
+
+.fullscreen {
+    object-fit: contain;
+    position: fixed !important;
+    top: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    box-sizing: border-box !important;
+    min-width: 0px !important;
+    max-width: none !important;
+    min-height: 700px !important;
+    max-height: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    margin: 0px !important;
+    background-color: #000000c1;
+    z-index: 10;
+    cursor:pointer;
+
+    .side-nav {
+        position:relative;
+        animation: sideNav .5s;
+        top:0;
+        height: 100vh;
+        background-color: #28282d;
+        border-top: 3px solid #ff55a5;
+        padding: 20px 0px;
+        width:33%;
+
+        .each-movie {
+            padding: 10px 40px;
+            font-size: 20px;
+
+            &.active {
+                background-color: #ff55a5;
+            }
+
+            &:hover {
+                background-color: #ff55a47e;
+            }
+
+            &.the-loai,
+            &.quoc-gia {
+                position: relative;
+
+                .header__nav-item-list {
+                    border-top: 3px solid #ba37a2;
+                    margin-top: 10px;
+                    position: absolute;
+                    width: 200px;
+                    max-height: 300px;
+                    -webkit-overflow-scrolling: touch;
+                    overflow: auto;
+                    background-color: #25252c;
+                    display: block;
+                    z-index: 10;
+
+                    a {
+                        padding: 5px 15px;
+                        display: block;
+
+                        &:hover {
+                            background-color: #1d1d1e;
+                            color: #ba37a2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .side-nav {
+        width: 65% !important;
+
+        .each-movie {
+            padding: 10px 30px !important;
+            font-size: 16px !important;
+        }
+    }
+
+    @keyframes sideNav {
+        from{
+            left:-65%;
+        }
+        to{
+            left:0%;
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+
+    @keyframes sideNav {
+        from{
+            left:-33%;
+        }
+        to{
+            left:0%;
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+
+    @keyframes sideNav {
+        from{
+            left:-33%;
+        }
+        to{
+            left:0%;
+        }
+    }
+}

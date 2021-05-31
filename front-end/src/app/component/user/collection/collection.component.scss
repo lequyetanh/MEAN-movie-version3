@@ -1,0 +1,57 @@
+ @import './../../../../scss/movie.scss';
+
+ .form-alert {
+     object-fit: contain;
+     position: fixed;
+     top: 30px;
+     right: 30px;
+     color: #ffffff;
+     background: #249d03;
+     padding: 10px 20px;
+     border-radius: 10px;
+     z-index: 10;
+ }
+
+ .caption span {
+     text-transform: uppercase;
+     border-bottom: dashed 2px #000000;
+     font-size: 22px;
+     font-weight: 600;
+     color: #ff55a5;
+     text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+     margin-left: 15px;
+ }
+
+ .container {
+     width: 100%;
+     height: auto;
+ }
+
+ @media (max-width: 575.98px) {
+     .movie-item {
+         width: 49.5% !important;
+         padding: 20px 10px !important;
+     }
+
+     .image {
+         height: 200px !important;
+     }
+ }
+
+ @media (min-width: 576px) and (max-width: 991.98px) {
+     .movie-item {
+         width: 25% !important;
+         padding: 20px 10px !important;
+     }
+ }
+
+ @media (min-width: 992px) and (max-width: 1199.98px) {
+     .movie-item {
+         width: 25% !important;
+         padding: 20px 10px !important;
+     }
+
+     .image {
+         height: 270px !important;
+     }
+ }

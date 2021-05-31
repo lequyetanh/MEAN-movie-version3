@@ -1,0 +1,114 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Beth Ellen';
+  font-size: 14px;
+}
+
+body {
+  background-color: #2b2b31 !important;
+  color: white !important;
+}
+
+.chrome {
+  width: 100% !important;
+}
+
+html {
+  --scrollbarBG: #c3c7c9;
+  --thumbBG: #e23ba2;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+  // border-radius: 6px;
+  // border: 3px solid var(--scrollbarBG);
+}
+
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Quicksand, helvetica neue, Helvetica, Arial, sans-serif;
+}
+
+// =====================================================================snow===============================================================
+body {
+  /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #090b44 0%, #00001c 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #090b44), color-stop(100%, #00001c));
+  /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, #090b44 0%, #00001c 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, #090b44 0%, #00001c 100%);
+  /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, #090b44 0%, #00001c 100%);
+  /* IE10+ */
+  background: radial-gradient(ellipse at center, #090b44 0%, #00001c 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#090b44', endColorstr='#00001c', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  padding: 0;
+  text-align: center;
+  font-family: Arial;
+  position: relative;
+  margin: 0;
+  height: 100%;
+  padding-bottom: 50px;
+  z-index:-1;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index:-1;
+}
+
+canvas.flare {
+  opacity: 0.5;
+  z-index:-1;
+}
+
+
+.snowWindPower {
+  padding: 10px;
+  width: 90px;
+  border: none;
+  border-radius: 3px;
+  font-size: 33px;
+  // background: rgba(0, 0, 0, 0.31);
+  color: white;
+}
+
+::cue{
+  font-size:23px;
+  color:#fff705e5;
+  // background-color:#1b1b1b;
+}

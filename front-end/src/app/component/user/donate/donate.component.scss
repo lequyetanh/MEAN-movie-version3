@@ -1,0 +1,158 @@
+.section {
+    width: 100%;
+
+    .contain {
+        padding: 25px 10%;
+
+        .title {
+            text-align: center;
+        }
+
+        .has-text-centered {
+            font-size: 20px !important;
+
+            em {
+                color: rgb(223, 41, 117);
+            }
+
+            a {
+                color: rgb(252, 225, 25) !important;
+            }
+        }
+
+        .donate-form {
+            width: 90%;
+            padding: 0 7%;
+
+            .field {
+                font-size: 25px;
+
+                .control {
+                    .column {
+                        width: 25%;
+                        padding: 15px;
+                        height: 200px;
+                        cursor: pointer !important;
+
+                        img {
+                            border-radius: 50%;
+                        }
+
+                        input {
+                            margin-top: 20px;
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+
+            .card-item {
+                font-size: 25px;
+
+                .control {
+                    select {
+                        background-color:#242427;
+                        border: none;
+                        outline: none;
+                        color: rgba(255, 255, 255, 0.83);
+                        padding: 5px 10px;
+                        width: 300px;
+                        height: 50px;
+
+                        option {
+                            width: 300px;
+                            height: 50px;
+                            padding: 0 20px;
+                            color: #fff;
+                            letter-spacing: .2px;
+                            background-color: #242427;
+                            border: none;
+                            outline: none;
+                            font-size: 20px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                p {
+                    color: #f11717;
+                    font-size: 13px;
+                }
+            }
+
+            input {
+                width: 300px;
+                height: 50px;
+                padding: 0 20px;
+                color: #fff;
+                letter-spacing: .2px;
+                background-color: #242427;
+                border: none;
+                outline: none;
+                font-size: 20px;
+            }
+
+            .field{
+                button{
+                    margin-top:20px;
+                    padding:10px 20px;
+                    width:300px;
+                    height:50px;
+                    background-image: linear-gradient(90deg,#ff55a5 0,#ff5860 100%);
+                    border:none;
+                    outline: none;
+                    border-radius:10px;
+                }
+            }
+        }
+
+        .content{
+            font-size:19px !important;
+        }
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    .contain {
+        padding: 25px 20px !important;
+    }
+    .donate-form {
+        width: 100% !important;
+        padding:0px !important;
+        .column {
+            width: 50% !important;
+            height: 150px !important;
+            margin-top:10px;
+        }
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .contain {
+        padding: 25px 7% !important;
+    }
+    .donate-form {
+        width: 100% !important;
+        padding:0px !important;
+        .column {
+            width: 25% !important;
+            height: 150px !important;
+            margin-top:10px;
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .donate-form {
+        width: 100% !important;
+        padding:0px !important;
+        .column {
+            width: 25% !important;
+            height: 150px !important;
+            margin-top:10px;
+        }
+    }
+}

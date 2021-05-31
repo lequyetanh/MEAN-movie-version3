@@ -1,0 +1,98 @@
+/*=============================================================flexbox============================================================*/
+.flexbox-center-center{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:center;
+}
+
+.flexbox-center-between{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:space-between;
+}
+
+.flexbox-between-center{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:space-between;
+	justify-content:center;
+}
+
+.flexbox-between-start{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:space-between;
+	justify-content:flex-start;
+}
+
+.flexbox-start-between{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:flex-start;
+	justify-content:space-between;
+}
+
+.flexbox-center-start{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:flex-start;
+}
+
+.flexbox-start-start{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:flex-start;
+	justify-content:flex-start;
+}
+
+.flexbox-start-center{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:flex-start;
+	justify-content:center;
+}
+
+.flexbox-center-around{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:space-around;
+}
+
+.flexbox-end-between{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:flex-end;
+	justify-content:space-between;
+}
+
+.flexbox-center-end{
+	display:flex;
+	flex-wrap:wrap;
+	align-items:center;
+	justify-content:flex-end;
+}
+
+.flexbox-bottom-start{
+  display:flex;
+  flex-wrap:wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.flexbox-around-center{
+  display:flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.flexbox-start-end{
+  display:flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}

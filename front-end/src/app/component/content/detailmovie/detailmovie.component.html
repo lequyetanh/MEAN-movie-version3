@@ -1,0 +1,252 @@
+<div class="" *ngIf="!movie; else nomovie">
+    <app-cover></app-cover>
+</div>
+<ng-template #nomovie>
+
+    <app-alert [data]="{type: 'success', message: messenger}" *ngIf="statusFormMessenger"></app-alert>
+    <app-alert [data]="{type: 'fail', message: messenger}" *ngIf="statusFormLogin"></app-alert>
+
+    <div class="detail-movie" *ngFor="let movie of movie">
+        <div class="background-cover">
+            <div class="head-content" [ngStyle]="{'background-image':'url(' + background+ ')'}">
+                <div class="background">
+                    <div class="navigation">
+                        <a routerLink="/">Trang Chủ</a>
+                        <i class="fas fa-arrow-right"></i>
+                        <a routerLink="#">{{movie.category}}</a>
+                        <i class="fas fa-arrow-right"></i>
+                        <a routerLink="#">{{movie.name}}</a>
+                    </div>
+                    <div class="movie">
+                        <div class="movie-frame">
+                            <a routerLink="/watchmovie/{{movie.id}}" class="movie-item">
+                                <div class="image">
+
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <label class="imdb" *ngIf="movie.IMDb">IMDb: {{movie.IMDb}}</label>
+                                    <span class="episode"
+                                        *ngIf="movie.movie[1]">{{movie.movie[movie.movie.length -1].episode}}
+                                        /{{movie.movie[movie.movie.length -1].episode}}</span>
+                                    <span class="episode" *ngIf="!movie.movie[1]">{{movie.run_time}} phút</span>
+                                </div>
+                            </a>
+                            <div class="title">
+                                <div class="flexbox-center-between">
+                                    <h1 class="name">{{movie.name}}</h1>
+
+                                    <span class="pointer" (click)="pushWatchLater(movie)" *ngIf="!watchLater"
+                                        title="Thêm Vào Xem Sau">
+                                        <i class="far fa-clock"></i>
+                                    </span>
+                                    <span class="pointer" (click)="removeWatchLater(movie)" *ngIf="watchLater"
+                                        title="Xóa Khỏi Danh Sách Xem Sau">
+                                        <i class="fas fa-clock active"></i>
+                                        <sup><i class="fas fa-check"></i></sup>
+                                    </span>
+                                    <span class="pointer" (click)="pushFavorite(movie)" *ngIf="!favorite"
+                                        title="Thêm Vào Danh Sách Yêu Thích">
+                                        <i class="far fa-heart"></i>
+                                    </span>
+                                    <span class="pointer" (click)="removeFavorite(movie)" *ngIf="favorite"
+                                        title="Xóa Khỏi Danh Sách Yêu Thích">
+                                        <i class="fas fa-heart active"></i>
+                                        <sup><i class="fas fa-check"></i></sup>
+                                    </span>
+
+                                </div>
+                                <div class="infor">
+                                    <span class="left-infor">
+                                        Tên Gốc:
+                                        <span> {{movie.real_name}}</span>
+                                    </span>
+                                    <span class="left-infor">
+                                        Trạng Thái:
+                                        <span>
+                                            {{movie.status}}
+                                        </span>
+                                    </span>
+                                    <span class="left-infor flexbox-start-start">
+                                        <p>Thể Loại: </p>&nbsp;
+                                        <p class="" *ngFor="let genre of movie.genre">
+                                            <span> {{ genre }}, </span>&nbsp;
+                                        </p>
+                                    </span>
+                                    <span class="left-infor">
+                                        Năm Phát Hành:
+                                        <span>
+                                            {{movie.release_year}}
+                                        </span>
+                                    </span>
+                                    <span class="left-infor">
+                                        Thời Lượng:
+                                        <span *ngIf="movie.category == 'phim bộ'">
+                                            {{movie.run_time}} Phút/ Tập
+                                        </span>
+                                        <span *ngIf="movie.category == 'phim lẻ'">
+                                            {{movie.run_time}} Phút
+                                        </span>
+                                    </span>
+                                    <span class="left-infor flexbox-start-start">
+                                        Quốc Gia:&nbsp;
+                                        <p class="country" *ngFor="let country of movie.country">
+                                            <span>{{country}}, </span>&nbsp;
+                                        </p>
+                                    </span>
+                                    <span class="left-infor">
+                                        Đạo Diễn:
+                                        <span>
+                                            {{movie.director}}
+                                        </span>
+                                    </span>
+                                    <span class="left-infor flexbox-start-start">
+                                        Diễn Viên:&nbsp;
+                                        <p class="" *ngFor="let actor of movie.actor">
+                                            <span>{{actor}}, </span>&nbsp;
+                                        </p>
+                                    </span>
+                                    <span class="left-infor">
+                                        Lượt Xem:
+                                        <span>
+                                            {{movie.views}}
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="evaluate">
+                                    <span class="evaluate-content">
+                                        Đánh Giá Phim:
+
+                                        <span (mouseleave)="getListStar(movie.rate)">
+                                            <i *ngFor="let eachStar of list_star; let i = index" [class]="eachStar.type"
+                                                [matTooltip]="eachStar.title" (mousemove)="hover(i)"
+                                                (click)="rate_vote(i*2+2)">
+                                            </i>
+                                        </span>
+                                        <span>
+                                            ( {{movie.rate}}
+                                            <i class="fas fa-star" style="color: rgb(240, 233, 37);"></i>
+                                            / {{movie.rate_vote}} Đánh Giá )
+                                        </span>
+                                        <!-- <i routerLink="/watchmovie/{{movie.id}}" class="fa fa-play float-r"
+                                        matTooltip="Play"></i> -->
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trailer">
+                            <div class="video">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/36gbr0YPD8I"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="action">
+                                <span class="like" *ngIf="user" (click)="likeMovie()">
+                                    <i class="fas fa-thumbs-up" [class.active]="user.like.indexOf(movie.name) >= 0"></i>
+                                    Like
+                                </span>
+                                <span class="share" *ngIf="user" (click)="loveMovie()">
+                                    <i class="fas fa-heart" [class.active]="user.love.indexOf(movie.name) >= 0"></i>
+                                    Tymn
+                                </span>
+                            </div>
+                            <div class="media flexbox-center-start">
+                                <div>Share: </div>
+                                <a href="#"
+                                    onClick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/','pagename','resizable,height=500,width=500'); return false;">
+                                    <i class="fab fa-facebook">
+                                    </i>
+                                </a>
+                                <i class="fab fa-twitter"></i>
+                                <i class="fab fa-youtube"></i>
+                                <i class="fab fa-instagram"></i>
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="body-content flexbox-start-between">
+            <div class="left-content">
+                <div class="info">
+                    <div class="tag flexbox-center-start">
+                        <div class="wrap-tag" *ngFor="let tag of movie.tags">
+                            <i class="fas fa-tag marr-5"></i>
+                            <span>{{tag}}</span>
+                        </div>
+                    </div>
+                    <h1>Nội Dung Phim: {{movie.name}}</h1>
+                    <h5>
+                        {{movie.content}}
+                    </h5>
+                    <div class="background-cover">
+                        <img src="{{movie.vice_name_image}}">
+                    </div>
+                    <h5>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur convallis arcu,
+                        vitae
+                        consequat orci feugiat vel. Nulla laoreet, odio at facilisis lacinia, nisi tellus bibendum
+                        velit, id
+                        sodales dolor lectus ut diam. Cras iaculis in enim in vulputate. Nullam nisl nisi, tincidunt
+                        eget
+                        diam et, aliquam consectetur augue. Nunc nec enim faucibus, viverra diam et, euismod nunc. Fusce
+                        fermentum risus mauris, vel vehicula justo faucibus vitae. Etiam nisl eros, eleifend vel
+                        tincidunt
+                        non, tristique eget risus. In elementum egestas justo, ut congue elit auctor at. Proin velit
+                        nibh,
+                        egestas non tempus eu, elementum ac neque. Phasellus at sem mattis, gravida odio et, lacinia
+                        lacus.
+                        Suspendisse potenti. Vestibulum sit amet diam pretium, pharetra lorem eget, molestie enim.
+                    </h5>
+                    <h5>
+                        Quisque elit metus, aliquam et magna non, tempus placerat arcu. Aliquam fermentum venenatis ante
+                        nec
+                        viverra. Mauris posuere augue at odio sollicitudin commodo. Maecenas viverra sollicitudin
+                        mollis.
+                        Nam dignissim gravida mi, at maximus ligula accumsan at. Phasellus eu tristique eros, nec ornare
+                        tellus. Mauris sit amet orci ultrices, interdum elit et, faucibus mauris. Nunc in massa vitae
+                        libero
+                        scelerisque tempus. Nam ornare erat et lacus lobortis, vitae facilisis augue mollis. Cras lorem
+                        risus, molestie non mauris ut, tincidunt mollis lorem. Quisque euismod arcu et orci ullamcorper,
+                        eu
+                        volutpat lorem ornare. Praesent volutpat mauris porta ligula dignissim, id mattis nulla
+                        vestibulum.
+                        Nunc at posuere purus, eget laoreet nisi.
+                    </h5>
+                    <h5>
+                        Sed tempor, risus eget bibendum aliquam, quam metus iaculis nisi, vitae facilisis ante sapien
+                        vel
+                        risus. Sed vitae consectetur quam, et placerat mauris. Nullam vestibulum ligula quis lorem
+                        aliquam,
+                        ut vehicula odio congue. Nunc aliquet ipsum a mollis lobortis. Mauris quam nisi, hendrerit a
+                        rhoncus
+                        ut, laoreet id tortor. Vivamus et dolor eu lectus euismod vulputate. Nam et risus ac mi
+                        venenatis
+                        tincidunt. Quisque nisl arcu, dapibus ac efficitur at, efficitur eu augue. Phasellus interdum
+                        sapien
+                        nunc, a scelerisque purus rhoncus id. Quisque in sem mi. In pellentesque ac arcu quis viverra.
+                        Nunc
+                        in lacus eu sapien porttitor auctor. Ut malesuada, nisi vitae tempor iaculis, diam augue finibus
+                        magna, quis maximus lectus nisl nec lorem. Sed id ipsum nec odio suscipit dapibus quis et
+                        ligula.
+                        Morbi elementum, est rutrum pharetra laoreet, nibh lorem iaculis lorem, mollis varius urna
+                        tortor
+                        vitae sem.
+                    </h5>
+                </div>
+
+            </div>
+            <div class="right-content">
+                <app-content [data]="true"></app-content>
+            </div>
+        </div>
+        <app-comment [data]="movie"></app-comment>
+    </div>
+</ng-template>

@@ -1,0 +1,57 @@
+.contain {
+    width:100%;
+    height:auto;
+}
+
+div {
+    font-size: 14px !important;
+}
+
+.picture {
+    width: 100px !important;
+    height: 120px !important;
+}
+
+.filter {
+    width: 150px;
+    height: 30px;
+    font-size: 20px;
+    background: rgb(4, 44, 224);
+    padding: 15px;
+    color: rgb(238, 238, 238);
+}
+
+.number div {
+    color: rgb(0, 132, 255);
+    border: 1px solid rgb(212, 212, 212);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.number1 div {
+    color: rgb(0, 132, 255);
+    border: 1px solid rgb(212, 212, 212);
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.button {
+    background: transparent;
+}
+
+.frame {
+    width: 850px !important;
+    height: auto;
+}
+.genre {
+    width: 500px;
+    margin: 0 auto;
+}

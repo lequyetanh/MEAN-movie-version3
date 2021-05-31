@@ -1,0 +1,43 @@
+.addVideo {
+    color: #ff55a5;
+    cursor: pointer;
+    font-size: 16px !important;
+    margin-bottom: 30px;
+    width:100%;
+
+    .fas {
+        color: #0fd01f;
+    }
+
+    input, option, select,
+    textarea {
+        color: #d8d7c6;
+        padding: 14px 20px;
+        border: none;
+        outline: none;
+        background-color: #1d1d1e;
+        width: 90%;
+    }
+
+    .save {
+        padding: 10px;
+        background-color: #d00f39;
+        cursor: pointer;
+    }
+
+    .movie-containt {
+        width: 100%;
+    }
+
+    .item-data {
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 5px;
+    }
+}
+
+form {
+    width: 100%;
+}

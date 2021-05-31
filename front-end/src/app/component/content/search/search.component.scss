@@ -1,0 +1,102 @@
+@import './../../../../scss/movie.scss';
+
+.body-content {
+    width: 100%;
+    padding: 0 7%;
+
+    .left-content {
+        width: 75%;
+
+        .caption {
+            margin-top: 20px;
+            padding-left: 10px;
+            color: #ff55a5;
+
+            i {
+                margin-top: 4px;
+                vertical-align: center;
+            }
+
+            span {
+                text-transform: uppercase;
+            }
+        }
+
+        .phim-bo {
+            .movie-item {
+                width: 20%;
+                background-color: transparent;
+                padding: 20px 10px 0px;
+            }
+        }
+    }
+
+    .right-content {
+        width: 23%;
+        height: auto;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    .left-content {
+        width: 100% !important;
+    }
+
+    .right-content {
+        width: 100% !important;
+    }
+
+    .phim-bo {
+        .movie-item {
+            width: 50% !important;
+            padding: 20px 10px !important;
+
+            .image {
+                height: 200px !important;
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .left-content {
+        width: 100% !important;
+    }
+
+    .right-content {
+        width: 100% !important;
+    }
+
+    .phim-bo {
+        .movie-item {
+            width: 33% !important;
+            padding: 20px 10px !important;
+
+            .image {
+                height: 270px !important;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .left-content {
+        width: 65% !important;
+    }
+
+    .right-content {
+        width: 33% !important;
+    }
+
+    .phim-bo {
+        .movie-item {
+            width: 33.333% !important;
+            padding: 20px 10px !important;
+
+            .image {
+                height: 250px !important;
+            }
+        }
+    }
+}

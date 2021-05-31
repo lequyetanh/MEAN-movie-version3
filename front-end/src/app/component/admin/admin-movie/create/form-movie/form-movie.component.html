@@ -1,0 +1,29 @@
+<span class="addVideo" (click)="addVideo()">
+    Tập Phim
+    <i class="fas fa-plus"></i>
+</span>
+
+<form [formGroup]="videoForm" class="flexbox-start-start" >
+    <div class="marb-20" *ngFor="let listVideo of listVideo" style="width:30%">
+        <div class="item-data">
+            <label for="inputName">Link Video</label>
+            <input class="" type="text" formControlName="video" />
+        </div>
+    
+        <div class="item-data">
+            <label for="inputStatus">Episode</label>
+            <input class="" type="text" formControlName="episode" />
+        </div>
+    
+        <div class="item-data">
+            <label for="inputSubtitle">subtitle</label>
+            <select class="" (change)="updateSubtitle($event.target.value)" formControlName="subtitle">
+                <option *ngFor="let subtitle of subtitle" value="{{subtitle}}">
+                    {{subtitle}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="save" (click)="dataReturn()">Save</div>
+</form>

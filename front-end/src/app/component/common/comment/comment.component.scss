@@ -1,0 +1,627 @@
+.body-down {
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+    border-top: 2px solid #ff55a5;
+
+    .contain {
+        .title {
+            padding: 0 7%;
+            width: 100%;
+            height: 132px;
+            box-shadow: 0px 15px 15px rgba(17, 16, 16, 0.231);
+
+            .head-title {
+                padding: 21px 0;
+                height: 60%;
+            }
+
+            .body-title {
+                height: 40%;
+                font-size: 22px;
+                text-transform: uppercase;
+
+                .head-comment,
+                .head-review {
+                    height: 100%;
+                    margin-right: 20px;
+                    cursor: pointer;
+                }
+
+                .active {
+                    border-bottom: 7px solid #ff55a5;
+                }
+            }
+        }
+
+        .body {
+            width: 100%;
+            padding: 50px 7%;
+            height: auto;
+
+            .left-content {
+                width: 60%;
+
+                form {
+                    width: 100%;
+                    height: 267px;
+                    padding: 20px;
+                    background-color: rgba(0, 0, 0, 0.177);
+                    position: relative;
+
+                    .icon {
+                        position: absolute;
+                        right: 45px;
+                        top: 45px;
+                        color: #2462ce;
+                        border-radius: 50%;
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transform: translate(50%, -50%);
+                        cursor: pointer;
+
+                        .fa-smile {
+                            font-size: 18px;
+                        }
+
+                        &.active {
+                            border: 1px solid #2462ce;
+                        }
+
+                        .list-icon {
+                            position: absolute;
+                            top: -20px;
+                            right: 45px;
+                            width: 250px;
+                            height: 270px;
+                            z-index: 2;
+                        }
+                    }
+
+                    .form__textarea {
+                        border: none;
+                        outline: none;
+                        height: 150px;
+                        color: #fff;
+                        font-size: 15px;
+                        width: 100%;
+                        padding: 15px 20px;
+                        letter-spacing: .2px;
+                        resize: none;
+                        background-color: #2b2b31;
+                    }
+
+                    .form__btn {
+                        display: flex;
+                        outline: none;
+                        justify-content: center;
+                        align-items: center;
+                        height: 50px;
+                        width: 160px;
+                        -webkit-border-radius: 4px;
+                        border-radius: 4px;
+                        background-image: -moz-linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                        background-image: -webkit-linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                        background-image: -ms-linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                        background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                        -webkit-box-shadow: 0 0 20px 0 rgba(255, 88, 96, .5);
+                        box-shadow: 0 0 20px 0 rgba(255, 88, 96, .5);
+                        opacity: .85;
+                        font-size: 13px;
+                        color: #fff;
+                        text-transform: uppercase;
+                        font-weight: 500;
+                        letter-spacing: 1px;
+                        border: none;
+                    }
+                }
+
+                .head-comment {
+
+                    .avatar {
+                        width: 40px;
+                        height: 40px;
+
+                        img {
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .info {
+                        .user-name {
+                            font-size: 20px;
+                        }
+                    }
+                }
+
+                .body-comment {
+                    width: 100%;
+
+                    .contain-comment {
+                        .each-comment {
+                            margin-top: 20px;
+
+                            .head-comment {
+                                margin-bottom: 10px;
+
+                                .avatar {
+                                    width: 40px;
+                                    height: 40px;
+
+                                    img {
+                                        border-radius: 50%;
+                                    }
+                                }
+
+                                .info {
+                                    .user-name {
+                                        font-size: 20px;
+                                    }
+                                }
+                            }
+
+                            .body-comment {
+                                position: relative;
+                                width: 100%;
+                                line-height: 2;
+                                color: rgba(255, 255, 255, 0.776);
+
+                                .comment-item {
+                                    position: relative;
+                                    width: 100%;
+                                    padding: 20px;
+                                    line-height: 2;
+                                    color: rgba(255, 255, 255, 0.776);
+                                    background-color: rgba(0, 0, 0, 0.177);
+                                    margin-bottom: 20px;
+
+                                    .list-action {
+                                        position: absolute;
+                                        right: 0;
+                                        top: -45px;
+                                        width: 40%;
+                                        height: 50px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        animation: icon-action 0.2s ease-in;
+
+                                        @keyframes icon-action {
+                                            from {
+                                                top: 0;
+                                            }
+
+                                            to {
+                                                top: -45px;
+                                            }
+                                        }
+
+
+                                    }
+
+                                    .head-body-comment {
+                                        p {
+                                            background-color: #2b2b31;
+                                            width: 60%;
+                                            min-height: 50px;
+                                            padding: 10px;
+                                        }
+
+                                        .action {
+                                            width: 40%;
+                                        }
+                                    }
+
+                                    .body-body-comment {
+                                        // border:1px solid #d1d1d1;
+                                        padding: 20px 0 0;
+
+                                        .icon {
+
+                                            .fa-thumbs-up,
+                                            .fa-thumbs-down {
+                                                font-size: 20px;
+                                                cursor: pointer;
+
+                                            }
+
+                                            span {
+                                                margin-right: 20px;
+                                                color: #ff55a5;
+                                            }
+
+                                            .fa-thumbs-up:hover {
+                                                color: #2462ce;
+                                            }
+
+                                            .fa-thumbs-down:hover {
+                                                color: #e22030;
+                                            }
+
+                                            .fa-thumbs-up.active {
+                                                color: #2462ce;
+                                            }
+
+                                            .fa-thumbs-down.active {
+                                                color: #e22030;
+                                            }
+                                        }
+
+                                        .reply {
+                                            cursor: pointer;
+
+                                            .fa-share {
+                                                margin-right: 5px;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .reply-item {
+                                    position: relative;
+                                    width: 90%;
+                                    padding: 20px;
+                                    line-height: 2;
+                                    float: right;
+                                    color: rgba(255, 255, 255, 0.776);
+                                    background-color: rgba(0, 0, 0, 0.177);
+                                    margin-bottom: 20px;
+
+                                    .head-comment {
+                                        margin-bottom: 10px;
+                                        width: 33%;
+
+                                        .avatar {
+                                            width: 40px;
+                                            height: 40px;
+
+                                            img {
+                                                border-radius: 50%;
+                                            }
+                                        }
+
+                                        .info {
+                                            .user-name {
+                                                font-size: 20px;
+                                            }
+                                        }
+
+                                        .form__btn {
+                                            width: 80%;
+                                            margin: 20px 0px 0 0;
+                                            display: flex;
+                                            outline: none;
+                                            justify-content: center;
+                                            align-items: center;
+                                            height: 50px;
+                                            -webkit-border-radius: 4px;
+                                            border-radius: 4px;
+                                            background-image: -moz-linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                            background-image: -webkit-linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                            background-image: -ms-linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                            background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                            -webkit-box-shadow: 0 0 20px 0 rgba(255, 88, 96, .5);
+                                            box-shadow: 0 0 20px 0 rgba(255, 88, 96, .5);
+                                            opacity: .85;
+                                            font-size: 13px;
+                                            color: #fff;
+                                            text-transform: uppercase;
+                                            font-weight: 500;
+                                            letter-spacing: 1px;
+                                            border: none;
+                                        }
+                                    }
+
+                                    .list-action {
+                                        position: absolute;
+                                        right: 0;
+                                        top: -45px;
+                                        width: 45%;
+                                        height: 50px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        animation: icon-action 0.2s ease-in;
+
+                                        @keyframes icon-action {
+                                            from {
+                                                top: 0;
+                                            }
+
+                                            to {
+                                                top: -45px;
+                                            }
+                                        }
+                                    }
+
+                                    .head-body-comment {
+                                        width: 67%;
+                                        background-color: #2b2b31;
+
+                                        p {
+                                            min-height: 50px;
+                                            padding: 10px;
+                                        }
+
+                                        textarea {
+                                            border: none;
+                                            outline: none;
+                                            height: 112px;
+                                            color: #fff;
+                                            font-size: 15px;
+                                            width: 100%;
+                                            color: #fff;
+                                            padding: 10px;
+                                            letter-spacing: .2px;
+                                            resize: none;
+                                            background-color: #2b2b31;
+                                        }
+                                    }
+
+                                    .body-body-comment {
+                                        width: 100%;
+                                        padding: 20px 0 0;
+
+                                        .icon {
+                                            width: 30%;
+
+                                            .fa-thumbs-up,
+                                            .fa-thumbs-down {
+                                                font-size: 20px;
+                                                cursor: pointer;
+                                            }
+
+                                            span {
+                                                margin-right: 20px;
+                                                color: #ff55a5;
+                                            }
+
+                                            .fa-thumbs-up:hover {
+                                                color: #2462ce;
+                                            }
+
+                                            .fa-thumbs-down:hover {
+                                                color: #e22030;
+                                            }
+
+                                            .fa-thumbs-up.active {
+                                                color: #2462ce;
+                                            }
+
+                                            .fa-thumbs-down.active {
+                                                color: #e22030;
+                                            }
+                                        }
+
+                                        .action {
+                                            width: 30%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right-content {
+                width: 38%;
+
+                .body-movie {
+                    width: 100%;
+
+                    .movie-item {
+                        width: 50%;
+                        background-color: transparent;
+                        padding: 20px 16px;
+
+                        .play-center {
+                            display: none;
+                        }
+
+                        &:hover {
+                            .play-center {
+                                display: block;
+                            }
+
+                            .image {
+                                opacity: 0.8;
+                                box-shadow: 0px 0px 20px rgba(242, 67, 255, 0.524);
+                            }
+                        }
+
+                        .image {
+                            height: 310px;
+                            width: 100%;
+                            position: relative;
+
+                            &:hover {
+                                .background {
+                                    display: block;
+                                }
+
+                                span {
+                                    display: block;
+                                }
+                            }
+
+                            img {
+                                border-radius: 5px;
+                            }
+
+                            .current-status {
+                                position: absolute;
+                                color: aliceblue;
+                                font-size: 13px;
+                                left: 5px;
+                                top: 8px;
+                                background-color: #ea9b06;
+                                border-radius: 3px;
+                                padding: 0 5px;
+                                font-weight: 700;
+                            }
+
+                            .episode {
+                                position: absolute;
+                                bottom: 5px;
+                                right: 5px;
+                                font-size: 13px;
+                                color: aliceblue;
+                                border-radius: 3px;
+                                padding: 0 5px;
+                                background: #ff55a5;
+                                font-weight: 700;
+                            }
+
+                            .fa-play {
+                                position: absolute;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 60px;
+                                height: 60px;
+                                // border: 4px solid rgba(211, 197, 0, 0.721);;
+                                background-image: linear-gradient(90deg, #ff55a5 0, #ff5860 100%);
+                                -webkit-border-radius: 50%;
+                                border-radius: 50%;
+                                top: 50%;
+                                left: 50%;
+                                margin: -30px 0 0 -30px;
+                                z-index: 2;
+                                font-size: 30px;
+                                color: rgba(228, 228, 228, 0.667);
+                            }
+                        }
+
+                        .title-same-movie {
+                            width: 100%;
+                            margin-top: 10px;
+                            overflow: hidden;
+
+                            .name {
+                                font-weight: 700;
+                                color: #d1d1d1;
+                                font-size: 20px;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                            }
+
+                            .eng-name {
+                                font-size: 18px;
+                                color: rgb(211, 197, 0);
+                                font-weight: 400;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    .head-title {
+        font-size: 25px !important
+    }
+
+    .title {
+        padding: 0 5% !important;
+    }
+
+    .body {
+        padding: 50px 5% !important;
+    }
+
+    .left-content {
+        width: 100% !important;
+
+        .user {
+            display: none !important;
+        }
+    }
+
+    .right-content {
+        width: 100% !important;
+    }
+
+    .movie-item {
+        width: 50% !important;
+        padding: 20px 5px !important;
+
+        .image {
+            height: 250px !important;
+        }
+    }
+
+    .each-comment {
+        .reply-item {
+            .head-comment {
+                width: 100% !important;
+            }
+
+        }
+    }
+
+    .head-body-comment {
+        width: 100% !important;
+
+        p {
+            width: 100% !important;
+        }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .title {
+        padding: 0 5% !important;
+    }
+
+    .body {
+        padding: 50px 5% !important;
+    }
+
+    .left-content {
+        width: 100% !important;
+    }
+
+    .right-content {
+        width: 100% !important;
+    }
+
+    .movie-item {
+        width: 33.3333333% !important;
+        padding: 20px 10px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .title {
+        padding: 0 5% !important;
+    }
+
+    .body {
+        padding: 50px 5% !important;
+    }
+
+    .left-content {
+        width: 50% !important;
+    }
+
+    .right-content {
+        width: 50% !important;
+    }
+
+    .movie-item {
+        .image {
+            height: 280px !important;
+        }
+    }
+}

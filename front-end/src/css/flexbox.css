@@ -1,0 +1,98 @@
+/*=============================================================flexbox============================================================*/
+.flexbox-center-center{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:center !important;
+	justify-content:center !important;
+}
+
+.flexbox-center-between{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:center !important;
+	justify-content:space-between !important;
+}
+
+.flexbox-between-center{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:space-between !important;
+	justify-content:center !important;
+}
+
+.flexbox-between-start{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:space-between !important;
+	justify-content:flex-start !important;
+}
+
+.flexbox-start-between{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:flex-start !important;
+	justify-content:space-between !important;
+}
+
+.flexbox-center-start{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:center !important;
+	justify-content:flex-start !important;
+}
+
+.flexbox-start-start{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:flex-start !important;
+	justify-content:flex-start !important;
+}
+
+.flexbox-start-center{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:flex-start !important;
+	justify-content:center !important;
+}
+
+.flexbox-center-around{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:center !important;
+	justify-content:space-around !important;
+}
+
+.flexbox-end-between{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:flex-end !important;
+	justify-content:space-between !important;
+}
+
+.flexbox-center-end{
+	display:flex !important;
+	flex-wrap:wrap !important;
+	align-items:center !important;
+	justify-content:flex-end !important;
+}
+
+.flexbox-bottom-start{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+}
+
+.flexbox-around-center{
+  display:flex !important;
+  flex-direction: column;
+  flex-wrap:wrap !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+}
+
+.flexbox-start-end{
+  display:flex !important;
+  align-items: flex-start;
+  justify-content: flex-end;
+}

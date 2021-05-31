@@ -1,0 +1,55 @@
+├───resources -> Chứa các tài nguyên cho việc generate các platform khác (ios, android,...)
+├───src
+│   ├───app
+│   │       app.module.ts     -> Cấu hình ban đầu của app (Component, Service, providers,...)
+│   │       app.component.ts  -> Giống như root page (index.html), nơi điều hướng tới các page khác
+│   │       app.scss          -> Các file có đuôi .scss là để code css cho chức năng của chính nó (trong trường hợp này là app)
+│   │       app.template.html -> Các file có đuôi .html là để code html cho chức năng của chính nó (trong trường hợp này là app)
+│   │
+│   ├───assets -> Chứa các file images,...
+│   │
+│   ├───core -> Các thành phần chủ yếu của hệ thống
+│   │   │   constants.ts -> Hằng số tên biến,...
+│   │   │
+│   │   ├───providers
+│   │   │   │   auth-http.ts     -> Định nghĩa lại http service dựa trên JWT (tự gắn token vào header)
+│   │   │   │   base.provider.ts -> Lớp provider chung, dùng để kế thừa (ErrorHandle)
+│   │   │   │   index.ts         -> Tổng hợp các provider để đỡ khai báo trong app.module.ts
+│   │   │   │
+│   │   │   └───auth
+│   │   │           auth.provider.ts -> Tạo các kết nối Authenticate để lấy/lưu token vào hệ thống
+│   │   │
+│   │   └───services
+│   │           auth.service.ts -> Store Auth Service khai báo các phương thức tiếp xúc với store
+│   │           index.ts        -> Tổng hợp các store service để đỡ khai báo trong app.module.ts
+│   │
+│   ├───pages    -> Chứa các page của hệ thống
+│   │   ├───home -> Trang chủ
+│   │   │       home.html
+│   │   │       home.scss
+│   │   │       home.ts -> Các file .ts này sẽ là nơi xử lý mọi thứ của trang
+│   │   │
+│   │   └───login -> Đăng nhập
+│   │           login.html
+│   │           login.scss
+│   │           login.ts
+│   │
+│   ├───store
+│   │   ├───actions -> Action
+│   │   │       auth.action.ts -> Khai báo action cho auth state
+│   │   │       index.ts       -> Tổng hợp các action để đỡ khai báo trong app.module.ts
+│   │   │
+│   │   ├───effects -> MiddleWare
+│   │   │       auth.effect.ts -> Khai báo MiddleWare cho auth action
+│   │   │       index.ts       -> Tổng hợp các MiddleWare để đỡ khai báo trong app.module.ts
+│   │   │
+│   │   ├───reducers -> Khai báo store và các action tương ứng
+│   │   │   │   index.ts -> Cấu hình store, ở đây mình có dùng thêm ngrx-store-logger để tiện theo dõi khi dev
+│   │   │   │
+│   │   │   └───auth
+│   │   │           auth.reducer.ts -> Định nghĩa các action tương tác với auth state
+│   │   │           auth.state.ts   -> Định nghĩa auth state ban đầu
+│   │   │
+│   │   └───selectors -> Rất hữu ích, các selector cho mình biết khi nào store được thay đổi (Observable)
+│   │           auth.selector.ts -> Định nghĩa selector cho Auth
+│   │           index.ts         -> Tổng hợp các selector để đỡ khai báo trong app.module.ts

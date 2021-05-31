@@ -1,0 +1,93 @@
+<div class="wrapp">
+    <div class="emoji--fixed emoji--fixed--like" *ngIf="data.icon.like.length > 0">
+        <div class="emoji--fixed__hand">
+            <div class="emoji--fixed__thumb"></div>
+        </div>
+        <div class="list-user-action">
+            <div class="user" *ngFor="let user of data.icon.like">
+                {{user}}
+            </div>
+        </div>
+    </div>
+    <div class="index" *ngIf="data.icon.like.length > 0">{{data.icon.like.length}}</div>
+
+    <div class="emoji--fixed emoji--fixed--love" *ngIf="data.icon.love.length> 0">
+        <div class="emoji--fixed__heart"></div>
+        <div class="list-user-action">
+            <div class="user" *ngFor="let user of data.icon.love">
+                {{user}}
+            </div>
+        </div>
+    </div>
+    <div class="index" *ngIf="data.icon.love.length> 0">{{data.icon.love.length}}</div>
+
+    <div class="emoji--fixed emoji--fixed--haha" *ngIf="data.icon.haha.length > 0">
+        <div class="emoji--fixed__face">
+            <div class="emoji--fixed__eyes"></div>
+            <div class="emoji--fixed__mouth">
+                <div class="emoji--fixed__tongue"></div>
+            </div>
+        </div>
+        <div class="list-user-action">
+            <div class="user" *ngFor="let user of data.icon.haha">
+                {{user}}
+            </div>
+        </div>
+    </div>
+    <div class="index" *ngIf="data.icon.haha.length > 0">{{data.icon.haha.length}}</div>
+
+    <div class="emoji--fixed emoji--fixed--yay" *ngIf="data.icon.yay.length > 0">
+        <div class="emoji--fixed__face">
+            <div class="emoji--fixed__eyebrows"></div>
+            <div class="emoji--fixed__mouth"></div>
+        </div>
+        <div class="list-user-action">
+            <div class="user" *ngFor="let user of data.icon.yay">
+                {{user}}
+            </div>
+        </div>
+    </div>
+    <div class="index" *ngIf="data.icon.yay.length > 0">{{data.icon.yay.length}}</div>
+
+    <div class="emoji--fixed emoji--fixed--wow" *ngIf="data.icon.wow.length > 0">
+        <div class="emoji--fixed__face">
+            <div class="emoji--fixed__eyebrows"></div>
+            <div class="emoji--fixed__eyes"></div>
+            <div class="emoji--fixed__mouth"></div>
+        </div>
+        <div class="list-user-action">
+            <div class="user" *ngFor="let user of data.icon.wow">
+                {{user}}
+            </div>
+        </div>
+    </div>
+    <div class="index" *ngIf="data.icon.wow.length > 0">{{data.icon.wow.length}}</div>
+
+    <div class="emoji--fixed emoji--fixed--sad" *ngIf="data.icon.sad.length > 0">
+        <div class="emoji--fixed__face">
+            <div class="emoji--fixed__eyebrows"></div>
+            <div class="emoji--fixed__eyes"></div>
+            <div class="emoji--fixed__mouth"></div>
+        </div>
+        <div class="list-user-action">
+            <div class="user" *ngFor="let user of data.icon.sad">
+                {{user}}
+            </div>
+        </div>
+    </div>
+    <div class="index" *ngIf="data.icon.sad.length > 0">{{data.icon.sad.length}}</div>
+    
+    <div class="emoji--fixed emoji--fixed--angry" *ngIf="data.icon.angry.length > 0">
+        <div class="emoji--fixed__face">
+            <div class="emoji--fixed__eyebrows"></div>
+            <div class="emoji--fixed__eyes"></div>
+            <div class="emoji--fixed__mouth"></div>
+        </div>
+        <div class="list-user-action">
+            <div class="user" *ngFor="let user of data.icon.angry">
+                {{user}}
+            </div>
+        </div>
+    </div>
+    <div class="index" *ngIf="data.icon.angry.length > 0">{{data.icon.angry.length}}</div>
+</div>

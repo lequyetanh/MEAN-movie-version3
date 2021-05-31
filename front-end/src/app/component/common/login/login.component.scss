@@ -1,0 +1,195 @@
+@import './../../../../assets/scss/palette.scss';
+
+svg {
+    fill: #fff;
+    width: 1em;
+    vertical-align: sub;
+    margin-right: 10px; 
+    height: 24px;
+    width: 24px;
+    margin: 0 10px 0 -6px;
+}
+
+.signup {
+    padding: 10px 20px;
+    background-color: #10bb00;
+    border-radius: 5px;
+    color: #e9ecee;
+}
+
+.fullscreen {
+    object-fit: contain;
+    position: fixed !important;
+    top: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    box-sizing: border-box !important;
+    min-width: 0px !important;
+    max-width: none !important;
+    min-height: 700px !important;
+    max-height: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    margin: 0px !important;
+    background-color: #000000c1;
+    z-index: 10;
+
+    .cancel{
+        position:absolute;
+        top:60px;
+        right:450px;
+        color:#e9ecee;
+        background-image: linear-gradient(90deg,#ff55a5 0,#ff5860 100%);
+        padding:10px 20px;
+        border-radius:10px;
+        cursor:pointer;
+    }
+
+    .login {
+        width: 27%;
+        height: 648px;
+        border-radius: 10px;
+        background-color: #28282d;
+        padding: 50px 60px;
+        box-shadow: 0 0px 25px 0 #ff55a4c9;
+        border: 3px solid #ff55a4cf;
+
+        .image {
+            width: 50%;
+            height: auto;
+        }
+
+        form {
+            margin-top: 20px;
+
+            .invalid_feedback{
+                color:#f30f5b;
+                font-size:14px;
+                width:100%;
+            }
+
+            .input {
+                width: 100%;
+                height: 50px;
+                margin-bottom: 10px;
+                padding: 0 20px;
+                font-size: 15px;
+                color: #fff;
+                letter-spacing: .2px;
+                background-color: #2b2b31;
+                border: none;
+                outline: none;
+            }
+
+            label {
+                margin: 15px 0;
+
+                input {
+                    width: 20px;
+                    height: 20px;
+                    background-color: #2b2b31;
+                    color: #ff55a5;
+                }
+            }
+
+            .btn-social-submit {
+                margin:20px auto;
+                width: 100%;
+                height: 50px;
+                background-image: linear-gradient(90deg,#ff55a5 0,#ff5860 100%);
+                border-radius: 4px;
+                color: rgb(255, 255, 255);
+                border: none;
+                outline: none;
+            }
+        }
+
+        .social {
+            width: 100%;
+
+            .btn-social {
+                margin: 5px 0 5px 0;
+                width: 80%;
+                height: 40px;
+                border: none;
+                background: transparent;
+                outline: none;
+            }
+
+            .btn-twitter {
+                background-color: #209cee;
+                color: $white;
+            }
+
+            .btn-facebook {
+                background-color: #243fc2;
+                color: $white;
+            }
+
+            .btn-google {
+                background-color: rgb(206, 32, 32);
+                color: $white;
+            }
+        }
+
+        .wrapp-signin{
+            .signin{
+                color: #ff55a5 !important;
+            }
+            a{
+                color: #ff55a5 !important;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 575.98px) {
+    .cancel{
+        position:absolute;
+        top:35px !important;
+        right:23px !important;
+        padding:10px 10px !important;
+        border-radius:5px !important;
+    }
+
+    .login {
+        width: 90% !important;
+        height: 85vh !important;
+        padding: 20px 20px !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .cancel{
+        position:absolute;
+        top:35px !important;
+        right:123px !important;
+        padding:10px 10px !important;
+        border-radius:5px !important;
+    }
+
+    .login {
+        width: 50% !important;
+        height: 50vh !important;
+        padding: 20px 20px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .cancel{
+        position:absolute;
+        top:35px !important;
+        right:123px !important;
+        padding:10px 10px !important;
+        border-radius:5px !important;
+    }
+
+    .login {
+        width: 35% !important;
+        height: 50vh !important;
+        padding: 20px 20px !important;
+    }
+}

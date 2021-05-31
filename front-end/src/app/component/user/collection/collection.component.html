@@ -1,0 +1,46 @@
+<div class="container mart-20" *ngIf="user">
+    <h1 style="text-align: center;">Danh sách phim của bạn</h1>
+    <h4 class="caption flexbox-center-between">
+        <span><i class="fa fa-plus-square marr-5 fs-19"></i>Các Phim Đã Thích</span>
+    </h4>
+    <div class="phim-bo flexbox-start-start">
+        <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of user.favorite">
+            <div class="image">
+                <img alt="" src="{{movie.name_image}}">
+                <div class="play-center">
+                    <i class="fa fa-play" matTooltip="Play"></i>
+                </div>
+                <label class="current-status">{{movie.status}}</label>
+                <span class="episode">{{movie.run_time}} Phút</span>
+            </div>
+            <div class="title">
+                <h3 class="name">{{movie.name}}</h3>
+                <p class="eng-name">{{movie.real_name}}</p>
+                <button type="button" class="btn btn-danger" (click)="removeFavorite(movie, $event)">Delete</button>
+            </div>
+        </a>
+    </div>
+    <h4 class="caption flexbox-center-between">
+        <span><i class="fa fa-plus-square marr-5 fs-19"></i>Watch Later</span>
+    </h4>
+    <div class="phim-bo flexbox-start-start">
+        <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of user.watchLater">
+            <div class="image">
+                <img alt="" src="{{movie.name_image}}">
+                <div class="play-center">
+                    <i class="fa fa-play" matTooltip="Play"></i>
+                </div>
+                <label class="current-status">{{movie.status}}</label>
+                <span class="episode">{{movie.run_time}} Phút</span>
+            </div>
+            <div class="title">
+                <h3 class="name">{{movie.name}}</h3>
+                <p class="eng-name">{{movie.real_name}}</p>
+                <button type="button" class="btn btn-danger" (click)="removeWatchLater(movie, $event)">Delete</button>
+            </div>
+        </a>
+    </div>
+</div>
+<!-- <div class="form-alert" *ngIf="statusFormMessenger">
+    {{messenger}}
+</div> -->

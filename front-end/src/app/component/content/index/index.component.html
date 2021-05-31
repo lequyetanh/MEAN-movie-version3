@@ -1,0 +1,149 @@
+<div class="" *ngIf="statusLoading == false">
+    <app-cover></app-cover>
+</div>
+<!-- <ng-template #done> -->
+    <div [class.loaded]="!statusLoading">
+        <app-slide-movie (keySlideMovie)="handleData($event)"></app-slide-movie>
+
+        <div class="content">
+            <div class="category flexbox-center-between">
+                <div class="category-wrap flexbox-center-start">
+                    <div class="phim-chieu-rap" (click)="changeStatusMovie($event)"
+                        [class.active]="statusMovie == 'phim chiếu rạp'">Phim Chiếu Rạp</div>
+                    <div class="phim-le" (click)="changeStatusMovie($event)" [class.active]="statusMovie == 'phim bộ'">Phim Bộ</div>
+                    <div class="phim-bo" (click)="changeStatusMovie($event)" [class.active]="statusMovie == 'phim lẻ'">Phim Lẻ</div>
+                </div>
+                <a routerLink="/filter" class="filter flexbox-center-center">
+                    <h5>Lọc Phim</h5>
+                </a>
+            </div>
+            <div class="movie">
+                <div class="phim-chieu-rap flexbox-start-start" *ngIf="statusMovie == 'phim chiếu rạp'">
+                    <div class="movie-frame flexbox-start-start" *ngFor="let movie of movieChieuRap">
+                        <a routerLink="/detailmovie/{{movie.id}}" class="movie-item">
+                            <div class="image">
+                                <img alt="" src="{{movie.name_image}}">
+                                <div class="play-center">
+                                    <i class="fa fa-play" matTooltip="Play"></i>
+                                </div>
+                                <label class="current-status">{{movie.status}}</label>
+                                <span class="episode">{{movie.run_time}} Phút</span>
+                            </div>
+                        </a>
+                        <div class="title">
+                            <h3 class="name">{{movie.name}}</h3>
+                            <p class="eng-name">{{movie.real_name}}</p>
+                            <div class="flexbox-start-start">
+                                <p class="genre" *ngFor="let genre of movie.genre">
+                                    <span> {{ genre }}, </span>
+                                </p>
+                            </div>
+
+                            <div class="flexbox-start-start">
+                                <p class="country" *ngFor="let country of movie.country">
+                                    <span>{{country}}, </span>
+                                </p>
+                            </div>
+
+                            <span class="imdb">IMDb: {{movie.IMDb}}</span>
+                            <p class="content-movie">{{movie.content}}...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="phim-bo flexbox-start-start" *ngIf="statusMovie == 'phim bộ'">
+                    <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of movieBo">
+                        <div class="image">
+
+                            <img alt="" src="{{movie.name_image}}">
+
+
+                            <div class="play-center">
+                                <i class="fa fa-play" matTooltip="Play"></i>
+                            </div>
+                            <label class="current-status">{{movie.status}}</label>
+                            <span class="episode">{{movie.movie[movie.movie.length-1].episode}} Tập</span>
+                        </div>
+                        <div class="title">
+                            <h3 class="name">{{movie.name}}</h3>
+                            <p class="eng-name">{{movie.real_name}}</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="phim-bo flexbox-start-start" *ngIf="statusMovie == 'phim lẻ'">
+                    <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of movieLe">
+                        <div class="image">
+
+                            <img alt="" src="{{movie.name_image}}">
+
+
+                            <div class="play-center">
+                                <i class="fa fa-play" matTooltip="Play"></i>
+                            </div>
+                            <label class="current-status">{{movie.status}}</label>
+                            <span class="episode">{{movie.run_time}} Phút</span>
+                        </div>
+                        <div class="title">
+                            <h3 class="name">{{movie.name}}</h3>
+                            <p class="eng-name">{{movie.real_name}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-content">
+            <h1 class="head-body flexbox-center-start">
+                <span>Phim Hoạt Hình</span>
+            </h1>
+            <div class="movie">
+                <div class="phim-bo flexbox-start-start">
+                    <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of movieHoatHinh">
+                        <div class="image">
+
+                            <img alt="" src="{{movie.name_image}}">
+
+
+                            <div class="play-center">
+                                <i class="fa fa-play" matTooltip="Play"></i>
+                            </div>
+                            <label class="current-status">{{movie.status}}</label>
+                            <span class="episode">{{movie.run_time}} Phút</span>
+                        </div>
+                        <div class="title">
+                            <h3 class="name">{{movie.name}}</h3>
+                            <p class="eng-name">{{movie.real_name}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-content">
+            <h1 class="head-body flexbox-center-start">
+                <span>Phim Mới Cập Nhật</span>
+            </h1>
+            <div class="movie">
+                <div class="phim-bo flexbox-start-start">
+                    <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of movieRecent">
+                        <div class="image">
+
+                            <img alt="" src="{{movie.name_image}}">
+
+
+                            <div class="play-center">
+                                <i class="fa fa-play" matTooltip="Play"></i>
+                            </div>
+                            <label class="current-status">{{movie.status}}</label>
+                            <span class="episode">{{movie.run_time}} Phút</span>
+                        </div>
+                        <div class="title">
+                            <h3 class="name">{{movie.name}}</h3>
+                            <p class="eng-name">{{movie.real_name}}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- </ng-template> -->

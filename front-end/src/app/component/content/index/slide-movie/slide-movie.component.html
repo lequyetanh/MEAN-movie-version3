@@ -1,0 +1,175 @@
+<div class="background-cover">
+    <div class="slide" [ngStyle]="{'background-image':'url(' + background+ ')'}">
+        <div class="slide-container">
+            <div class="slide-header flexbox-center-between">
+                <h1>Phim Đề Cử</h1>
+                <div class="button">
+                    <i class="fas fa-arrow-left" id="btn-prev" (click)="rightToLeft()"></i>
+                    <i class="fas fa-arrow-right" id="btn-next" (click)="leftToRight()"></i>
+                </div>
+            </div>
+            <div class="slide-content flexbox-center-between">
+                <div class="khoi-slide">
+                    <div class="cac-slide">
+                        <div class="slide-item slide-active flexbox-center-start">
+                            <div routerLink="/detailmovie/{{movie.id}}" class="movie-item"
+                                *ngFor="let movie of listMovie[3]">
+                                <div class="image">
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <span class="episode">{{movie.run_time}} Phút</span>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name">{{movie.name}}</h3>
+                                    <p class="eng-name">{{movie.real_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item flexbox-center-start">
+                            <div routerLink="/detailmovie/{{movie.id}}" class="movie-item"
+                                *ngFor="let movie of listMovie[1]">
+                                <div class="image">
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <span class="episode">{{movie.run_time}} Phút</span>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name">{{movie.name}}</h3>
+                                    <p class="eng-name">{{movie.real_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item flexbox-center-start">
+                            <div routerLink="/detailmovie/{{movie.id}}" class="movie-item"
+                                *ngFor="let movie of listMovie[2]">
+                                <div class="image">
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <span class="episode">{{movie.run_time}} Phút</span>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name">{{movie.name}}</h3>
+                                    <p class="eng-name">{{movie.real_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item flexbox-center-start">
+                            <div routerLink="/detailmovie/{{movie.id}}" class="movie-item"
+                                *ngFor="let movie of listMovie[0]">
+                                <div class="image">
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <span class="episode">{{movie.run_time}} Phút</span>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name">{{movie.name}}</h3>
+                                    <p class="eng-name">{{movie.real_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item flexbox-center-start">
+                            <div routerLink="/detailmovie/{{movie.id}}" class="movie-item"
+                                *ngFor="let movie of listMovie[4]">
+                                <div class="image">
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <span class="episode">{{movie.run_time}} Phút</span>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name">{{movie.name}}</h3>
+                                    <p class="eng-name">{{movie.real_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item flexbox-center-start">
+                            <div routerLink="/detailmovie/{{movie.id}}" class="movie-item"
+                                *ngFor="let movie of listMovie[5]">
+                                <div class="image">
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <span class="episode">{{movie.run_time}} Phút</span>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name">{{movie.name}}</h3>
+                                    <p class="eng-name">{{movie.real_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item flexbox-center-start">
+                            <div routerLink="/detailmovie/{{movie.id}}" class="movie-item"
+                                *ngFor="let movie of listMovie[6]">
+                                <div class="image">
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <span class="episode">{{movie.run_time}} Phút</span>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name">{{movie.name}}</h3>
+                                    <p class="eng-name">{{movie.real_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item flexbox-center-start">
+                            <div routerLink="/detailmovie/{{movie.id}}" class="movie-item"
+                                *ngFor="let movie of listMovie[7]">
+                                <div class="image">
+                                    <img alt="" src="{{movie.name_image}}">
+
+                                    <div class="play-center">
+                                        <i class="fa fa-play" matTooltip="Play"></i>
+                                    </div>
+                                    <label class="current-status">{{movie.status}}</label>
+                                    <span class="episode">{{movie.run_time}} Phút</span>
+                                </div>
+                                <div class="content">
+                                    <h3 class="name">{{movie.name}}</h3>
+                                    <p class="eng-name">{{movie.real_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer float-r">
+                <ul class="flexbox-center-between">
+                    <li (click)="clickButton($event)" class="round" [class.active_nut]="active_nut == '0'">0</li>
+                    <li (click)="clickButton($event)" class="round" [class.active_nut]="active_nut == '1'">1</li>
+                    <li (click)="clickButton($event)" class="round" [class.active_nut]="active_nut == '2'">2</li>
+                    <li (click)="clickButton($event)" class="round" [class.active_nut]="active_nut == '3'">3</li>
+                    <li (click)="clickButton($event)" class="round" [class.active_nut]="active_nut == '4'">4</li>
+                    <li (click)="clickButton($event)" class="round" [class.active_nut]="active_nut == '5'">5</li>
+                    <li (click)="clickButton($event)" class="round" [class.active_nut]="active_nut == '6'">6</li>
+                    <li (click)="clickButton($event)" class="round" [class.active_nut]="active_nut == '7'">7</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

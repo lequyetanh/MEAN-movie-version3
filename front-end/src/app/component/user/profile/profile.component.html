@@ -1,0 +1,52 @@
+<app-alert [data]="{type: 'success', message: messenger}" *ngIf="success"></app-alert>
+
+<div class="" *ngIf="user">
+    <h1>Hồ Sơ: {{user.name}}</h1>
+    <div class="contain profile-container flexbox-start-between">
+        <div class="sidebar">
+            <div class="profile flexbox-center-start">
+                <span>
+                    <img src="{{avatar}}">
+                    <div class="update flexbox-center-center">
+                        <form class="flexbox-center-center">
+                            <div>
+                                <input type="file" name="image" (change)="selectImage($event)" />
+                            </div>
+                            <br>
+                            <div *ngIf="status">
+                                <button type="submit" (click)="onSubmit()" mat-raised-button
+                                    color="primary">Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </span>
+                <div style="padding-left: 15px;">
+                    <p>Hello,</p>
+                    <h3 style="margin: 0">{{user.name}}</h3>
+                </div>
+            </div>
+            <h3 class="">Email: {{user.email}}</h3>
+            <h6 class="">Password: {{user.password}}</h6>
+        </div>
+        <div class="form-user">
+            <div class="form">
+                <h5>Thay Đổi Mật Khẩu</h5>
+                <form [formGroup]="inforUser" (ngSubmit)="changePassword()" class="flexbox-center-between">
+                    <div class="item-data">
+                        <label for="oldPassword">Mật Khẩu Cũ</label>
+                        <input class="" type="text" formControlName="oldPassword" />
+                    </div>
+                    <div class="item-data">
+                        <label for="newPassword">Mật Khẩu Mới</label>
+                        <input class="" type="text" formControlName="newPassword" />
+                    </div>
+                    <div class="item-data">
+                        <label for="confirmPassword">Xác Nhận Mật Khẩu Mới</label>
+                        <input class="" type="text" formControlName="confirmPassword" />
+                    </div>
+                    <button type="submit" class="form__btn">Xác Nhận</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="flexbox-center-end" *ngIf="pager.totalPages > 1">
+    <!-- <div class="flexbox-start-start mart-30">
+        <div class="previous" (click)="previousPage(pager.currentPage-1)"><i class="fas fa-arrow-left"></i>Trang Trước
+        </div>
+        <div class="next" (click)="nextPage(pager.currentPage+1)">Trang Sau<i class="fas fa-arrow-right"></i></div>
+    </div> -->
+    <div class="mart-30">
+        <div class="blackcolor">
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li class="border page-item" [hidden]="pager.currentPage < 4 || pager.totalPages<=5">
+                    <a class="page-link" (click)="setPage(1)">1</a>
+                </li>
+                <li class="border page-item" *ngIf="pager.currentPage>3 && pager.totalPages>5">
+                    <a class="page-link noactive">
+                        ...
+                    </a>
+                </li>
+                <li class="border page-item" *ngFor="let page of pager.pages"
+                    [ngClass]="{active:pager.currentPage === page}">
+                    <a class="page-link" (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li class="border page-item" *ngIf="pager.currentPage + 2 < pager.totalPages && pager.totalPages>5">
+                    <a class="page-link noactive">
+                        ...
+                    </a>
+                </li>
+                <li class="border page-item"
+                    [hidden]="pager.currentPage + 2 >= pager.totalPages || pager.totalPages<=5">
+                    <a class="page-link" (click)="setPage(pager.totalPages)">{{pager.totalPages}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

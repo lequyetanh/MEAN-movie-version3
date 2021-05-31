@@ -1,0 +1,26 @@
+<div class="alert-login flexbox-center-center" *ngIf="data.type == 'select' || data.type == 'confirm'">
+    <div class="form">
+        <div class="alert flexbox-center-center">
+            <i class="fas fa-exclamation"></i>
+        </div>
+        <h3 class="title">Trang Web Cho biết!!</h3>
+        <h5 class="content">{{data.message}}</h5>
+        <div class="bt" *ngIf="data.type == 'select'">
+            <button class="yes" (click)="yes()">Ok</button>
+            <button class="no" (click)="no()">No</button>
+        </div>
+        <div class="bt" *ngIf="data.type == 'confirm'">
+            <button class="yes" (click)="yes()">Ok</button>
+        </div>
+    </div>
+</div>
+
+<div class="alert-success" *ngIf="data.type == 'success'">
+    {{data.message}}
+</div>
+
+<div class="alert-fail flexbox-start-center" *ngIf="data.type == 'fail'">
+    <div class="form">
+        {{data.message}}
+    </div>
+</div>
