@@ -1,15 +1,17 @@
 <div class="" *ngIf="!statusMovie; else nomovie">
     <app-cover></app-cover>
 </div>
+
+<!-- <div class="">{{movies.length}}</div> -->
 <ng-template #nomovie>
 
-    <div class="body-content flexbox-start-between" *ngIf="statusMovie == true">
-        <div class="left-content">
+    <div class="body-content flexbox-start-between">
+        <div class="left-content" *ngIf="statusMovie == true">
             <div class="">
                 <h4 class="caption">
                     <h3 class="flexbox-center-start">
                         <i class="fa fa-plus-square marr-5 fs-19"></i>
-                        <span>Kết Quả Tìm Kiếm Cho: "{{type }}"</span>
+                        <span>Kết Quả Tìm Kiếm Cho "{{type }}": {{listMovie.length}} Found</span>
                     </h3>
                 </h4>
 

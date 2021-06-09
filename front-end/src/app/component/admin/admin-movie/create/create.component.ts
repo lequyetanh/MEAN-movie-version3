@@ -1,10 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { Movie } from '../../../../../movieModel/movieModel';
 import { DataService } from '../../../../service/data.service';
-import { AuthService } from '../../../../service/auth.service';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ActivatedRoute, Router, Params, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder, FormArray, Validators } from "@angular/forms";
 @Component({
     selector: 'app-create',
@@ -33,7 +29,6 @@ export class CreateComponent implements OnInit {
 
     constructor(
         private dataService: DataService,
-        private authService: AuthService,
         public fb: FormBuilder,
         private router: Router,
         private ngZone: NgZone,

@@ -1,19 +1,11 @@
-import { Component, HostListener, OnInit, ChangeDetectorRef, OnDestroy, ViewChild } from '@angular/core';
-import { MediaMatcher } from '@angular/cdk/layout';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { NgZone } from '@angular/core';
+import { Component, HostListener, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { DataService } from '../../service/data.service';
-import { ReduxService } from '../../service/redux.service';
+import { StateService } from '../../service/state.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { MovieService } from '../../service/movie.service';
-import * as $ from 'jquery';
 
 @Component({
     selector: 'app-header',
@@ -46,50 +38,20 @@ export class HeaderComponent implements OnInit {
 
     constructor(
         private changeDetectorRef: ChangeDetectorRef,
-        private ngZone: NgZone,
         public db: AngularFirestore,
         public dataService: DataService,
-        public reduxService: ReduxService,
+        public stateService: StateService,
         public authService: AuthService,
-        private afAuth: AngularFireAuth,
-        private afs: AngularFirestore,
         private router: Router,
-        private snackbar: MatSnackBar,
         public translateService: TranslateService,
-        private media: MediaMatcher,
         private movieService: MovieService,
     ) {
-        this.getAllMovie();
-        this.dataService.getUser().subscribe((loggedIn) => {
-            // console.log(loggedIn);
-            if (loggedIn['loggedIn']) {
-                this.userName = loggedIn['loggedIn'];
-                this.avatar = loggedIn['user'].avatar;
-            }
-        });
 
-        this.authService.loggedIn.subscribe(loggedIn => {
-            if (loggedIn) {
-                this.avatar = loggedIn;
-                // alert('Avatar Updated Successfully!')
-            }
-        });
-
-        this.reduxService.formSearch.subscribe(formSearch => {
-            this.toggleForm = formSearch;
-            console.log(formSearch)
-        });
-        this.reduxService.accountLogined.subscribe(statusFormUser => {
-            this.statusFormUser = statusFormUser;
-        });
-
-        this.get10Moviele();
     }
 
     get10Moviele(): void {
         this.movieService.get10Moviele().subscribe(movie => {
             this.phimle = movie;
-
         })
     }
 
@@ -107,7 +69,7 @@ export class HeaderComponent implements OnInit {
         this.toggle = true;
         this.listMovie = this.movies;
 
-        this.reduxService.formSearch.next(true);
+        this.stateService.formSearch.next(true);
         console.log(this.toggleForm)
     }
 
@@ -145,6 +107,7 @@ export class HeaderComponent implements OnInit {
     getAllMovie(): void {
         this.movieService.getAllMovie().subscribe(movie => {
             this.movies = movie;
+            this.stateService.updateAllMovie(movie);
             // console.log("done")
         })
     }
@@ -156,13 +119,41 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.dataService.getUser().subscribe((loggedIn) => {
+            // console.log(loggedIn);
+            if (loggedIn['loggedIn']) {
+                this.userName = loggedIn['loggedIn'];
+                this.avatar = loggedIn['user'].avatar;
+                this.stateService.user = loggedIn['user'];
+                this.stateService.userName = loggedIn['loggedIn'];
+            }
+        });
+
+        this.authService.loggedIn.subscribe(loggedIn => {
+            if (loggedIn) {
+                this.avatar = loggedIn;
+                // alert('Avatar Updated Successfully!')
+            }
+        });
+
+        this.stateService.formSearch.subscribe(formSearch => {
+            this.toggleForm = formSearch;
+            // console.log(formSearch)
+        });
+        this.stateService.accountLogined.subscribe(statusFormUser => {
+            this.statusFormUser = statusFormUser;
+        });
+
+        this.get10Moviele();
         this.toggle = false;
         this.getCategoryFromServer();
         this.getCountryFromServer();
+        this.getAllMovie();
     }
 
     onKeypressEvent(event: any) {
         // console.log("run")
+        this.toggleForm = false;
         this.toggle = false;
         this.movieName = null;
         // console.log(this.toggle);
@@ -238,7 +229,7 @@ export class HeaderComponent implements OnInit {
     doLogout() {
         this.dataService.logout().subscribe((dataReturn) => {
             // console.log(dataReturn);
-            this.setCookieSecond('token', dataReturn['token'], 1);
+            this.setCookieSecond('token', dataReturn['token'], 0);
             this.userLogin("nothing");
             this.router.navigateByUrl('/movie');
         });

@@ -1,10 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../../../movieModel/movieModel';
 import { MovieService } from '../../../service/movie.service';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { ActivatedRoute, Router, Params, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
@@ -14,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
     styleUrls: ['./allmovie.component.scss']
 })
 export class AllmovieComponent implements OnInit {
-    type: String;
+    type: String = null;
     year: any;
     movieType: Movie[];
     movies: any[];
@@ -29,16 +26,17 @@ export class AllmovieComponent implements OnInit {
     release_year: any = [];
     run_time: any = [];
 
-    statusMovie = false;
-    statusItemMovie = false;
-    
+    loading = true;
+    array20 = [];
+
     constructor(
         private movieService: MovieService,
         private route: ActivatedRoute,
         private location: Location,
         public fb: FormBuilder,
-    ) { 
-        window.scrollTo({ left: 0, top: 0});
+    ) {
+        this.array20.length = 16;
+        window.scrollTo({ left: 0, top: 0 });
     }
 
     private allItems: any[];
@@ -47,24 +45,26 @@ export class AllmovieComponent implements OnInit {
 
 
     ngOnInit() {
-        this.getType();
+        this.getMovie()
     }
 
-    getType(): void {
+    getMovie(){
         this.route.paramMap.subscribe((params: ParamMap) => {
-            this.statusMovie = false;
-            this.statusItemMovie = false;
+            this.loading = true;
             const type = params.get('type');
             this.type = type;
             this.movieService.getMovieFromType(type).subscribe(
                 (movie) => {
                     // this.movieType = movie;
                     this.movies = movie;
-                    this.statusMovie = true;
                     // console.log(this.time);
                 }
             );
         })
+    }
+
+    ngAfterContentChecked() {
+        // this.handleData(event);
     }
 
     goBack(): void {
@@ -72,9 +72,10 @@ export class AllmovieComponent implements OnInit {
     }
 
     handleData(event) {
-        this.pagedItems = event;
-        this.statusMovie = true;
-        this.statusItemMovie = true;
+        setTimeout(() => {
+            this.pagedItems = event;
+            this.loading = false;
+        })
         // console.log(event); 
     }
 }

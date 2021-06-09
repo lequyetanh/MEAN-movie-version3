@@ -1,5 +1,9 @@
 <app-alert [data]="{type: 'success', message: messenger}" *ngIf="success"></app-alert>
 
+<div class="" *ngIf="!user">
+    <app-cover></app-cover>
+</div>
+
 <div class="" *ngIf="user">
     <h1>Hồ Sơ: {{user.name}}</h1>
     <div class="contain profile-container flexbox-start-between">

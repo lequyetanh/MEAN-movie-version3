@@ -30,10 +30,13 @@ export class FilterComponent implements OnInit {
 
     statusEachMovie =false;
 
+    array20 = [];
+
     constructor(
         private movieService: MovieService,
         public fb: FormBuilder,
     ) {
+        this.array20.length = 24;
     }
 
     ngOnInit() {

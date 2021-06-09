@@ -10,11 +10,11 @@ import { Category } from './../../movieModel/categoryModel';
 })
 
 export class MovieService {
-    moviesURL: string = 'https://xemphimplus.herokuapp.com/movie';
-    countryURL: string = 'https://xemphimplus.herokuapp.com/country';
-    categoryURL: string = 'https://xemphimplus.herokuapp.com/category';
-    userURL: string = "https://xemphimplus.herokuapp.com/api";
-    useURL: string = "https://xemphimplus.herokuapp.com/user";
+    moviesURL = 'https://xemphimplus.herokuapp.com/movie';
+    countryURL = 'https://xemphimplus.herokuapp.com/country';
+    categoryURL = 'https://xemphimplus.herokuapp.com/category';
+    userURL = "https://xemphimplus.herokuapp.com/api";
+    useURL = "https://xemphimplus.herokuapp.com/user"; 
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     constructor(private http: HttpClient) { }
 

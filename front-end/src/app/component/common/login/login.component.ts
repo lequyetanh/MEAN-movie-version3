@@ -115,10 +115,6 @@ export class LoginComponent implements OnInit {
     }
 
     login(name: string) {
-        if(name =="facebook" || name=="twitter"){
-            alert("Hiện tại trang web chỉ hỗ trợ với google, vui lòng đăng nhập bằng google");
-            return '';
-        }
         return this.afAuth.auth.signInWithPopup(this.getProvider(name))
             .then(credential => {
                 const data = {

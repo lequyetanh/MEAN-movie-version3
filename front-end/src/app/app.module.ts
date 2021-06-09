@@ -52,18 +52,11 @@ import { MatTreeModule } from '@angular/material/tree';
 
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { ContentComponent } from './component/content/content.component';
 
 import { DetailmovieComponent } from './component/content/detailmovie/detailmovie.component';
 import { WatchmovieComponent } from './component/content/watchmovie/watchmovie.component';
 import { IndexComponent } from './component/content/index/index.component';
-import { AllmovieComponent } from './component/content/allmovie/allmovie.component';
-import { EditComponent } from './component/admin/admin-movie/edit/edit.component';
-import { CreateComponent } from './component/admin/admin-movie/create/create.component';
 import { SamemovieComponent } from './component/common/samemovie/samemovie.component';
-import { MovieService } from './service/movie.service';
-import { AuthService } from './service/auth.service';
-import { DataService } from './service/data.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateStore } from '@ngx-translate/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -78,34 +71,16 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { AdminComponent } from './component/admin/admin.component';
 import { LoginComponent } from './component/common/login/login.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { ProfileComponent } from './component/user/profile/profile.component';
-import { CollectionComponent } from './component/user/collection/collection.component';
-import { DonateComponent } from './component/user/donate/donate.component';
-import { UserComponent } from './component/user/user.component';
-import { AboutComponent } from './component/content/about/about.component';
+
 import { CommentComponent } from './component/common/comment/comment.component';
 import { SlideMovieComponent } from './component/content/index/slide-movie/slide-movie.component';
-import { PaginationComponent } from './component/common/pagination/pagination.component';
-import { SearchComponent } from './component/content/search/search.component';
-import { FilterComponent } from './component/content/filter/filter.component';
-import { WebSocketService } from './service/web-socket.service';
-import { ReduxService } from './service/redux.service';
-import { AdminUserComponent } from './component/admin/admin-user/admin-user.component';
-import { AdminMovieComponent } from './component/admin/admin-movie/admin-movie.component';
-import { AdminGenreComponent } from './component/admin/admin-genre/admin-genre.component';
-import { AdminCountryComponent } from './component/admin/admin-country/admin-country.component';
-import { FormMovieComponent } from './component/admin/admin-movie/create/form-movie/form-movie.component';
-import { EditFormComponent } from './component/admin/admin-movie/edit/edit-form/edit-form.component';
 import { SidenavComponent } from './component/header/sidenav/sidenav.component';
-import { CoverComponent } from './component/common/cover/cover.component';
 import { NotificationComponent } from './component/common/notification/notification.component';
-import { AlertComponent } from './component/common/alert/alert.component';
 import { ListActionComponent } from './component/common/list-action/list-action.component';
 import { ListActionFixedComponent } from './component/common/list-action-fixed/list-action-fixed.component';
 import { NotFoundComponent } from './component/content/not-found/not-found.component';
@@ -114,46 +89,25 @@ import { AvatarComponent } from './component/common/avatar/avatar.component';
 
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
+import { ShareModule } from './component/share/share.module';
 
 import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
     declarations: [
-        // FileSelectDirective,
         AvatarComponent,
         AppComponent,
         HeaderComponent,
         FooterComponent,
-        ContentComponent,
         DetailmovieComponent,
         IndexComponent,
         WatchmovieComponent,
         SamemovieComponent,
-        AllmovieComponent,
-        AdminComponent,
-        EditComponent,
-        CreateComponent,
         LoginComponent,
-        ProfileComponent,
-        CollectionComponent,
-        DonateComponent,
-        UserComponent,
-        AboutComponent,
         CommentComponent,
         SlideMovieComponent,
-        PaginationComponent,
-        SearchComponent,
-        FilterComponent,
-        AdminUserComponent,
-        AdminMovieComponent,
-        AdminGenreComponent,
-        AdminCountryComponent,
-        FormMovieComponent,
-        EditFormComponent,
         SidenavComponent,
-        CoverComponent,
         NotificationComponent,
-        AlertComponent,
         ListActionComponent,
         ListActionFixedComponent,
         NotFoundComponent,
@@ -216,6 +170,7 @@ import { FileUploadModule } from 'ng2-file-upload';
         AngularFireAuthModule,
         AngularFirestoreModule,
         AngularFireStorageModule,
+        ShareModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -225,14 +180,9 @@ import { FileUploadModule } from 'ng2-file-upload';
         }),
     ],
     providers: [
-        MovieService,
-        AuthService,
-        DataService,
         AngularFireAuth,
         TranslateService,
         TranslateStore,
-        WebSocketService,
-        ReduxService
     ],
     bootstrap: [AppComponent]
 })

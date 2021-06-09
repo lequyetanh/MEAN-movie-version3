@@ -3,7 +3,7 @@
 .background-cover {
     width: 100%;
     height: 100%;
-    background: url('./../../../../../assets/image/default-cover.webp');
+    background: url('https://i2.wp.com/triethocduongpho.net/wp-content/uploads/2018/04/Kung-Fu-Panda-3-Tr%C3%A1i-c%E1%BA%A7n-ch%C3%ADn-th%C3%AAm-ch%C3%BAt-n%E1%BB%AFa-1.jpg?fit=1920%2C1080&ssl=1');
     
     .slide {
         background: center center / cover no-repeat;
@@ -100,6 +100,33 @@
 
                                     .episode {
                                         @include episode;
+                                    }
+
+                                    .fa-play {
+                                        @include fa-play;
+                                    }
+                                }
+
+                                .image-loading {
+                                    height: 90%;
+                                    width: auto;
+                                    position: relative;
+                                    // background-image: url('./../../../../assets/image/default-cover.webp'); 
+
+                                    img {
+                                        border-radius: 5px;
+                                    }
+
+                                    .current-status {
+                                        @include current-status;
+                                        width:100px;
+                                        height: 30px;
+                                    }
+
+                                    .episode {
+                                        @include episode;
+                                        width:100px;
+                                        height: 30px;
                                     }
 
                                     .fa-play {

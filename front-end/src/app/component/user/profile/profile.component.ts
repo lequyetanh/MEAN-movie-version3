@@ -5,7 +5,7 @@ import { DataService } from "../../../service/data.service";
 import { MovieService } from "../../../service/movie.service";
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { ReduxService } from '../../../service/redux.service';
+import { StateService } from '../../../service/state.service';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     listGroup = [];
     constructor(
         private movieService: MovieService,
-        private reduxService: ReduxService,
+        private reduxService: StateService,
         private authService: AuthService,
         private dataService: DataService,
         private router: Router,

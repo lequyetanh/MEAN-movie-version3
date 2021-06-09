@@ -640,7 +640,7 @@ $white: rgb(255, 255, 255);
                                         .Subtitle,
                                         .fullscreenCtrl {
                                             // position: relative;
-                                            margin-right:27px;
+                                            margin-right: 27px;
 
                                             i {
                                                 position: relative;
@@ -657,6 +657,12 @@ $white: rgb(255, 255, 255);
                                                 }
                                             }
 
+                                        }
+
+                                        .Subtitle {
+                                            &.active {
+                                                border-bottom: 2px solid #f50e2d
+                                            }
                                         }
 
                                         .setting,
@@ -686,7 +692,8 @@ $white: rgb(255, 255, 255);
                     .left {
                         .error {
                             padding: 7px;
-                            border-radius: 5px;
+                            border-radius: 0 5px 5px 0;
+                            //  border-bottom: 2px solid #d3102a;
                             color: #dcd629;
                             background-color: #131314;
                             font-weight: 700;
@@ -704,7 +711,8 @@ $white: rgb(255, 255, 255);
                         .ads,
                         .embed {
                             padding: 7px;
-                            border-radius: 5px;
+                            border-radius: 0 5px 5px 0;
+                            //  border-bottom: 2px solid #d3102a;
                             color: #c2c2c1;
                             background-color: #131314;
                             font-weight: 700;
@@ -727,23 +735,21 @@ $white: rgb(255, 255, 255);
                         flex-wrap: wrap;
                         align-items: center;
                         justify-content: flex-end;
+                        border-bottom: 3px solid #d3102a;
+                        box-shadow: 0px 2px 30px rgb(17, 16, 16);
 
                         .view,
                         .like {
                             padding: 7px;
                             border-radius: 5px;
                             color: #c2c2c1;
-                            background-color: #131314;
+                            // background-color: #131314;
                             font-weight: 700;
                             margin-left: 5px;
                             cursor: pointer;
 
                             .active {
                                 color: rgb(231, 31, 64);
-                            }
-
-                            &:hover {
-                                background-color: #0a0a0a;
                             }
                         }
                     }
@@ -755,27 +761,30 @@ $white: rgb(255, 255, 255);
                         .server,
                         .server-item {
                             padding: 7px;
-                            border-radius: 5px;
-                            color: #c2c2c1;
-                            background-color: #131314;
+                            border-radius: 0 5px 5px 0;
+                            color: #ececec;
+                            border-bottom: 2px solid #f50e2d;
+                            box-shadow: 0px 2px 30px rgb(10, 9, 9);
                             font-weight: 700;
                             margin-right: 5px;
                             cursor: pointer;
 
                             &:hover {
-                                background-color: #0a0a0a;
+                                background-color: #d81818;
                             }
                         }
                     }
 
                     .right {
+                        border-radius: 5px 0 0 5px;
+                        border-bottom: 3px solid #d3102a;
+                        box-shadow: 0px 2px 30px rgb(17, 16, 16);
 
                         .evalute,
                         .star {
                             padding: 7px;
                             border-radius: 5px;
-                            color: #c2c2c1;
-                            background-color: #131314;
+                            color: #ececec;
                             font-weight: 700;
                             margin-left: 5px;
                             cursor: pointer;

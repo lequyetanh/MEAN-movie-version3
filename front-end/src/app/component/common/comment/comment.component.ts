@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MovieService } from '../../../service/movie.service';
 import { Router } from '@angular/router';
 import { NgZone } from '@angular/core';
-import { ReduxService } from '../../../service/redux.service';
+import { StateService } from '../../../service/state.service';
 import { ActivatedRoute } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DataService } from "../../../service/data.service";
@@ -36,7 +36,7 @@ export class CommentComponent implements OnInit {
         private route: ActivatedRoute,
         private movieService: MovieService,
         private dataService: DataService,
-        public reduxService: ReduxService,
+        public reduxService: StateService,
         private router: Router,
         private ngZone: NgZone,
         public fb: FormBuilder,
@@ -137,7 +137,11 @@ export class CommentComponent implements OnInit {
     }
 
     replyUser(idUserComment) {
-        this.statusFormReply = idUserComment;
+        if(this.user){
+            this.statusFormReply = idUserComment;
+        }else{
+            alert("Bạn Phải Đăng Nhập Để Sử Dụng Tính Năng Này")
+        }
     }
 
     submitFormReply(idUserComment) {
@@ -217,63 +221,79 @@ export class CommentComponent implements OnInit {
 
     likeComment(idUserComment, like, dislike) {
         // console.log(data)
-        if (like >= 0) {
-            this.data.comment[idUserComment - 1]['like'].splice(this.data.comment[idUserComment - 1]['like'].indexOf(this.user.name), 1);
-        }
-        else {
-            this.data.comment[idUserComment - 1]['like'].push(this.user.name);
-        }
-        if (dislike >= 0) {
-            this.data.comment[idUserComment - 1]['dislike'].splice(this.data.comment[idUserComment - 1]['dislike'].indexOf(this.user.name), 1);
-            // console.log(this.data.comment[i]['dislike'])
-            this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+        if (this.user) {
+            if (like >= 0) {
+                this.data.comment[idUserComment - 1]['like'].splice(this.data.comment[idUserComment - 1]['like'].indexOf(this.user.name), 1);
+            }
+            else {
+                this.data.comment[idUserComment - 1]['like'].push(this.user.name);
+            }
+            if (dislike >= 0) {
+                this.data.comment[idUserComment - 1]['dislike'].splice(this.data.comment[idUserComment - 1]['dislike'].indexOf(this.user.name), 1);
+                // console.log(this.data.comment[i]['dislike'])
+                this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            } else {
+                this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            }
         } else {
-            this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            alert("Bạn Phải Đăng Nhập Để Sử Dụng Tính Năng Này")
         }
     }
 
     dislikeComment(idUserComment, dislike, like) {
-        if (dislike >= 0) {
-            this.data.comment[idUserComment - 1]['dislike'].splice(this.data.comment[idUserComment - 1]['dislike'].indexOf(this.user.name), 1);
-        }
-        else {
-            this.data.comment[idUserComment - 1]['dislike'].push(this.user.name);
-        }
-        if (like >= 0) {
-            this.data.comment[idUserComment - 1]['like'].splice(this.data.comment[idUserComment - 1]['like'].indexOf(this.user.name), 1);
-            this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+        if (this.user) {
+            if (dislike >= 0) {
+                this.data.comment[idUserComment - 1]['dislike'].splice(this.data.comment[idUserComment - 1]['dislike'].indexOf(this.user.name), 1);
+            }
+            else {
+                this.data.comment[idUserComment - 1]['dislike'].push(this.user.name);
+            }
+            if (like >= 0) {
+                this.data.comment[idUserComment - 1]['like'].splice(this.data.comment[idUserComment - 1]['like'].indexOf(this.user.name), 1);
+                this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            } else {
+                this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            }
         } else {
-            this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            alert("Bạn Phải Đăng Nhập Để Sử Dụng Tính Năng Này")
         }
     }
 
     likeCommentReply(idUserComment, idUserReply, like, dislike) {
-        if (like >= 0) {
-            this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].splice(this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].indexOf(this.user.name), 1);
-        }
-        else {
-            this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].push(this.user.name);
-        }
-        if (dislike >= 0) {
-            this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].splice(this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].indexOf(this.user.name), 1);
-            this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+        if (this.user) {
+            if (like >= 0) {
+                this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].splice(this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].indexOf(this.user.name), 1);
+            }
+            else {
+                this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].push(this.user.name);
+            }
+            if (dislike >= 0) {
+                this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].splice(this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].indexOf(this.user.name), 1);
+                this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            } else {
+                this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            }
         } else {
-            this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            alert("Bạn Phải Đăng Nhập Để Sử Dụng Tính Năng Này")
         }
     }
 
     dislikeCommentReply(idUserComment, idUserReply, dislike, like) {
-        if (dislike >= 0) {
-            this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].splice(this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].indexOf(this.user.name), 1);
-        }
-        else {
-            this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].push(this.user.name);
-        }
-        if (like >= 0) {
-            this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].splice(this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].indexOf(this.user.name), 1);
-            this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+        if (this.user) {
+            if (dislike >= 0) {
+                this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].splice(this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].indexOf(this.user.name), 1);
+            }
+            else {
+                this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['dislike'].push(this.user.name);
+            }
+            if (like >= 0) {
+                this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].splice(this.data.comment[idUserComment - 1]['reply'][idUserReply - 1]['like'].indexOf(this.user.name), 1);
+                this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            } else {
+                this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            }
         } else {
-            this.movieService.updateMovie(this.data.id, { comment: this.data.comment }).subscribe();
+            alert("Bạn Phải Đăng Nhập Để Sử Dụng Tính Năng Này")
         }
     }
 

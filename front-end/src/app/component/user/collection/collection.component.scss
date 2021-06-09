@@ -23,8 +23,9 @@
  }
 
  .container {
-     width: 100%;
+     min-width: 1400px !important;
      height: auto;
+     margin: 0 auto !important;
  }
 
  @media (max-width: 575.98px) {

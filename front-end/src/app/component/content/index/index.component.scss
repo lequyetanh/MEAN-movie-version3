@@ -147,6 +147,97 @@ $primary-color : #ff55a5;
                         overflow: hidden;
                     }
                 }
+
+                .movie-item-loading {
+                    width: 40%;
+
+                    &:hover {
+                        .image {
+                            opacity: 0.8;
+                            box-shadow: 0px 0px 20px rgba(242, 67, 255, 0.524);
+                        }
+                    }
+
+                    .image {
+                        height: 270px;
+                        width: 100%;
+                        position: relative;
+
+                        &:hover {
+                            .background {
+                                display: block;
+                            }
+
+                            span {
+                                display: block;
+                            }
+                        }
+
+                        img {
+                            border-radius: 5px;
+                        }
+
+                        .current-status {
+                            @include current-status;
+                            width:70px;
+                            height: 20px;
+                        }
+
+                        .episode-loading {
+                            @include episode;
+                            width: 40px !important;
+                            height: 40px !important;
+                            border-radius: 50% !important;
+                            animation: loading 1s linear alternate infinite;
+                        }
+                    }
+
+                    .image::before {
+                        display:none !important;
+                    }
+
+                    .image::after{
+                        display: none !important
+                    }
+                }
+
+                .title-loading {
+                    width: 60%;
+                    padding: 0 15px;
+                    line-height: 3 !important;
+                    cursor: default;
+
+                    .name {
+                        width:70%;
+                        height: 20px;
+                        border-radius:10px;
+                        animation: loading 1s linear alternate infinite;
+                    }
+
+                    .eng-name {
+                        width:100%;
+                        height: 25px;
+                        border-radius:10px;
+                        animation: loading 1s linear alternate infinite;
+                        margin-top: 5px;
+                    }
+
+                    .genre{
+                        width:100%;
+                        height: 35px;
+                        animation: loading 1s linear alternate infinite;
+                        margin-top: 5px;
+                        border-radius:10px;
+                    }
+
+                    .content-movie {
+                        height: 170px;
+                        width: 100%;
+                        animation: loading 1s linear alternate infinite;
+                        margin-top: 5px;
+                        border-radius:10px;
+                    }
+                }
             }
         }
     }

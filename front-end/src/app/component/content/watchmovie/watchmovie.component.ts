@@ -3,7 +3,7 @@ import { MovieService } from '../../../service/movie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, Directive, ViewChild, HostListener } from '@angular/core';
 import { DataService } from "../../../service/data.service";
-import { ReduxService } from "../../../service/redux.service";
+import { StateService } from "../../../service/state.service";
 import * as $ from 'jquery';
 
 @Component({
@@ -87,7 +87,7 @@ export class WatchmovieComponent implements OnInit, AfterViewInit {
     constructor(
         private route: ActivatedRoute,
         private movieService: MovieService,
-        private reduxService: ReduxService,
+        private reduxService: StateService,
         private router: Router,
         private dataService: DataService,
     ) {

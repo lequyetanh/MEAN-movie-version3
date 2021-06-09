@@ -9,7 +9,6 @@ import { auth, firestore } from "firebase/app";
 // import { firebase } from 'firebase';
 import { Observable, of, throwError } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { catchError, map } from "rxjs/operators";
 import {
     HttpClient,
     HttpHeaders,
@@ -37,11 +36,11 @@ export class AuthService {
     loggedIn: Subject<any>;
     admin: Subject<boolean>;
     newAvatar: Subject<boolean>;
-    moviesURL: string = 'https://xemphimplus.herokuapp.com/movie';
-    countryURL: string = 'https://xemphimplus.herokuapp.com/country';
-    categoryURL: string = 'https://xemphimplus.herokuapp.com/category';
-    userURL: string = "https://xemphimplus.herokuapp.com/api";
-    useURL: string = "https://xemphimplus.herokuapp.com/user";
+    moviesURL = 'https://xemphimplus.herokuapp.com/movie';
+    countryURL = 'https://xemphimplus.herokuapp.com/country';
+    categoryURL = 'https://xemphimplus.herokuapp.com/category';
+    userURL = "https://xemphimplus.herokuapp.com/api";
+    useURL = "https://xemphimplus.herokuapp.com/user"; 
 
     user: any;
     redirectUrl: string;

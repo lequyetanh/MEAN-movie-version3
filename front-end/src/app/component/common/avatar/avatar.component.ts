@@ -3,7 +3,7 @@ import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders, FileSelectDirective } from 'ng2-file-upload';
 import { Cloudinary } from '@cloudinary/angular-5.x';
-import { ReduxService } from '../../../service/redux.service';
+import { StateService } from '../../../service/state.service';
 
 @Component({
     selector: 'app-avatar',
@@ -13,7 +13,7 @@ import { ReduxService } from '../../../service/redux.service';
 export class AvatarComponent implements OnInit {
     title = 'angular-cloudinary';
 
-    constructor(private _uploadService: ReduxService) { }
+    constructor(private _uploadService: StateService) { }
 
     ngOnInit() {
         // this.onSelect(event);

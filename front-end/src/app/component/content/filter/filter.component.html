@@ -48,29 +48,39 @@
         </div>
     </div>
 
-    <div *ngIf="loading">
-        <app-cover></app-cover>
-    </div>
-
-    <div class="movie" *ngIf="result">
-        <div class="phim-bo flexbox-start-start" *ngIf="pagedItems">
-            <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of pagedItems">
-                <div class="image">
-                    <img alt="" src="{{movie.name_image}}">
-                    <div class="play-center">
-                        <i class="fa fa-play" matTooltip="Play"></i>
+    <ng-container *ngIf="loading; else loaded">
+        <div class="movie">
+            <div class="phim-bo flexbox-start-start">
+                <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of array20">
+                    <div class="image">
+                        <img alt="" src="./../../../../assets/image/default-cover.webp">
                     </div>
-                    <label class="current-status">{{movie.status}}</label>
-                    <span class="episode">{{movie.run_time}} Phút</span>
-                </div>
-                <div class="title">
-                    <h3 class="name">{{movie.name}}</h3>
-                    <p class="eng-name">{{movie.real_name}}</p>
-                </div>
-            </a>
+                </a>
+            </div>
+            <app-pagination [data]="movies" (keyPagination)="handleData($event)"></app-pagination>
         </div>
-        <app-pagination [data]="movies" (keyPagination)="handleData($event)"></app-pagination>
-    </div>
+    </ng-container>
+    <ng-template #loaded>
+        <div class="movie" *ngIf="result">
+            <div class="phim-bo flexbox-start-start" *ngIf="pagedItems">
+                <a routerLink="/detailmovie/{{movie.id}}" class="movie-item" *ngFor="let movie of pagedItems">
+                    <div class="image">
+                        <img alt="" src="{{movie.name_image}}">
+                        <div class="play-center">
+                            <i class="fa fa-play" matTooltip="Play"></i>
+                        </div>
+                        <label class="current-status">{{movie.status}}</label>
+                        <span class="episode">{{movie.run_time}} Phút</span>
+                    </div>
+                    <div class="title">
+                        <h3 class="name">{{movie.name}}</h3>
+                        <p class="eng-name">{{movie.real_name}}</p>
+                    </div>
+                </a>
+            </div>
+            <app-pagination [data]="movies" (keyPagination)="handleData($event)"></app-pagination>
+        </div>
+    </ng-template>
 
     <div *ngIf="!result" class="flexbox-center-center">
         <h1>Không có phim nào được tìm thấy</h1>

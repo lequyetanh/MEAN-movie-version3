@@ -67,3 +67,6 @@ h6 {
   cursor: default;
 }
 
+.cursor-default{
+  cursor: default !important;
+}

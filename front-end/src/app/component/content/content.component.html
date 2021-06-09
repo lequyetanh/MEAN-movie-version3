@@ -3,97 +3,184 @@
         <img style="width:100%" src="./../../assets/1228.gif">
     </a>
 </div>
-<div class="ipad-view">
-    <div class="top-movie flexbox-start-center">
-        <div class="caption mart-20">
-            <span class="fw-700 fs-22">Top Movie</span>
-        </div>
-        <div class="list-movie-wrap">
-            <div class="title flexbox-center-between">
-                <div class="phim-bo" (click)="changeStatusMovie($event)" [class.active]="statusMovie == 'phim bộ'">Phim
-                    Bộ</div>
-                <div class="phim-chieu-rap" (click)="changeStatusMovie($event)"
-                    [class.active]="statusMovie == 'phim chiếu rạp'">Phim Chiếu Rạp</div>
-                <div class="phim-le" (click)="changeStatusMovie($event)" [class.active]="statusMovie == 'phim lẻ'">Phim
-                    Lẻ</div>
-            </div>
-            <div class="phim" *ngIf="statusMovie == 'phim bộ'">
-                <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of moviebo">
-                    <div class="flexbox-start-start item-list-movie" title="{{movie.name}}">
-                        <div class="left">
-                            <img src="{{movie.name_image}}">
-                        </div>
-                        <div class="right">
-                            <p class="name">{{movie.name}}</p>
-                            <p class="real-name">{{movie.real_name}}</p>
-                            <p class="country">{{movie.country}}, </p>
-                            <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
-                                views
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="phim" *ngIf="statusMovie == 'phim chiếu rạp'">
-                <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of movieChieuRap">
-                    <div class="flexbox-start-start item-list-movie" title="{{movie.name}}">
-                        <div class="left">
-                            <img src="{{movie.name_image}}">
-                        </div>
-                        <div class="right">
-                            <p class="name">{{movie.name}}</p>
-                            <p class="real-name">{{movie.real_name}}</p>
-                            <p class="country">{{movie.country}}, </p>
-                            <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
-                                views
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="phim" *ngIf="statusMovie == 'phim lẻ'">
-                <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of moviele">
-                    <div class="flexbox-start-start item-list-movie" title="{{movie.name}}">
-                        <div class="left">
-                            <img src="{{movie.name_image}}">
-                        </div>
-                        <div class="right">
-                            <p class="name">{{movie.name}}</p>
-                            <p class="real-name">{{movie.real_name}}</p>
-                            <p class="country">{{movie.country}}, </p>
-                            <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
-                                views
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
 
-    <div class="top-movie flexbox-start-center">
-        <div class="caption mart-20">
-            <span class="fw-700 fs-22">Phim Sắp Chiếu</span>
-        </div>
-        <div class="phim-sap-chieu list-movie-wrap">
-            <div class="phim">
-                <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of movieNew">
-                    <div class="flexbox-start-start item-list-movie" title="{{movie.name}}">
-                        <div class="left">
-                            <img src="{{movie.name_image}}">
+<ng-container *ngIf="moviebo.loading || moviele.loading || movieChieuRap.loading || movieNew.loading; else loadedmoviebo">
+    <div class="ipad-view">
+        <div class="top-movie flexbox-start-center">
+            <div class="caption mart-20">
+                <span class="fw-700 fs-22">Top Movie</span>
+            </div>
+            <div class="list-movie-wrap">
+                <div class="title flexbox-center-between">
+                    <div class="phim-bo" (click)="changeStatusMovie($event)" [class.active]="statusMovie == 'phim bộ'">Phim Bộ</div>
+                    <div class="phim-chieu-rap" (click)="changeStatusMovie($event)"
+                        [class.active]="statusMovie == 'phim chiếu rạp'">Phim Chiếu Rạp</div>
+                    <div class="phim-le" (click)="changeStatusMovie($event)" [class.active]="statusMovie == 'phim lẻ'">Phim Lẻ</div>
+                </div>
+                <div class="phim" *ngIf="statusMovie == 'phim bộ'">
+                    <a routerLink="" class="list-movie" *ngFor="let movie of array5">
+                        <div class="flexbox-start-start item-list-movie" title="">
+                            <div class="left">
+                                <img src="./../../../assets/image/default-cover.webp">
+                            </div>
+                            <div class="right-loading">
+                                <p class="name"></p>
+                                <p class="real-name"></p>
+                                <p class="country"></p>
+                                <p class="whitecolor"></p>
+                            </div>
                         </div>
-                        <div class="right">
-                            <p class="name">{{movie.name}}</p>
-                            <p class="real-name">{{movie.real_name}}</p>
-                            <p class="country">{{movie.country}}</p>
-                            <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
-                                views
-                            </p>
+                    </a>
+                </div>
+                <div class="phim" *ngIf="statusMovie == 'phim chiếu rạp'">
+                    <a routerLink="" class="list-movie" *ngFor="let movie of array5">
+                        <div class="flexbox-start-start item-list-movie" title="">
+                            <div class="left">
+                                <img src="./../../../assets/image/default-cover.webp">
+                            </div>
+                            <div class="right-loading">
+                                <p class="name"></p>
+                                <p class="real-name"></p>
+                                <p class="country"></p>
+                                <p class="whitecolor"></p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                <div class="phim" *ngIf="statusMovie == 'phim lẻ'">
+                    <a routerLink="" class="list-movie" *ngFor="let movie of array5">
+                        <div class="flexbox-start-start item-list-movie" title="">
+                            <div class="left">
+                                <img src="./../../../assets/image/default-cover.webp">
+                            </div>
+                            <div class="right-loading">
+                                <p class="name"></p>
+                                <p class="real-name"></p>
+                                <p class="country"></p>
+                                <p class="whitecolor"></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
+        <div class="top-movie marb-30 flexbox-start-center">
+            <div class="caption mart-20">
+                <span class="fw-700 fs-22">Phim Sắp Chiếu</span>
+            </div>
+            <div class="phim-sap-chieu list-movie-wrap">
+                <div class="phim">
+                    <a routerLink="" class="list-movie" *ngFor="let movie of array5">
+                        <div class="flexbox-start-start item-list-movie" title="">
+                            <div class="left">
+                                <img src="./../../../assets/image/default-cover.webp">
+                            </div>
+                            <div class="right-loading">
+                                <p class="name"></p>
+                                <p class="real-name"></p>
+                                <p class="country"></p>
+                                <p class="whitecolor"></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ng-container>
+<ng-template #loadedmoviebo>
+    <div class="ipad-view">
+        <div class="top-movie flexbox-start-center">
+            <div class="caption mart-20">
+                <span class="fw-700 fs-22">Top Movie</span>
+            </div>
+            <div class="list-movie-wrap">
+                <div class="title flexbox-center-between">
+                    <div class="phim-bo" (click)="changeStatusMovie($event)" [class.active]="statusMovie == 'phim bộ'">Phim Bộ</div>
+                    <div class="phim-chieu-rap" (click)="changeStatusMovie($event)"
+                        [class.active]="statusMovie == 'phim chiếu rạp'">Phim Chiếu Rạp</div>
+                    <div class="phim-le" (click)="changeStatusMovie($event)" [class.active]="statusMovie == 'phim lẻ'">Phim Lẻ</div>
+                </div>
+                <div class="phim" *ngIf="statusMovie == 'phim bộ'">
+                    <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of moviebo.data">
+                        <div class="flexbox-start-start item-list-movie" title="{{movie.name}}">
+                            <div class="left">
+                                <img src="{{movie.name_image}}">
+                            </div>
+                            <div class="right">
+                                <p class="name">{{movie.name}}</p>
+                                <p class="real-name">{{movie.real_name}}</p>
+                                <p class="country">{{movie.country}}, </p>
+                                <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
+                                    views
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="phim" *ngIf="statusMovie == 'phim chiếu rạp'">
+                    <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of movieChieuRap.data">
+                        <div class="flexbox-start-start item-list-movie" title="{{movie.name}}">
+                            <div class="left">
+                                <img src="{{movie.name_image}}">
+                            </div>
+                            <div class="right">
+                                <p class="name">{{movie.name}}</p>
+                                <p class="real-name">{{movie.real_name}}</p>
+                                <p class="country">{{movie.country}}, </p>
+                                <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
+                                    views
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="phim" *ngIf="statusMovie == 'phim lẻ'">
+                    <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of moviele.data">
+                        <div class="flexbox-start-start item-list-movie" title="{{movie.name}}">
+                            <div class="left">
+                                <img src="{{movie.name_image}}">
+                            </div>
+                            <div class="right">
+                                <p class="name">{{movie.name}}</p>
+                                <p class="real-name">{{movie.real_name}}</p>
+                                <p class="country">{{movie.country}}, </p>
+                                <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
+                                    views
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="top-movie marb-30 flexbox-start-center">
+            <div class="caption mart-20">
+                <span class="fw-700 fs-22">Phim Sắp Chiếu</span>
+            </div>
+            <div class="phim-sap-chieu list-movie-wrap">
+                <div class="phim">
+                    <a routerLink="/detailmovie/{{movie.id}}" class="list-movie" *ngFor="let movie of movieNew.data">
+                        <div class="flexbox-start-start item-list-movie" title="{{movie.name}}">
+                            <div class="left">
+                                <img src="{{movie.name_image}}">
+                            </div>
+                            <div class="right">
+                                <p class="name">{{movie.name}}</p>
+                                <p class="real-name">{{movie.real_name}}</p>
+                                <p class="country">{{movie.country}}</p>
+                                <p class="whitecolor"><i class="fa fa-eye marl-5 marr-5"></i>{{movie.views}}
+                                    views
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

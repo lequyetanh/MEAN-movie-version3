@@ -1,14 +1,9 @@
 import { Component, OnInit, Input, NgZone } from "@angular/core";
-import { Movie } from "../../../../movieModel/movieModel";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Location } from "@angular/common";
 import { MovieService } from "../../../service/movie.service";
 import { DataService } from "../../../service/data.service";
-import { TranslateService } from "@ngx-translate/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { AuthService } from "../../../service/auth.service";
-import { ReduxService } from "../../../service/redux.service";
-import * as $ from 'jquery';
+import { StateService } from "../../../service/state.service";
 
 @Component({
     selector: "app-detailmovie",
@@ -51,11 +46,8 @@ export class DetailmovieComponent implements OnInit {
         private route: ActivatedRoute,
         private movieService: MovieService,
         private dataService: DataService,
-        private location: Location,
         public authService: AuthService,
-        private reduxService: ReduxService,
-        private snackBar: MatSnackBar,
-        private translateService: TranslateService
+        private stateService: StateService,
     ) {
         this.dataService.getUser().subscribe(loggedIn => {
             this.loggedIn = loggedIn['loggedIn'];
@@ -67,6 +59,9 @@ export class DetailmovieComponent implements OnInit {
 
             }
         });
+
+        // this.user = this.stateService.user;
+        console.log(this.user)
         window.scrollTo({ left: 0, top: 0 });
     }
 
@@ -128,7 +123,7 @@ export class DetailmovieComponent implements OnInit {
             }
         }
         // console.log(this.list_star);
-        this.reduxService.updateList_star(this.list_star);
+        this.stateService.updateList_star(this.list_star);
     }
 
     hover(index) {

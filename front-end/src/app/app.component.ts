@@ -9,7 +9,7 @@ import {
 import { AngularFireAuth } from "@angular/fire/auth";
 import { DataService } from "./service/data.service";
 import { AuthService } from "./service/auth.service";
-import { ReduxService } from "./service/redux.service";
+import { StateService } from "./service/state.service";
 import { ActivatedRoute, Router, Params, ParamMap } from '@angular/router';
 import *  as io from 'socket.io-client';
 
@@ -25,13 +25,14 @@ export class AppComponent {
     public icon: boolean = true;
     allUser: Array<object>;
     loggedIn;
+    index = 1;
     @ViewChild('snav', { static: true }) snav: any;
 
     constructor(
         private afAuth: AngularFireAuth,
         private dataService: DataService,
         public authService: AuthService,
-        public reduxService: ReduxService,
+        public reduxService: StateService,
         private router: Router,
 
     ) {
@@ -61,8 +62,9 @@ export class AppComponent {
         height >= 500 ? (el.className = "show") : (el.className = "hide");
     }
 
-    checkStatus() {
-        this.reduxService.checkStatus();
+    updateList_start() {
+        this.index += 1;
+        this.reduxService.updateList_start(this.index);
     }
 
     // rightClick(event) {

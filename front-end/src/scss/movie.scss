@@ -95,20 +95,6 @@ $white-color:aliceblue;
       width: 100%;
       position: relative;
 
-      // .background {
-      //     height: 100%;
-      //     width: 100%;
-      //     position: absolute;
-      //     top: 0;
-      //     left: 0;
-      //     right: 0;
-      //     bottom: 0;
-      //     background-color: #f677ff36;
-      //     border-radius: 5px !important;
-      //     display: none;
-      // }
-
-
       &:hover {
         .background {
           display: block;
@@ -147,5 +133,111 @@ $white-color:aliceblue;
         @include eng-name;
       }
     }
+  }
+}
+
+.movie-item-loading {
+  width: 16.66666666667%;
+  background-color: transparent;
+  padding: 20px 10px;
+
+  .play-center {
+    display: none;
+  }
+
+  &:hover {
+    .play-center {
+      display: block;
+    }
+
+    .image {
+      opacity: 0.8;
+      box-shadow: 0px 0px 20px rgba(242, 67, 255, 0.524);
+    }
+  }
+
+  .image {
+    height: 270px;
+    width: 100%;
+    background-color: #1b181a;
+    border-radius: 10px;
+    animation: loading 1s linear alternate infinite;
+    position: relative;
+
+    &:hover {
+      .background {
+        display: block;
+      }
+
+      span {
+        display: block;
+      }
+    }
+
+    img {
+      border-radius: 5px;
+    }
+
+    .current-status {
+      color: #ea9a06ac;
+      @include current-status;
+      animation: loading 1s linear alternate infinite;
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 50% !important;
+    }
+
+    .episode {
+     display:none !important;
+    }
+  }
+
+  .image::before{
+    content: '';
+    left: 5px;
+    bottom: 65px;
+    position: absolute;
+    width: 50%;
+    height: 25px;
+    border-radius: 5px;
+    background-color:#1b181a;
+    animation: loading 1s linear alternate infinite;
+  }
+
+  .image::after{
+    content: '';
+    left: 5px;
+    bottom: 8px;
+    position: absolute;
+    width: 95%;
+    height: 50px;
+    border-radius:10px;
+    background-color:#1b181a;
+    animation: loading 1s linear alternate infinite;
+  }
+
+  .title {
+    @include title;
+    animation: loading 1s linear alternate infinite;
+
+    .name {
+      @include name;
+      animation: loading 1s linear alternate infinite;
+    }
+
+    .eng-name {
+      @include eng-name;
+      animation: loading 1s linear alternate infinite;
+    }
+  }
+}
+
+@keyframes loading {
+  from {
+    background-color: #1212125f;
+  }
+
+  to {
+    background-color: #121212d7;
   }
 }

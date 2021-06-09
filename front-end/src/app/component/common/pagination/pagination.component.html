@@ -6,7 +6,7 @@
     </div> -->
     <div class="mart-30">
         <div class="blackcolor">
-            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination flexbox-center-center">
                 <li class="border page-item" [hidden]="pager.currentPage < 4 || pager.totalPages<=5">
                     <a class="page-link" (click)="setPage(1)">1</a>
                 </li>

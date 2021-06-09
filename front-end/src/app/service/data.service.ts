@@ -13,11 +13,11 @@ import { Subject } from "rxjs";
 export class DataService {
     uid = '';
     loggedIn: Subject<boolean>;
-    moviesURL: string = 'https://xemphimplus.herokuapp.com/movie';
-    countryURL: string = 'https://xemphimplus.herokuapp.com/country';
-    categoryURL: string = 'https://xemphimplus.herokuapp.com/category';
-    userURL: string = "https://xemphimplus.herokuapp.com/api";
-    useURL: string = "https://xemphimplus.herokuapp.com/user";
+    moviesURL = 'https://xemphimplus.herokuapp.com/movie';
+    countryURL = 'https://xemphimplus.herokuapp.com/country';
+    categoryURL = 'https://xemphimplus.herokuapp.com/category';
+    userURL = "https://xemphimplus.herokuapp.com/api";
+    useURL = "https://xemphimplus.herokuapp.com/user"; 
     headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     constructor(
@@ -54,6 +54,7 @@ export class DataService {
 
     getUser() {
         var cookie = this.getCookie('token');
+        // console.log(cookie)
         return this.http
             .get(`${this.useURL}/checkUser`, {
                 headers: {

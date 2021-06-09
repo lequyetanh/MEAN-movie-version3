@@ -11,7 +11,7 @@ div {
 .page-link {
     background: #191818 !important;
     border: none !important;
-    border-radius: 50% !important;
+    // border-radius: 50% !important;
     outline: none !important;
     cursor: pointer !important;
     width:40px;
@@ -20,6 +20,8 @@ div {
     justify-content: center;
     align-items: center;
     // border:1px solid #dfdfdf !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
 }
 
 .noactive{
@@ -29,8 +31,8 @@ div {
 .page-item.active .page-link {
     color: rgb(235, 233, 233) !important;
     background-color: #ff55a5 !important;
-    width:40px;
-    height:40px;
+    width:50px;
+    height:50px;
     // border:1px solid #dfdfdf !important;
 }
 

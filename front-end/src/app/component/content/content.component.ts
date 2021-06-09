@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output, NgZone } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MovieService } from '../../service/movie.service';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-content',
@@ -8,18 +7,32 @@ import { Router } from '@angular/router';
     styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-    moviebo: any;
-    moviele: any;
+    moviebo = {
+        data: null,
+        loading: true,
+    };
+    moviele = {
+        data: null,
+        loading: true,
+    };
     movie: any;
-    movieChieuRap:any;
-    movieNew:any;
+    movieChieuRap = {
+        data: null,
+        loading: true,
+    };
+    movieNew = {
+        data: null,
+        loading: true,
+    };
     statusMovie = 'phim bộ';
     @Input() data: any;
+
+    array5: any = [];
     constructor(
         private movieService: MovieService,
-        private ngZone: NgZone,
-        private router: Router,
-    ) { }
+    ) {
+        this.array5.length = 5;
+    }
 
     ngOnInit() {
         this.get10Moviebo();
@@ -29,26 +42,28 @@ export class ContentComponent implements OnInit {
     }
 
     ngOnChanges() {
-        
+
     }
 
     get10Moviebo(): void {
         this.movieService.get10Moviebo().subscribe(
             (Movie) => {
-                this.moviebo = Movie;
-                for (var i = 0; i < this.moviebo.length; i++) {
-                    this.moviebo[i].views = this.numberWithCommas(this.moviebo[i].views);
+                this.moviebo.data = Movie;
+                this.moviebo.loading = false;
+                for (var i = 0; i < this.moviebo.data.length; i++) {
+                    this.moviebo.data[i].views = this.numberWithCommas(this.moviebo.data[i].views);
                 }
             }
         )
     }
 
-    getMovieNew(){
+    getMovieNew() {
         this.movieService.get10MovieNew().subscribe(
             (Movie) => {
-                this.movieNew = Movie;
-                for (var i = 0; i < this.movieNew.length; i++) {
-                    this.movieNew[i].views = this.numberWithCommas(this.movieNew[i].views);
+                this.movieNew.data = Movie;
+                this.movieNew.loading = false;
+                for (var i = 0; i < this.movieNew.data.length; i++) {
+                    this.movieNew.data[i].views = this.numberWithCommas(this.movieNew.data[i].views);
                 }
             }
         )
@@ -57,20 +72,22 @@ export class ContentComponent implements OnInit {
     get10Moviele(): void {
         this.movieService.get10Moviele().subscribe(
             (Movie) => {
-                this.moviele = Movie;
-                for (var i = 0; i < Object.keys(this.moviele).length; i++) {
-                    this.moviele[i].views = this.numberWithCommas(this.moviele[i].views);
+                this.moviele.data = Movie;
+                this.moviele.loading = false;
+                for (var i = 0; i < Object.keys(this.moviele.data).length; i++) {
+                    this.moviele.data[i].views = this.numberWithCommas(this.moviele.data[i].views);
                 }
             }
         )
     }
 
-    get10MovieChieuRap(){
+    get10MovieChieuRap() {
         this.movieService.get10MovieChieuRap().subscribe(
             (Movie) => {
-                this.movieChieuRap = Movie;
-                for (var i = 0; i < Object.keys(this.movieChieuRap).length; i++) {
-                    this.movieChieuRap[i].views = this.numberWithCommas(this.movieChieuRap[i].views);
+                this.movieChieuRap.data = Movie;
+                this.movieChieuRap.loading = false;
+                for (var i = 0; i < Object.keys(this.movieChieuRap.data).length; i++) {
+                    this.movieChieuRap.data[i].views = this.numberWithCommas(this.movieChieuRap.data[i].views);
                 }
             }
         )
@@ -84,7 +101,7 @@ export class ContentComponent implements OnInit {
         return x;
     }
 
-    changeStatusMovie(event){
+    changeStatusMovie(event) {
         // console.log(event)
         this.statusMovie = event.srcElement.innerHTML.toLowerCase();
         // console.log(this.statusMovie);

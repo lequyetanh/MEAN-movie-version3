@@ -32,9 +32,9 @@
                                             <!-- <source src="./../../../assets/play.mp4"> -->
                                             <!-- <iframe src="//ok.ru/videoembed/2310282283758" frameborder="0" width="100%" height="100%" allowfullscreen="" style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden;"></iframe> -->
                                             <track *ngIf="statusSubtitle == 'English'" #track
-                                                src="./../../../assets/subtitle/avatarEn.vtt" label="Tiếng Anh" default>
+                                                src="./../../../assets/subtitle/kungfupandaen.vtt" label="Tiếng Anh" default>
                                             <track *ngIf="statusSubtitle == 'VietNam'" #track
-                                                src="./../../../assets/subtitle/avatarVn.vtt" label="Tiếng Việt"
+                                                src="./../../../assets/subtitle/kungfupandavn.vtt" label="Tiếng Việt"
                                                 default>
                                         </video>
                                         <!-- <iframe #myvideo src="//ok.ru/videoembed/2802617354993" frameborder="0" allow="autoplay" allowfullscreen></iframe> -->
@@ -186,7 +186,7 @@
                                                         <span #speedVideo (click)="showSpeed()">1.0x</span>
                                                     </div>
 
-                                                    <div class="Subtitle pointer" matTooltip="Subtitle">
+                                                    <div class="Subtitle pointer" [class.active]="statusSubtitle != 'None'"  matTooltip="Subtitle">
                                                         <!-- <i class="fas fa-closed-captioning" </i> -->
                                                         <i class="far fa-closed-captioning"
                                                             (click)="showSubtitle()"></i>

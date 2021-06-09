@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Subject } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ReduxService {
+export class StateService {
     formSearch: Subject<boolean>;
     accountLogined: Subject<boolean>;
     list_star: Subject<Object>;
+    user: Observable<Object>;
+    userName: Observable<String>
     // toggleFormIcon: Subject<boolean>;
 
-    allMovie: any;
+    count: Subject<Object>;
+
+    allMovie: Subject<Object>;
     constructor(private _http: HttpClient) {
         this.formSearch = new Subject();
         this.accountLogined = new Subject();
         this.list_star = new Subject();
+        this.count = new Subject();
+        this.allMovie = new Subject();
         // this.toggleFormIcon = new Subject();
     }
 
@@ -37,9 +43,18 @@ export class ReduxService {
 
     checkStatus(){
         // console.log("check status")
-        this.formSearch.next(false);
         this.accountLogined.next(false);
         // this.toggleFormIcon.next(false)
+    }
+
+    updateList_start(index){
+        this.formSearch.next(false);
+        this.count.next(index)
+    }
+
+    updateAllMovie(movie){
+        this.allMovie = movie;
+        // console.log(movie)
     }
 
 }
